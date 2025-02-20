@@ -100,11 +100,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gestion du menu mobile
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mainMenu = document.getElementById('main-menu');
+    const body = document.body;
 
     if (mobileMenuButton && mainMenu) {
         mobileMenuButton.addEventListener('click', () => {
+            const isOpen = mainMenu.classList.contains('flex');
             mainMenu.classList.toggle('hidden');
             mainMenu.classList.toggle('flex');
+            // Change l'icône du menu
+            const menuIcon = mobileMenuButton.querySelector('i');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+            // Empêche le défilement du body quand le menu est ouvert
+            body.style.overflow = isOpen ? 'auto' : 'hidden';
         });
 
         // Fermer le menu au clic sur un lien
@@ -112,6 +120,11 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', () => {
                 mainMenu.classList.add('hidden');
                 mainMenu.classList.remove('flex');
+                body.style.overflow = 'auto';
+                // Réinitialiser l'icône
+                const menuIcon = mobileMenuButton.querySelector('i');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-times');
             });
         });
     }

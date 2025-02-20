@@ -24,7 +24,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Variables */
@@ -588,3 +589,50 @@ section {
         height: 120px;
     }
 }
+
+/* Styles pour le menu mobile */
+@media (max-width: 768px) {
+    #main-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--bg-dark);
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #main-menu a {
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 0.5rem;
+    }
+
+    #main-menu a:hover {
+        background-color: rgba(6, 182, 212, 0.1);
+    }
+
+    #mobile-menu-button {
+        display: block !important;
+    }
+}
+
+/* Cache le bouton du menu sur desktop */
+#mobile-menu-button {
+    display: none;
+}
+
+/* Assurez-vous que le contenu principal est au-dessus des particules */
+main, header, nav, section, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Suppression des styles liés à Tawk s'il y en avait */
+/* .tawk-widget {
+    display: none !important;
+} */

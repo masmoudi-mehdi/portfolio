@@ -3,7 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mehdi Masmoudi - Architecte Full Stack</title>
+    <meta
+      name="description"
+      content="Mehdi Masmoudi - Développeur Full Stack Senior & Leader Technique basé en Tunisie. Expert en JavaScript, React, Node.js et solutions web innovantes."
+    />
+    <meta
+      name="keywords"
+      content="Mehdi Masmoudi, Développeur Full Stack, Leader Technique, JavaScript, React, Node.js, Tunisie, Développeur Web"
+    />
+    <meta name="author" content="Mehdi Masmoudi" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      property="og:title"
+      content="Mehdi Masmoudi - Développeur Full Stack"
+    />
+    <meta
+      property="og:description"
+      content="Expert en développement Full Stack & solutions web innovantes"
+    />
+    <meta
+      property="og:image"
+      content="https://www.mehdimasmoudi.com/assets/images/mehdi.jpg"
+    />
+    <meta property="og:url" content="https://www.mehdimasmoudi.com" />
+    <link rel="canonical" href="https://www.mehdimasmoudi.com" />
+    <title>
+      Mehdi Masmoudi - Développeur Full Stack & Leader Technique | Portfolio
+      Officiel
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <div id="particles-js"></div>
@@ -13,53 +40,121 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://www.mehdimasmoudi.com/en"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://www.mehdimasmoudi.com"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mehdi Masmoudi",
+        "jobTitle": "Développeur Full Stack & Leader Technique",
+        "url": "https://www.mehdimasmoudi.com",
+        "image": "https://www.mehdimasmoudi.com/assets/images/mehdi.jpg",
+        "description": "Développeur Full Stack Senior & Leader Technique spécialisé dans les écosystèmes JavaScript modernes",
+        "sameAs": [
+          "https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/",
+          "https://github.com/masmoudi-mehdi",
+          "https://www.facebook.com/mass.massmoudi/",
+          "https://www.instagram.com/mehdimasmoudii/",
+          "https://www.youtube.com/@masmoudimehdi8727"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Freelance"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "Tunisia"
+        },
+        "email": "mehdi.masmoudi.contact@gmail.com",
+        "telephone": "+21692983736"
+      }
+    </script>
+    <!-- Supprimez cette ligne puisque vous êtes déjà vérifié -->
+    <!-- <meta name="google-site-verification" content="VOTRE_CODE_DE_VERIFICATION" /> -->
   </head>
   <body class="bg-gray-900 text-gray-100 font-sans overflow-x-hidden">
     <!-- Particles Container -->
     <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
 
     <!-- Navigation -->
-<nav class="fixed w-full z-50 backdrop-blur-lg border-b border-gray-800">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <div class="flex items-center space-x-2">
-      <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-      <span class="text-xl font-bold truncate">MEHDI MASMOUDI</span>
-    </div>
+    <nav class="fixed w-full z-50 backdrop-blur-lg border-b border-gray-800">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+          <span class="text-xl font-bold truncate">MEHDI MASMOUDI</span>
+        </div>
 
-    <!-- Bouton menu mobile -->
-    <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-cyan-400 p-2">
-      <i class="fas fa-bars text-2xl"></i>
-    </button>
-
-    <!-- Menu principal -->
-    <div id="main-menu" class="hidden md:flex items-center space-x-8">
-      <a href="#about" class="hover:text-cyan-400 transition-colors">À Propos</a>
-      <a href="#skills" class="hover:text-cyan-400 transition-colors">Compétences</a>
-      <a href="services.html" class="hover:text-cyan-400 transition-colors">Services</a>
-      <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-
-      <!-- Menu déroulant pour la langue -->
-      <div class="relative">
-        <button id="lang-dropdown-btn" class="flex items-center space-x-2 hover:text-cyan-400 transition-colors">
-          <i class="fas fa-globe text-xl"></i>
-          <i class="fas fa-chevron-down text-sm ml-1"></i>
+        <!-- Bouton menu mobile -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-gray-300 hover:text-cyan-400 p-2"
+        >
+          <i class="fas fa-bars text-2xl"></i>
         </button>
 
-        <div id="lang-dropdown-menu" class="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-lg hidden">
-          <a href="index.html" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700">
-            <i class="fas fa-flag mr-2"></i>
-            <span>Français</span>
-          </a>
-          <a href="index-en.html" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700">
-            <i class="fas fa-flag-usa mr-2"></i>
-            <span>English</span>
-          </a>
+        <!-- Menu principal -->
+        <div id="main-menu" class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="hover:text-cyan-400 transition-colors"
+            >À Propos</a
+          >
+          <a href="#skills" class="hover:text-cyan-400 transition-colors"
+            >Compétences</a
+          >
+          <a href="services.html" class="hover:text-cyan-400 transition-colors"
+            >Services</a
+          >
+          <a href="#contact" class="hover:text-cyan-400 transition-colors"
+            >Contact</a
+          >
+
+          <!-- Menu déroulant pour la langue -->
+          <div class="relative">
+            <button
+              id="lang-dropdown-btn"
+              class="flex items-center space-x-2 hover:text-cyan-400 transition-colors"
+            >
+              <i class="fas fa-globe text-xl"></i>
+              <i class="fas fa-chevron-down text-sm ml-1"></i>
+            </button>
+
+            <div
+              id="lang-dropdown-menu"
+              class="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-lg hidden"
+            >
+              <a
+                href="index.html"
+                class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700"
+              >
+                <i class="fas fa-flag mr-2"></i>
+                <span>Français</span>
+              </a>
+              <a
+                href="index-en.html"
+                class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700"
+              >
+                <i class="fas fa-flag-usa mr-2"></i>
+                <span>English</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</nav>
+    </nav>
 
     <!-- Hero Section -->
     <section
@@ -77,9 +172,11 @@
         >
           <img
             src="assets/images/mehdi.jpg"
-            alt="Mehdi Masmoudi"
+            alt="Mehdi Masmoudi - Full Stack Developer"
             class="w-full h-full object-cover"
             loading="lazy"
+            width="192"
+            height="192"
           />
         </div>
 
@@ -110,44 +207,39 @@
     <!-- Timeline Section -->
     <section id="timeline" class="py-20 px-6 relative">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-4xl font-bold mb-16 text-center">Chronologie des Projets</h2>
+        <h2 class="text-4xl font-bold mb-16 text-center">
+          Chronologie des Projets
+        </h2>
         <div class="timeline-container relative">
           <!-- Timeline Item 1 -->
           <div class="timeline-item" data-year="2022-Present">
             <div class="timeline-content">
               <h3 class="text-xl font-bold mb-2">Hotlas, USA</h3>
-              <p class="text-gray-400">Développement d'applications web évolutives avec 40% d'amélioration des performances</p>
+              <p class="text-gray-400">
+                Développement d'applications web évolutives avec 40%
+                d'amélioration des performances
+              </p>
             </div>
           </div>
           <!-- Timeline Item 2 -->
           <div class="timeline-item" data-year="2020-2022">
             <div class="timeline-content">
               <h3 class="text-xl font-bold mb-2">Five Points</h3>
-              <p class="text-gray-400">Développement full stack avec React et Node.js, automatisation avec Puppeteer</p>
+              <p class="text-gray-400">
+                Développement full stack avec React et Node.js, automatisation
+                avec Puppeteer
+              </p>
             </div>
           </div>
           <!-- Timeline Item 3 -->
           <div class="timeline-item" data-year="2019-2020">
             <div class="timeline-content">
               <h3 class="text-xl font-bold mb-2">Sentinel Data</h3>
-              <p class="text-gray-400">Ingénieur données, analyse avec Power BI et BigQuery</p>
+              <p class="text-gray-400">
+                Ingénieur données, analyse avec Power BI et BigQuery
+              </p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6">
-      <div class="container mx-auto max-w-6xl">
-        <h2 class="text-4xl font-bold mb-16 text-center">À Propos de Moi</h2>
-        <div class="text-center max-w-2xl mx-auto text-lg text-gray-400">
-          <p>
-            Je suis Mehdi Masmoudi, un développeur Full Stack passionné par la
-            création de solutions web modernes et innovantes. Avec une expertise
-            solide en JavaScript, React, Node.js et bien d'autres technologies,
-            je transforme des idées en applications performantes et évolutives.
-          </p>
         </div>
       </div>
     </section>
@@ -298,7 +390,6 @@
       </div>
     </section>
 
-
     <!-- About Section -->
     <section id="about" class="py-20 px-6">
       <div class="container mx-auto max-w-6xl">
@@ -379,7 +470,8 @@
                   href="mailto:mehdi.masmoudi.contact@gmail.com"
                   class="text-gray-300 hover:text-cyan-400 transition-colors"
                 >
-                  <i class="fas fa-envelope mr-2"></i>mehdi.masmoudi.contact@gmail.com
+                  <i class="fas fa-envelope mr-2"></i
+                  >mehdi.masmoudi.contact@gmail.com
                 </a>
               </li>
             </ul>
@@ -442,9 +534,13 @@
         </div>
         <!-- Ajout de l'indice -->
         <div class="text-center mt-8 text-sm text-gray-500">
-            <p class="hover:text-cyan-400 transition-colors cursor-help" title="Essayez le code légendaire des jeux vidéo...">
-                <i class="fas fa-gamepad mr-2"></i>Un code secret pourrait vous donner accès à une offre spéciale...
-            </p>
+          <p
+            class="hover:text-cyan-400 transition-colors cursor-help"
+            title="Essayez le code légendaire des jeux vidéo..."
+          >
+            <i class="fas fa-gamepad mr-2"></i>Un code secret pourrait vous
+            donner accès à une offre spéciale...
+          </p>
         </div>
       </div>
     </footer>
@@ -452,9 +548,12 @@
     <!-- Modale -->
     <div
       id="cv-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+      style="display: none"
     >
-      <div class="bg-gray-800 p-8 rounded-lg w-11/12 md:w-1/3">
+      <div
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 p-8 rounded-lg w-11/12 md:w-1/3"
+      >
         <h3 class="text-2xl font-bold text-cyan-400 mb-6">
           Choisir une version du CV
         </h3>

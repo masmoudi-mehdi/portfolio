@@ -23,27 +23,43 @@
     />
     <meta
       property="og:image"
-      content="https://www.mehdimasmoudi.com/assets/images/mehdi.jpg"
+      content="https://www.mehdimasmoudi.com/assets/images/mehdi.webp"
     />
     <meta property="og:url" content="https://www.mehdimasmoudi.com" />
     <link rel="canonical" href="https://www.mehdimasmoudi.com" />
+
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="assets/images/mehdi.webp" as="image" />
+    <link rel="preload" href="styles.min.css" as="style" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+      as="style"
+    />
     <title>
       Mehdi Masmoudi - Développeur Full Stack & Leader Technique | Portfolio
       Officiel
     </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <div id="particles-js"></div>
-
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link rel="stylesheet" href="styles.min.css" />
+    <div id="particles-js" class="hidden"></div>
+    <script>
+      // Afficher les particules après le chargement initial de la page
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.getElementById("particles-js").classList.remove("hidden");
+        }, 100);
+      });
+    </script>
     <link
       rel="alternate"
       hreflang="en"
@@ -61,7 +77,7 @@
         "name": "Mehdi Masmoudi",
         "jobTitle": "Développeur Full Stack & Leader Technique",
         "url": "https://www.mehdimasmoudi.com",
-        "image": "https://www.mehdimasmoudi.com/assets/images/mehdi.jpg",
+        "image": "https://www.mehdimasmoudi.com/assets/images/mehdi.webp",
         "description": "Développeur Full Stack Senior & Leader Technique spécialisé dans les écosystèmes JavaScript modernes",
         "sameAs": [
           "https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/",
@@ -108,7 +124,11 @@
         </button>
 
         <!-- Menu principal -->
-        <div id="main-menu" class="hidden md:flex items-center space-x-8">
+        <div
+          id="main-menu"
+          class="hidden md:flex items-center space-x-8"
+          style="background-color: #111827; z-index: 9999"
+        >
           <a href="#about" class="hover:text-cyan-400 transition-colors"
             >À Propos</a
           >
@@ -171,12 +191,13 @@
           class="relative mx-auto w-48 h-48 rounded-full overflow-hidden border-4 border-cyan-400"
         >
           <img
-            src="assets/images/mehdi.jpg"
+            src="assets/images/mehdi.webp"
             alt="Mehdi Masmoudi - Full Stack Developer"
             class="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
             width="192"
             height="192"
+            fetchpriority="high"
           />
         </div>
 
@@ -454,69 +475,75 @@
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Section Contact -->
-          <div class="text-center md:text-left">
+          <div class="text-center md:text-left mb-6 md:mb-0">
             <h3 class="text-2xl font-bold text-cyan-400 mb-4">Contact</h3>
-            <ul class="space-y-2">
+            <ul class="space-y-4">
               <li>
                 <a
                   href="tel:+21692983736"
-                  class="text-gray-300 hover:text-cyan-400 transition-colors"
+                  class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start"
                 >
-                  <i class="fas fa-phone mr-2"></i>+216 92 983 736
+                  <i class="fas fa-phone mr-2 w-6 text-center"></i>
+                  <span>+216 92 983 736</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:mehdi.masmoudi.contact@gmail.com"
-                  class="text-gray-300 hover:text-cyan-400 transition-colors"
+                  class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start"
                 >
-                  <i class="fas fa-envelope mr-2"></i
-                  >mehdi.masmoudi.contact@gmail.com
+                  <i class="fas fa-envelope mr-2 w-6 text-center"></i>
+                  <span>mehdi.masmoudi.contact@gmail.com</span>
                 </a>
               </li>
             </ul>
           </div>
 
           <!-- Section Réseaux Sociaux -->
-          <div class="text-center">
+          <div class="text-center mb-6 md:mb-0">
             <h3 class="text-2xl font-bold text-cyan-400 mb-4">
               Réseaux Sociaux
             </h3>
-            <div class="flex justify-center space-x-6">
+            <div class="flex flex-wrap justify-center gap-4">
               <a
                 href="https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="LinkedIn"
               >
-                <i class="fab fa-linkedin text-3xl"></i>
+                <i class="fab fa-linkedin text-2xl"></i>
               </a>
               <a
                 href="https://www.facebook.com/mass.massmoudi/"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="Facebook"
               >
-                <i class="fab fa-facebook text-3xl"></i>
+                <i class="fab fa-facebook text-2xl"></i>
               </a>
               <a
                 href="https://www.instagram.com/mehdimasmoudii/"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="Instagram"
               >
-                <i class="fab fa-instagram text-3xl"></i>
+                <i class="fab fa-instagram text-2xl"></i>
               </a>
               <a
                 href="https://www.youtube.com/@masmoudimehdi8727"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="YouTube"
               >
-                <i class="fab fa-youtube text-3xl"></i>
+                <i class="fab fa-youtube text-2xl"></i>
               </a>
               <a
                 href="https://github.com/masmoudi-mehdi"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="GitHub"
               >
-                <i class="fab fa-github text-3xl"></i>
+                <i class="fab fa-github text-2xl"></i>
               </a>
             </div>
           </div>
@@ -533,7 +560,9 @@
           </div>
         </div>
         <!-- Ajout de l'indice -->
-        <div class="text-center mt-8 text-sm text-gray-500">
+        <div
+          class="text-center mt-8 pt-4 border-t border-gray-700 text-sm text-gray-500"
+        >
           <p
             class="hover:text-cyan-400 transition-colors cursor-help"
             title="Essayez le code légendaire des jeux vidéo..."
@@ -588,9 +617,18 @@
     </div>
 
     <!-- Required Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+      defer
+    ></script>
+    <script src="script.min.js" defer></script>
   </body>
 </html>

@@ -1,42 +1,50 @@
-// Initialisation des particules
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 80, density: { enable: true, value_area: 800 } },
-    color: { value: "#06b6d4" },
-    shape: { type: "circle" },
-    opacity: { value: 0.5, random: false },
-    size: { value: 3, random: true },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: "#06b6d4",
-      opacity: 0.4,
-      width: 1,
+// Initialisation des particules avec des paramètres optimisés pour les performances
+function initParticles() {
+  // Vérifier si l'appareil est mobile ou a un écran de petite taille
+  const isMobile = window.innerWidth <= 768;
+
+  particlesJS("particles-js", {
+    particles: {
+      number: {
+        value: isMobile ? 30 : 50,
+        density: { enable: true, value_area: 800 },
+      },
+      color: { value: "#06b6d4" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: false },
+      size: { value: 3, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#06b6d4",
+        opacity: 0.4,
+        width: 1,
+      },
+      move: {
+        enable: true,
+        speed: isMobile ? 3 : 4, // Réduire la vitesse sur mobile
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        bounce: false,
+      },
     },
-    move: {
-      enable: true,
-      speed: 6,
-      direction: "none",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: !isMobile, mode: "repulse" }, // Désactiver sur mobile
+        onclick: { enable: true, mode: "push" },
+        resize: true,
+      },
+      modes: {
+        repulse: { distance: 100, duration: 0.4 },
+        push: { particles_nb: 4 },
+      },
     },
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: { enable: true, mode: "repulse" },
-      onclick: { enable: true, mode: "push" },
-      resize: true,
-    },
-    modes: {
-      repulse: { distance: 100, duration: 0.4 },
-      push: { particles_nb: 4 },
-    },
-  },
-  retina_detect: true,
-});
+    retina_detect: false, // Désactiver la détection retina pour améliorer les performances
+  });
+}
 
 // Code Konami
 const konamiCode = [
@@ -122,6 +130,41 @@ function activateKonamiCode() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialiser les particules avec un délai pour améliorer le temps de chargement initial
+  setTimeout(() => {
+    initParticles();
+  }, 1000);
+
+  // Initialisation - s'assurer que le menu est correctement configuré au chargement
+  function initializeMenu() {
+    const mainMenu = document.getElementById("main-menu");
+    if (mainMenu) {
+      if (window.innerWidth <= 768) {
+        // En mode mobile, s'assurer que le menu est caché au début
+        mainMenu.style.display = "none";
+        // Réinitialiser l'icône du menu burger
+        const menuIcon = document.querySelector("#mobile-menu-button i");
+        if (menuIcon) {
+          menuIcon.classList.add("fa-bars");
+          menuIcon.classList.remove("fa-times");
+        }
+        // S'assurer que le menu a un z-index élevé
+        mainMenu.style.zIndex = "9999";
+        // S'assurer que le menu a un fond solide
+        mainMenu.style.backgroundColor = "#111827";
+      } else {
+        // En mode desktop, s'assurer que le menu est visible
+        mainMenu.style.display = "flex";
+      }
+    }
+  }
+
+  // Exécuter l'initialisation au chargement
+  initializeMenu();
+
+  // Réinitialiser le menu lors du redimensionnement de la fenêtre
+  window.addEventListener("resize", initializeMenu);
+
   // Gestion du menu mobile
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mainMenu = document.getElementById("main-menu");
@@ -129,29 +172,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (mobileMenuButton && mainMenu) {
     mobileMenuButton.addEventListener("click", () => {
-      const isOpen = mainMenu.classList.contains("flex");
-      mainMenu.classList.toggle("hidden");
-      mainMenu.classList.toggle("flex");
+      // Vérifier si le menu est actuellement visible
+      const isOpen =
+        mainMenu.style.display === "flex" || mainMenu.style.display === "block";
+
+      if (isOpen) {
+        // Fermer le menu
+        mainMenu.style.display = "none";
+      } else {
+        // Ouvrir le menu
+        mainMenu.style.display = "flex";
+        // S'assurer que le menu est au-dessus des autres éléments
+        mainMenu.style.zIndex = "9999";
+      }
+
       // Change l'icône du menu
       const menuIcon = mobileMenuButton.querySelector("i");
       menuIcon.classList.toggle("fa-bars");
       menuIcon.classList.toggle("fa-times");
+
       // Empêche le défilement du body quand le menu est ouvert
       body.style.overflow = isOpen ? "auto" : "hidden";
+
+      // Empêcher le comportement par défaut
+      return false;
     });
 
-    // Fermer le menu au clic sur un lien
-    mainMenu.querySelectorAll("a").forEach((link) => {
+    // Fermer le menu au clic sur un lien (sauf le bouton de langue)
+    mainMenu.querySelectorAll("a:not(#lang-dropdown-btn)").forEach((link) => {
       link.addEventListener("click", () => {
-        mainMenu.classList.add("hidden");
-        mainMenu.classList.remove("flex");
-        body.style.overflow = "auto";
-        // Réinitialiser l'icône
-        const menuIcon = mobileMenuButton.querySelector("i");
-        menuIcon.classList.add("fa-bars");
-        menuIcon.classList.remove("fa-times");
+        if (window.innerWidth <= 768) {
+          // Fermer le menu
+          mainMenu.style.display = "none";
+          body.style.overflow = "auto";
+          // Réinitialiser l'icône
+          const menuIcon = mobileMenuButton.querySelector("i");
+          menuIcon.classList.add("fa-bars");
+          menuIcon.classList.remove("fa-times");
+        }
       });
     });
+
+    // Gestion spécifique du menu déroulant des langues en mobile
+    const langDropdownBtn = document.getElementById("lang-dropdown-btn");
+    const langDropdownMenu = document.getElementById("lang-dropdown-menu");
+
+    if (langDropdownBtn && langDropdownMenu) {
+      // S'assurer que le menu de langues reste dans le menu mobile
+      langDropdownMenu.querySelectorAll("a").forEach((langLink) => {
+        langLink.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            // Fermer le menu principal
+            mainMenu.style.display = "none";
+            body.style.overflow = "auto";
+            // Réinitialiser l'icône
+            const menuIcon = mobileMenuButton.querySelector("i");
+            menuIcon.classList.add("fa-bars");
+            menuIcon.classList.remove("fa-times");
+            // Fermer aussi le menu déroulant des langues
+            langDropdownMenu.style.display = "none";
+          }
+        });
+      });
+    }
   }
 
   // Animation des barres de compétences
@@ -194,15 +277,15 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(skillsSection);
   }
 
-  // Curseur personnalisé
-  const cursor = document.createElement("div");
-  cursor.className = "custom-cursor";
-  document.body.appendChild(cursor);
+  // Curseur personnalisé - désactivé pour améliorer les performances
+  // const cursor = document.createElement("div");
+  // cursor.className = "custom-cursor";
+  // document.body.appendChild(cursor);
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
+  // document.addEventListener("mousemove", (e) => {
+  //   cursor.style.left = e.clientX + "px";
+  //   cursor.style.top = e.clientY + "px";
+  // });
 
   // Ajout de l'indicateur de progression de défilement
   const createScrollProgress = () => {
@@ -255,18 +338,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Effet de parallaxe sur les particules
-  if (window.innerWidth > 768) {
-    window.addEventListener("mousemove", (e) => {
-      const mouseX = e.clientX / window.innerWidth - 0.5;
-      const mouseY = e.clientY / window.innerHeight - 0.5;
+  // Effet de parallaxe sur les particules - optimisé pour les performances
+  if (window.innerWidth > 1024) {
+    // Seulement sur les grands écrans
+    let ticking = false;
 
-      gsap.to("#particles-js", {
-        duration: 1,
-        x: mouseX * 50,
-        y: mouseY * 50,
-        ease: "power2.out",
-      });
+    window.addEventListener("mousemove", (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const mouseX = e.clientX / window.innerWidth - 0.5;
+          const mouseY = e.clientY / window.innerHeight - 0.5;
+
+          gsap.to("#particles-js", {
+            duration: 1,
+            x: mouseX * 30, // Réduit l'amplitude
+            y: mouseY * 30,
+            ease: "power2.out",
+          });
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     });
   }
 
@@ -292,14 +386,50 @@ document.addEventListener("DOMContentLoaded", function () {
   if (dropdownBtn && dropdownMenu) {
     dropdownBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      dropdownMenu.classList.toggle("hidden");
+      e.preventDefault(); // Empêcher le comportement par défaut
+
+      // Basculer la visibilité du menu déroulant
+      if (dropdownMenu.style.display === "block") {
+        dropdownMenu.style.display = "none";
+      } else {
+        dropdownMenu.style.display = "block";
+        // S'assurer que le menu déroulant est au-dessus des autres éléments
+        dropdownMenu.style.zIndex = "10000";
+      }
     });
 
     document.addEventListener("click", (e) => {
       if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.add("hidden");
+        dropdownMenu.style.display = "none";
       }
     });
+
+    // Assurer que le menu de langues fonctionne correctement en mode mobile
+    function adjustDropdownForMobile() {
+      if (window.innerWidth <= 768) {
+        // En mode mobile, ajuster la position du menu déroulant
+        dropdownMenu.style.position = "static";
+        dropdownMenu.style.width = "100%";
+        dropdownMenu.style.marginTop = "0.5rem";
+        dropdownMenu.style.boxShadow = "none";
+        dropdownMenu.style.backgroundColor = "#1f2937";
+        dropdownMenu.style.zIndex = "10000";
+        // Cacher le menu déroulant par défaut
+        dropdownMenu.style.display = "none";
+      } else {
+        // En mode desktop, rétablir les styles par défaut
+        dropdownMenu.style.position = "absolute";
+        dropdownMenu.style.width = "";
+        dropdownMenu.style.marginTop = "";
+        dropdownMenu.style.boxShadow = "";
+        dropdownMenu.style.backgroundColor = "";
+        dropdownMenu.style.zIndex = "";
+      }
+    }
+
+    // Appliquer les styles initiaux et écouter les changements de taille d'écran
+    adjustDropdownForMobile();
+    window.addEventListener("resize", adjustDropdownForMobile);
   }
 
   // Gestion de la modale CV

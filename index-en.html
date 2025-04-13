@@ -20,7 +20,7 @@
     />
     <meta
       property="og:image"
-      content="https://www.mehdimasmoudi.com/assets/images/mehdi.jpg"
+      content="https://www.mehdimasmoudi.com/assets/images/mehdi.webp"
     />
     <meta property="og:url" content="https://www.mehdimasmoudi.com/en" />
     <link rel="canonical" href="https://www.mehdimasmoudi.com/en" />
@@ -35,6 +35,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mobile-menu.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
@@ -48,7 +49,7 @@
         "name": "Mehdi Masmoudi",
         "jobTitle": "Full Stack Developer",
         "url": "https://www.mehdimasmoudi.com/en",
-        "image": "https://www.mehdimasmoudi.com/assets/images/mehdi.jpg",
+        "image": "https://www.mehdimasmoudi.com/assets/images/mehdi.webp",
         "description": "Full Stack Developer & Technical Leader specializing in modern JavaScript ecosystems",
         "sameAs": [
           "https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/",
@@ -161,7 +162,7 @@
           class="relative mx-auto w-48 h-48 rounded-full overflow-hidden border-4 border-cyan-400 animate-float"
         >
           <img
-            src="assets/images/mehdi.jpg"
+            src="assets/images/mehdi.webp"
             alt="Mehdi Masmoudi - Full Stack Developer"
             class="w-full h-full object-cover"
             loading="lazy"
@@ -381,67 +382,73 @@
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Contact Section -->
-          <div class="text-center md:text-left">
+          <div class="text-center md:text-left mb-6 md:mb-0">
             <h3 class="text-2xl font-bold text-cyan-400 mb-4">Contact</h3>
-            <ul class="space-y-2">
+            <ul class="space-y-4">
               <li>
                 <a
                   href="tel:+21692983736"
-                  class="text-gray-300 hover:text-cyan-400 transition-colors"
+                  class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start"
                 >
-                  <i class="fas fa-phone mr-2"></i>+216 92 983 736
+                  <i class="fas fa-phone mr-2 w-6 text-center"></i>
+                  <span>+216 92 983 736</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:mehdi.masmoudi.contact@gmail.com"
-                  class="text-gray-300 hover:text-cyan-400 transition-colors"
+                  class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start"
                 >
-                  <i class="fas fa-envelope mr-2"></i
-                  >mehdi.masmoudi.contact@gmail.com
+                  <i class="fas fa-envelope mr-2 w-6 text-center"></i>
+                  <span>mehdi.masmoudi.contact@gmail.com</span>
                 </a>
               </li>
             </ul>
           </div>
 
           <!-- Social Media Section -->
-          <div class="text-center">
+          <div class="text-center mb-6 md:mb-0">
             <h3 class="text-2xl font-bold text-cyan-400 mb-4">Social Media</h3>
-            <div class="flex justify-center space-x-6">
+            <div class="flex flex-wrap justify-center gap-4">
               <a
                 href="https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="LinkedIn"
               >
-                <i class="fab fa-linkedin text-3xl"></i>
+                <i class="fab fa-linkedin text-2xl"></i>
               </a>
               <a
                 href="https://www.facebook.com/mass.massmoudi/"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="Facebook"
               >
-                <i class="fab fa-facebook text-3xl"></i>
+                <i class="fab fa-facebook text-2xl"></i>
               </a>
               <a
                 href="https://www.instagram.com/mehdimasmoudii/"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="Instagram"
               >
-                <i class="fab fa-instagram text-3xl"></i>
+                <i class="fab fa-instagram text-2xl"></i>
               </a>
               <a
                 href="https://www.youtube.com/@masmoudimehdi8727"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="YouTube"
               >
-                <i class="fab fa-youtube text-3xl"></i>
+                <i class="fab fa-youtube text-2xl"></i>
               </a>
               <a
                 href="https://github.com/masmoudi-mehdi"
                 target="_blank"
-                class="text-gray-300 hover:text-cyan-400 transition-colors"
+                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
+                aria-label="GitHub"
               >
-                <i class="fab fa-github text-3xl"></i>
+                <i class="fab fa-github text-2xl"></i>
               </a>
             </div>
           </div>
@@ -454,6 +461,18 @@
               All rights reserved.
             </p>
           </div>
+        </div>
+        <!-- Secret code hint -->
+        <div
+          class="text-center mt-8 pt-4 border-t border-gray-700 text-sm text-gray-500"
+        >
+          <p
+            class="hover:text-cyan-400 transition-colors cursor-help"
+            title="Try the legendary video game code..."
+          >
+            <i class="fas fa-gamepad mr-2"></i>A secret code might give you
+            access to a special offer...
+          </p>
         </div>
       </div>
     </footer>
@@ -504,5 +523,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
+    <!-- Script pour le menu mobile -->
+    <script src="mobile-menu.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,49 +27,48 @@
     />
     <meta property="og:url" content="https://www.mehdimasmoudi.com" />
     <link rel="canonical" href="https://www.mehdimasmoudi.com" />
-
-    <!-- Préchargement des ressources critiques -->
-    <link rel="preload" href="assets/images/mehdi.webp" as="image" />
-    <link rel="preload" href="styles.min.css" as="style" />
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
-      as="style"
-    />
-    <title>
-      Mehdi Masmoudi - Développeur Full Stack & Leader Technique | Portfolio
-      Officiel
-    </title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link rel="stylesheet" href="styles.min.css" />
-    <div id="particles-js" class="hidden"></div>
-    <script>
-      // Afficher les particules après le chargement initial de la page
-      window.addEventListener("load", function () {
-        setTimeout(function () {
-          document.getElementById("particles-js").classList.remove("hidden");
-        }, 100);
-      });
-    </script>
     <link
       rel="alternate"
       hreflang="en"
       href="https://www.mehdimasmoudi.com/en"
     />
+    <!-- Favicons -->
     <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://www.mehdimasmoudi.com"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon_io/apple-touch-icon.png"
     />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
+    <meta name="theme-color" content="#06b6d4" />
+    <title>Mehdi Masmoudi - Développeur Full Stack & Leader Technique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mobile-menu.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -98,10 +97,11 @@
         "telephone": "+21692983736"
       }
     </script>
-    <!-- Supprimez cette ligne puisque vous êtes déjà vérifié -->
-    <!-- <meta name="google-site-verification" content="VOTRE_CODE_DE_VERIFICATION" /> -->
   </head>
-  <body class="bg-gray-900 text-gray-100 font-sans overflow-x-hidden">
+  <body
+    class="bg-gray-900 text-gray-100 font-sans overflow-x-hidden"
+    data-scroll-container
+  >
     <!-- Particles Container -->
     <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
 
@@ -180,6 +180,7 @@
     <section
       id="hero"
       class="min-h-screen flex items-center justify-center relative mt-20"
+      data-scroll-section
     >
       <div
         class="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-transparent opacity-20"
@@ -226,7 +227,7 @@
     </section>
 
     <!-- Timeline Section -->
-    <section id="timeline" class="py-20 px-6 relative">
+    <section id="timeline" class="py-20 px-6 relative" data-scroll-section>
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold mb-16 text-center">
           Chronologie des Projets
@@ -266,7 +267,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6">
+    <section id="skills" class="py-20 px-6" data-scroll-section>
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold mb-16 text-center">
           Compétences Techniques
@@ -412,7 +413,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-6">
+    <section id="about" class="py-20 px-6" data-scroll-section>
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-4xl font-bold mb-16 text-center">À Propos de Moi</h2>
         <div class="text-center max-w-2xl mx-auto text-lg text-gray-400">
@@ -430,6 +431,7 @@
     <section
       id="contact"
       class="py-20 px-6 bg-gradient-to-br from-gray-900 to-blue-900/20"
+      data-scroll-section
     >
       <div class="container mx-auto max-w-4xl">
         <h2 class="text-4xl font-bold mb-16 text-center">Contactez-moi</h2>
@@ -471,7 +473,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 py-12">
+    <footer class="bg-gray-800 py-12" data-scroll-section>
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Section Contact -->
@@ -617,18 +619,10 @@
     </div>
 
     <!-- Required Scripts -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
-      defer
-    ></script>
-    <script src="script.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <!-- Script pour le menu mobile -->
+    <script src="mobile-menu.js"></script>
   </body>
 </html>

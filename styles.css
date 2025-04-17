@@ -192,13 +192,15 @@ nav {
   .timeline-container {
     width: 100%;
     padding: 0;
+    margin-top: 1rem;
   }
 
   .timeline-item {
     width: 100%;
-    padding-left: 4rem;
-    padding-right: 1rem;
-    margin: 2rem 0;
+    padding-left: 60px;
+    padding-right: 15px;
+    margin: 1.5rem 0;
+    position: relative;
   }
 
   /* Adjust spacing for buttons on smaller screens */
@@ -468,6 +470,40 @@ section {
   opacity: 1;
 }
 
+/* Mobile Timeline Styles */
+@media (max-width: 768px) {
+  .timeline-container::before {
+    left: 30px; /* Move the timeline line to the left */
+  }
+
+  .timeline-item {
+    width: 100%; /* Full width for all items */
+    left: 0 !important; /* Override the left positioning */
+    text-align: left !important; /* All text aligned left */
+    padding-left: 60px; /* Space for the timeline line */
+    padding-right: 15px; /* Reduced right padding */
+    margin: 1.5rem 0; /* Reduced vertical margin */
+  }
+
+  .timeline-item::before {
+    content: attr(data-year); /* Show the year */
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
+  .timeline-content {
+    padding: 1.25rem; /* Slightly reduced padding */
+  }
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -566,6 +602,35 @@ section {
   .rounded-image {
     width: 120px;
     height: 120px;
+  }
+
+  /* Extra small screen timeline adjustments */
+  .timeline-container::before {
+    left: 20px; /* Move timeline line even more to the left */
+  }
+
+  .timeline-item {
+    padding-left: 45px; /* Reduce left padding */
+    padding-right: 10px; /* Reduce right padding */
+  }
+
+  .timeline-item::before {
+    font-size: 0.7rem; /* Smaller font for year */
+    padding: 0.2rem 0.4rem; /* Smaller padding */
+  }
+
+  .timeline-content {
+    padding: 1rem; /* Further reduce padding */
+  }
+
+  .timeline-content h3 {
+    font-size: 1.1rem; /* Smaller heading */
+    margin-bottom: 0.5rem; /* Less margin */
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem; /* Smaller text */
+    line-height: 1.4; /* Tighter line height */
   }
 }
 

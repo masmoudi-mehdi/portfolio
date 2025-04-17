@@ -165,6 +165,106 @@ document.addEventListener("DOMContentLoaded", function () {
   // Réinitialiser le menu lors du redimensionnement de la fenêtre
   window.addEventListener("resize", initializeMenu);
 
+  // Fonction pour ajuster la timeline en fonction de la taille de l'écran
+  function adjustTimelineForScreenSize() {
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    const timelineContainer = document.querySelector(".timeline-container");
+    const isMobile = window.innerWidth <= 768;
+    const isExtraSmall = window.innerWidth <= 480;
+
+    // Ajuster le conteneur de la timeline
+    if (timelineContainer) {
+      if (isMobile) {
+        // Ajouter un style personnalisé pour positionner la ligne verticale
+        timelineContainer.style.position = "relative";
+
+        // Créer ou mettre à jour la ligne verticale
+        let timelineLine = timelineContainer.querySelector(".timeline-line");
+        if (!timelineLine) {
+          timelineLine = document.createElement("div");
+          timelineLine.className = "timeline-line";
+          timelineContainer.appendChild(timelineLine);
+        }
+
+        // Positionner la ligne verticale
+        timelineLine.style.position = "absolute";
+        timelineLine.style.top = "0";
+        timelineLine.style.bottom = "0";
+        timelineLine.style.width = "2px";
+        timelineLine.style.backgroundColor = "#06b6d4"; // Couleur primaire
+        timelineLine.style.left = isExtraSmall ? "20px" : "30px";
+      } else {
+        // Supprimer la ligne verticale personnalisée si elle existe
+        const timelineLine = timelineContainer.querySelector(".timeline-line");
+        if (timelineLine) {
+          timelineLine.remove();
+        }
+
+        // Réinitialiser les styles pour le desktop
+        timelineContainer.style.position = "relative";
+      }
+    }
+
+    // Ajuster les éléments de la timeline
+    timelineItems.forEach((item) => {
+      // Ajuster le style en fonction de la taille de l'écran
+      if (isMobile) {
+        item.style.width = "100%";
+        item.style.left = "0";
+        item.style.textAlign = "left";
+        item.style.paddingLeft = isExtraSmall ? "45px" : "60px";
+        item.style.paddingRight = isExtraSmall ? "10px" : "15px";
+        item.style.position = "relative";
+
+        // Ajouter l'année comme étiquette
+        const year = item.getAttribute("data-year");
+        if (year) {
+          // Créer ou mettre à jour l'étiquette d'année
+          let yearLabel = item.querySelector(".year-label");
+          if (!yearLabel) {
+            yearLabel = document.createElement("div");
+            yearLabel.className = "year-label";
+            item.appendChild(yearLabel);
+          }
+
+          // Styler l'étiquette d'année
+          yearLabel.textContent = year;
+          yearLabel.style.position = "absolute";
+          yearLabel.style.left = "0";
+          yearLabel.style.top = "0";
+          yearLabel.style.backgroundColor = "#06b6d4";
+          yearLabel.style.color = "white";
+          yearLabel.style.padding = isExtraSmall
+            ? "0.2rem 0.4rem"
+            : "0.25rem 0.5rem";
+          yearLabel.style.borderRadius = "4px";
+          yearLabel.style.fontSize = isExtraSmall ? "0.7rem" : "0.8rem";
+          yearLabel.style.transform = "translateY(-50%)";
+          yearLabel.style.whiteSpace = "nowrap";
+        }
+      } else {
+        // Réinitialiser les styles pour le desktop
+        item.style.width = "";
+        item.style.left = "";
+        item.style.textAlign = "";
+        item.style.paddingLeft = "";
+        item.style.paddingRight = "";
+
+        // Supprimer l'étiquette d'année si elle existe
+        const yearLabel = item.querySelector(".year-label");
+        if (yearLabel) {
+          yearLabel.remove();
+        }
+      }
+    });
+  }
+
+  // Exécuter l'ajustement au chargement
+  adjustTimelineForScreenSize();
+
+  // Réajuster la timeline lors du redimensionnement
+  window.addEventListener("resize", adjustTimelineForScreenSize);
+
   // Gestion du menu mobile
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mainMenu = document.getElementById("main-menu");
@@ -366,17 +466,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Animation de la timeline
   gsap.utils.toArray(".timeline-item").forEach((item) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: "top center+=100",
-        toggleActions: "play none none reverse",
-      },
-      x: item.classList.contains("left") ? -100 : 100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
+    // Ajouter l'attribut data-year comme contenu avant l'élément sur mobile
+    const year = item.getAttribute("data-year");
+    if (year && window.innerWidth <= 768) {
+      item.style.position = "relative";
+    }
+
+    // Animation différente selon la taille de l'écran
+    if (window.innerWidth <= 768) {
+      // Animation pour mobile - fade in from bottom
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top center+=100",
+          toggleActions: "play none none reverse",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+    } else {
+      // Animation pour desktop - slide in from sides
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top center+=100",
+          toggleActions: "play none none reverse",
+        },
+        x: item.classList.contains("left") ? -100 : 100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+    }
   });
 
   // Menu déroulant des langues

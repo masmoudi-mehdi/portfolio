@@ -1,0 +1,54 @@
+---
+import { t, ui, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const k = ui.konami;
+---
+
+<dialog
+  id="konami"
+  aria-labelledby="konami-title"
+  class="m-auto w-[min(26rem,calc(100%-2rem))] rounded-2xl border border-line bg-surface p-8 text-center text-fg shadow-2xl backdrop:bg-black/70"
+>
+  <p id="konami-title" class="text-xl font-bold">🎮 {t(k.title, lang)}</p>
+  <p class="mt-3 text-muted">{t(k.text, lang)}</p>
+  <p class="mt-4 rounded-xl border-2 border-dashed border-accent px-4 py-3 text-2xl font-bold tracking-[0.2em] text-accent">
+    {k.code}
+  </p>
+  <p class="mt-3 text-sm text-muted">{t(k.offer, lang)}</p>
+  <form method="dialog" class="mt-6">
+    <button class="btn-primary">{t(k.close, lang)}</button>
+  </form>
+</dialog>
+
+<script>
+  // Easter egg: ↑ ↑ ↓ ↓ ← → ← → B A opens the promo-code dialog.
+  const SEQUENCE = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+  let step = 0;
+  document.addEventListener("keydown", (e) => {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    step = key === SEQUENCE[step] ? step + 1 : key === SEQUENCE[0] ? 1 : 0;
+    if (step === SEQUENCE.length) {
+      step = 0;
+      (document.getElementById("konami") as HTMLDialogElement | null)?.showModal();
+    }
+  });
+</script>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    dialog[open] {
+      animation: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      scale: 0.9;
+    }
+  }
+</style>

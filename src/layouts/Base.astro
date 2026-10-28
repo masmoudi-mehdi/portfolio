@@ -1,0 +1,114 @@
+---
+import "../styles/global.css";
+import fontUrl from "../assets/fonts/source-sans-3-latin-wght-normal.woff2?url";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Konami from "../components/Konami.astro";
+import { p, t, ui, ROUTES, LANGS, type Lang, type PageKey } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+  /** Page with a FR/EN pair; leave empty for the 404 page. */
+  page?: PageKey;
+  title: string;
+  description: string;
+}
+
+const { lang, page, title, description } = Astro.props;
+const site = Astro.site!;
+const abs = (path: string) => new URL(path, site).href;
+
+const canonical = page ? abs(ROUTES[page][lang]) : undefined;
+const ogImage = abs("/assets/images/mehdi-960.webp");
+const ogLocale = lang === "fr" ? "fr_FR" : "en_US";
+
+const skills = p.skills.flatMap((group) => group.items.map((item) => t(item, lang)));
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: p.identity.name,
+  jobTitle: t(p.identity.title, lang),
+  description: t(p.subline, lang),
+  url: abs(ROUTES.home[lang]),
+  image: ogImage,
+  email: `mailto:${p.identity.email}`,
+  telephone: p.identity.phoneE164,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Tunis",
+    addressCountry: "TN",
+  },
+  worksFor: { "@type": "Organization", name: p.experience[0].company },
+  knowsAbout: skills,
+  knowsLanguage: p.languages.map((l) => t(l.name, "en")),
+  sameAs: [p.identity.linkedin, p.identity.github],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={p.identity.name} />
+    {page ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {
+      page &&
+        LANGS.map((l) => <link rel="alternate" hreflang={l} href={abs(ROUTES[page][l])} />)
+    }
+    {page && <link rel="alternate" hreflang="x-default" href={abs(ROUTES[page].fr)} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={p.identity.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="960" />
+    <meta property="og:image:height" content="945" />
+    <meta property="og:image:alt" content={t(ui.hero.photoAlt, lang)} />
+    <meta property="og:locale" content={ogLocale} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/assets/favicon_io/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon_io/site.webmanifest" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfbfc" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117" />
+
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Apply the saved theme before the first paint (no flash). -->
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch {}
+    </script>
+
+    {page === "home" && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#main"
+      class="sr-only z-50 rounded-md bg-accent px-4 py-2 font-semibold text-on-accent focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+    >
+      {t(ui.skipLink, lang)}
+    </a>
+    <Header lang={lang} page={page} />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} page={page} />
+    <Konami lang={lang} />
+  </body>
+</html>

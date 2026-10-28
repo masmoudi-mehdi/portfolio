@@ -3,8 +3,8 @@
 //   npm run cv
 // 1. fills cv/template.html (+ cv/cv.css) with the fr / en data,
 // 2. writes the filled pages to cv/build/ (git-ignored, handy to preview),
-// 3. prints them with Playwright (Chromium) to assets/cv/cv-francais.pdf and
-//    assets/cv/cv-anglais.pdf, the files the site already links to.
+// 3. prints them with Playwright (Chromium) to public/assets/cv/cv-francais.pdf and
+//    public/assets/cv/cv-anglais.pdf, served by the site at /assets/cv/.
 // What the CV keeps (profile text, bullets, projects) is set in profile.json > cv.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -18,8 +18,8 @@ const p = JSON.parse(readFileSync(join(root, "content", "profile.json"), "utf8")
 const template = readFileSync(join(root, "cv", "template.html"), "utf8").replace(/<!--[\s\S]*?-->\s*/g, "");
 
 const OUTPUT = {
-  fr: join(root, "assets", "cv", "cv-francais.pdf"),
-  en: join(root, "assets", "cv", "cv-anglais.pdf"),
+  fr: join(root, "public", "assets", "cv", "cv-francais.pdf"),
+  en: join(root, "public", "assets", "cv", "cv-anglais.pdf"),
 };
 const MAX_PAGES = 2;
 

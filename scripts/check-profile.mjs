@@ -92,7 +92,7 @@ const ALLOWED_DIGITS = [
   /\b(?:HTML5|CSS3|CS50|Web3)\b/g,
   /\b[ABC][12]\b/g, // CEFR language levels
 ];
-const NO_DIGIT_CHECK = new Set(["identity", "start", "end", "_sources", "certifications"]);
+const NO_DIGIT_CHECK = new Set(["identity", "start", "end", "_sources", "certifications", "konami"]);
 
 function shapeOf(v) {
   if (Array.isArray(v)) return `array(${v.length})`;

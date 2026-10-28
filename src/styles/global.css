@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* Latin subset only: it covers French and English. */
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("../assets/fonts/source-sans-3-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+ * Colours. The page follows the system theme (color-scheme: light dark) until
+ * the visitor uses the toggle, which sets data-theme on <html>.
+ * light-dark(<light>, <dark>) picks the value for the active scheme.
+ */
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#fbfbfc, #0d1117);
+  --surface: light-dark(#ffffff, #151b24);
+  --surface-2: light-dark(#f2f4f7, #1b2330);
+  --fg: light-dark(#141821, #e7eaf0);
+  --muted: light-dark(#4a5361, #a5aebb);
+  --line: light-dark(#e2e6ec, #2a3342);
+  --accent: light-dark(#1d4ed8, #7fabff);
+  --accent-hover: light-dark(#1e40af, #a3c3ff);
+  --on-accent: light-dark(#ffffff, #0b1220);
+  --accent-soft: light-dark(#eaf0ff, #17233a);
+  --accent-soft-fg: light-dark(#1e3a8a, #c4d6ff);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Tailwind's dark: variant follows the same rule as the colours above. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
+@theme inline {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-fg: var(--accent-soft-fg);
+}
+
+/* Type scale (1.25 ratio, fluid on the two largest steps). */
+@theme {
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.65;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.6;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.35;
+  --text-2xl: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+  --text-2xl--line-height: 1.2;
+  --text-3xl: clamp(2.125rem, 1.5rem + 2.6vw, 3.5rem);
+  --text-3xl--line-height: 1.08;
+  --container-page: 72rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-bg font-sans text-base text-fg antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  @media (min-width: 48rem) {
+    body {
+      font-size: 1.125rem;
+    }
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--accent-soft-fg);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p,
+  li {
+    text-wrap: pretty;
+  }
+}
+
+/* Shared building blocks (can be combined with other utilities). */
+@utility container-page {
+  @apply mx-auto w-full max-w-(--container-page) px-4 sm:px-6 lg:px-8;
+}
+@utility section {
+  @apply py-16 sm:py-24;
+}
+@utility section-title {
+  @apply text-2xl font-bold tracking-tight text-fg;
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-semibold transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-on-accent hover:bg-accent-hover;
+}
+@utility btn-secondary {
+  @apply btn border border-line bg-surface text-fg hover:border-accent hover:text-accent;
+}
+@utility link {
+  @apply font-medium text-accent underline decoration-1 underline-offset-4 hover:text-accent-hover;
+}
+@utility tag {
+  @apply inline-flex items-center rounded-md bg-accent-soft px-2.5 py-1 text-sm font-medium text-accent-soft-fg;
+}
+
+/* Gentle entrance for blocks as they scroll into view (CSS only). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 1.25rem;
+  }
+}

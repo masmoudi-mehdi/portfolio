@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "./Hero.astro";
+import Experience from "./Experience.astro";
+import { p, t, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<Base lang={lang} page="home" title={t(p.seo.index.title, lang)} description={t(p.seo.index.description, lang)}>
+  <Hero lang={lang} />
+  <Experience lang={lang} />
+</Base>

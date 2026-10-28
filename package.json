@@ -1,16 +1,30 @@
 {
   "name": "mehdimasmoudi-portfolio",
   "private": true,
-  "description": "Static portfolio served by GitHub Pages. Content lives in content/profile.json: edit it, then run `npm run content:apply`, `npm run content:check` and `npm run build:css`. `npm run cv` rebuilds the PDF CVs from the same file.",
+  "description": "Personal site built with Astro and served by GitHub Pages. All text lives in content/profile.json: edit it, then run `npm run check` and `npm run build`. `npm run cv` rebuilds the PDF CVs from the same file.",
   "scripts": {
-    "build:css": "tailwindcss -c tailwind.config.js -i src/tailwind.input.css -o assets/css/tailwind.css --minify",
-    "content:apply": "node scripts/apply-profile.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "node scripts/check-profile.mjs && astro check",
     "content:check": "node scripts/check-profile.mjs",
-    "cv": "node scripts/build-cv.mjs"
+    "cv": "node scripts/build-cv.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.12",
     "@fontsource/source-sans-3": "^5.3.1",
+    "@tailwindcss/vite": "^4.3.3",
     "playwright": "^1.64.1",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.4"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
   }
 }

@@ -681,6 +681,101 @@
     },
     "projects": ["stream-catcher", "restaurant-bar-app"]
   },
+  "site": {
+    "skipLink": { "fr": "Aller au contenu", "en": "Skip to content" },
+    "nav": {
+      "label": { "fr": "Navigation principale", "en": "Main navigation" },
+      "menu": { "fr": "Menu", "en": "Menu" },
+      "experience": { "fr": "Expérience", "en": "Experience" },
+      "projects": { "fr": "Projets", "en": "Projects" },
+      "skills": { "fr": "Compétences", "en": "Skills" },
+      "about": { "fr": "À propos", "en": "About" },
+      "services": { "fr": "Services", "en": "Services" },
+      "contact": { "fr": "Contact", "en": "Contact" },
+      "home": { "fr": "Accueil", "en": "Home" }
+    },
+    "theme": {
+      "label": { "fr": "Changer de thème (clair ou sombre)", "en": "Switch theme (light or dark)" }
+    },
+    "language": {
+      "label": { "fr": "Read this page in English", "en": "Lire cette page en français" },
+      "short": { "fr": "EN", "en": "FR" }
+    },
+    "hero": {
+      "contact": { "fr": "Me contacter", "en": "Get in touch" },
+      "cv": { "fr": "Télécharger mon CV", "en": "Download my CV" },
+      "cvOther": { "fr": "CV in English", "en": "CV en français" },
+      "photoAlt": { "fr": "Portrait de Mehdi Masmoudi", "en": "Portrait of Mehdi Masmoudi" }
+    },
+    "experience": {
+      "title": { "fr": "Expérience", "en": "Experience" },
+      "present": { "fr": "aujourd'hui", "en": "present" },
+      "client": { "fr": "Client", "en": "Client" }
+    },
+    "projects": {
+      "title": { "fr": "Projets", "en": "Projects" },
+      "problem": { "fr": "Le besoin", "en": "The problem" },
+      "built": { "fr": "Ce que j'ai construit", "en": "What I built" },
+      "role": { "fr": "Mon rôle", "en": "My role" },
+      "result": { "fr": "Résultat", "en": "Outcome" },
+      "stack": { "fr": "Technologies", "en": "Tech stack" }
+    },
+    "skills": {
+      "title": { "fr": "Compétences", "en": "Skills" },
+      "languages": { "fr": "Langues", "en": "Languages" }
+    },
+    "about": {
+      "title": { "fr": "À propos", "en": "About" },
+      "education": { "fr": "Formation", "en": "Education" },
+      "certifications": { "fr": "Certifications", "en": "Certifications" }
+    },
+    "contact": {
+      "title": { "fr": "Contact", "en": "Contact" },
+      "intro": {
+        "fr": "Un poste à pourvoir, une mission freelance ou une simple question : écrivez-moi.",
+        "en": "A role to fill, a freelance project or just a question: send me a message."
+      },
+      "direct": { "fr": "Ou directement :", "en": "Or reach me directly:" },
+      "name": { "fr": "Nom", "en": "Name" },
+      "email": { "fr": "E-mail", "en": "Email" },
+      "message": { "fr": "Message", "en": "Message" },
+      "honeypot": { "fr": "Ne remplissez pas ce champ", "en": "Leave this field empty" },
+      "send": { "fr": "Envoyer", "en": "Send" },
+      "sending": { "fr": "Envoi en cours…", "en": "Sending…" },
+      "success": {
+        "fr": "Merci, votre message est bien parti. Je vous réponds dès que possible.",
+        "en": "Thanks, your message is on its way. I'll get back to you soon."
+      },
+      "error": {
+        "fr": "L'envoi a échoué. Réessayez, ou écrivez-moi directement par e-mail.",
+        "en": "Sending failed. Please try again, or email me directly."
+      }
+    },
+    "services": {
+      "offersTitle": { "fr": "Les offres", "en": "Offers" },
+      "processTitle": { "fr": "Comment je travaille", "en": "How I work" },
+      "ctaTitle": { "fr": "Un projet en tête ?", "en": "Have a project in mind?" },
+      "ctaText": {
+        "fr": "Décrivez votre besoin en quelques lignes, je vous réponds avec un devis.",
+        "en": "Describe what you need in a few lines and I'll reply with a quote."
+      }
+    },
+    "footer": {
+      "rights": { "fr": "Tous droits réservés.", "en": "All rights reserved." }
+    },
+    "notFound": {
+      "title": { "fr": "Page introuvable", "en": "Page not found" },
+      "text": { "fr": "Cette page n'existe pas ou a été déplacée.", "en": "This page doesn't exist or has moved." },
+      "back": { "fr": "Retour à l'accueil", "en": "Back to the home page" }
+    },
+    "konami": {
+      "title": { "fr": "Code secret trouvé !", "en": "Secret code found!" },
+      "text": { "fr": "Voici votre code promo :", "en": "Here is your promo code:" },
+      "code": "KONAMI2026",
+      "offer": { "fr": "-20 % sur ma prochaine mission freelance", "en": "20% off my next freelance project" },
+      "close": { "fr": "Fermer", "en": "Close" }
+    }
+  },
   "_sources": {
     "_legend": {
       "facts": "Facts confirmed by Mehdi on 2026-10-28 (improvement plan, section 5 - local, not published)",
@@ -724,6 +819,8 @@
     "projects[restaurant-bar-app].context": "facts (client project, confirmed by Mehdi on 2026-10-28)",
     "cv.profile": "facts (target, employer, anonymised client) + experience and skills above; {years} is computed by scripts/build-cv.mjs from the start of the experience named in cv.yearsFrom",
     "cv.bullets": "which experience bullets (by index) the CV keeps; the site shows them all",
+    "site": "Labels of the Astro site (buttons, headings, form messages); no new facts",
+    "site.konami": "old-site (easter egg, code KONAMI2026, -20%) + T4 brief",
     "projects[anti-piracy-portal]": "validator-readme (auth, CSV/XLSX + IPTV playlist import, WHOIS/IP enrichment, dashboard, weekly reports, React + Node.js + PostgreSQL, Docker, Azure) + list of the app's pages (job scheduling, execution results, live/VOD links, Telegram crawler, data cleaning, users and invites) + git history (main contributor) + facts (Mehdi, 2026-10-28: 'the portal', more than CSV)"
   }
 }

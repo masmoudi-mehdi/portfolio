@@ -1,0 +1,137 @@
+---
+import Icon from "./Icon.astro";
+import { p, t, ui, ROUTES, otherLang, sectionHref, type Lang, type PageKey } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+  page?: PageKey;
+}
+
+const { lang, page } = Astro.props;
+const other = otherLang(lang);
+const switchHref = ROUTES[page ?? "home"][other];
+const from = page ?? "services"; // the 404 page links to home sections like services does
+
+const links = [
+  { href: sectionHref(from, lang, "experience"), label: t(ui.nav.experience, lang) },
+  { href: sectionHref(from, lang, "projects"), label: t(ui.nav.projects, lang) },
+  { href: sectionHref(from, lang, "skills"), label: t(ui.nav.skills, lang) },
+  { href: sectionHref(from, lang, "about"), label: t(ui.nav.about, lang) },
+  { href: ROUTES.services[lang], label: t(ui.nav.services, lang), current: page === "services" },
+  // Both the home and the services page end with a #contact section.
+  { href: page ? "#contact" : sectionHref(from, lang, "contact"), label: t(ui.nav.contact, lang) },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-md">
+  <div class="container-page flex h-16 items-center gap-4">
+    <a href={ROUTES.home[lang]} class="mr-auto text-lg font-bold tracking-tight text-fg hover:text-accent">
+      {p.identity.name}
+    </a>
+
+    <nav aria-label={t(ui.nav.label, lang)} class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                aria-current={l.current ? "page" : undefined}
+                class="rounded-md px-3 py-2 text-base font-medium text-muted transition-colors hover:text-fg aria-[current=page]:text-accent"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1">
+      <a
+        href={switchHref}
+        hreflang={other}
+        lang={other}
+        aria-label={t(ui.language.label, lang)}
+        title={t(ui.language.label, lang)}
+        class="inline-flex size-11 items-center justify-center rounded-md text-sm font-bold tracking-wide text-muted hover:text-fg"
+      >
+        {t(ui.language.short, lang)}
+      </a>
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label={t(ui.theme.label, lang)}
+        title={t(ui.theme.label, lang)}
+        class="inline-flex size-11 items-center justify-center rounded-md text-muted hover:text-fg"
+      >
+        <Icon name="moon" class="dark:hidden" />
+        <Icon name="sun" class="hidden dark:block" />
+      </button>
+      <button
+        type="button"
+        popovertarget="mobile-nav"
+        aria-label={t(ui.nav.menu, lang)}
+        class="menu-button inline-flex size-11 items-center justify-center rounded-md text-fg lg:hidden"
+      >
+        <Icon name="menu" class="icon-open" size={22} />
+        <Icon name="x" class="icon-close" size={22} />
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-nav"
+    popover
+    class="top-18 right-4 bottom-auto left-4 m-0 h-auto w-auto rounded-xl border border-line bg-surface p-2 text-fg shadow-xl lg:hidden"
+  >
+    <nav aria-label={t(ui.nav.label, lang)}>
+      <ul class="flex flex-col">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                aria-current={l.current ? "page" : undefined}
+                class="block rounded-lg px-4 py-3 text-lg font-medium hover:bg-surface-2 aria-[current=page]:text-accent"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* The icons are rendered by Icon.astro, so they need :global() here. */
+  .menu-button :global(.icon-close) {
+    display: none;
+  }
+  :global(body:has(#mobile-nav:popover-open)) .menu-button :global(.icon-open) {
+    display: none;
+  }
+  :global(body:has(#mobile-nav:popover-open)) .menu-button :global(.icon-close) {
+    display: block;
+  }
+</style>
+
+<script>
+  // Theme toggle: switch between light and dark and remember the choice.
+  document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
+    const root = document.documentElement;
+    const current =
+      root.dataset.theme ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = current === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {}
+  });
+
+  // Mobile menu: close it once a link is chosen.
+  const menu = document.getElementById("mobile-nav");
+  menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => menu.hidePopover()));
+</script>

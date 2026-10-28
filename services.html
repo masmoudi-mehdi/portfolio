@@ -3,22 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services Premium - Mehdi Masmoudi</title>
-    <meta
-      name="description"
-      content="Services premium de développement web par Mehdi Masmoudi, expert en développement Full Stack."
-    />
-    <meta
-      name="keywords"
-      content="Mehdi Masmoudi, Services, Développement Web, Full Stack, JavaScript, React, Node.js"
-    />
+    <!-- profile:meta -->
+    <title>Services freelance – Mehdi Masmoudi</title>
+    <meta name="description" content="Application web sur mesure, intégration IA, automatisation et scraping : trois offres concrètes, sur devis." />
+    <meta name="keywords" content="Mehdi Masmoudi, Développeur Full Stack &amp; IA, React, TypeScript, JavaScript, Vite, Tailwind CSS, HTML &amp; CSS, Node.js, Express, NestJS, Python, Prisma, Socket.IO, REST APIs, Azure AI Foundry" />
+    <meta property="og:title" content="Services freelance – Mehdi Masmoudi" />
+    <meta property="og:description" content="Application web sur mesure, intégration IA, automatisation et scraping : trois offres concrètes, sur devis." />
+    <!-- /profile:meta -->
     <meta name="author" content="Mehdi Masmoudi" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Services Premium - Mehdi Masmoudi" />
-    <meta
-      property="og:description"
-      content="Services premium de développement web"
-    />
     <meta
       property="og:image"
       content="https://www.mehdimasmoudi.com/assets/images/mehdi-960.webp"
@@ -99,6 +92,11 @@
             >À Propos</a
           >
           <a
+            href="index.html#projects"
+            class="hover:text-cyan-400 transition-colors"
+            >Projets</a
+          >
+          <a
             href="index.html#skills"
             class="hover:text-cyan-400 transition-colors"
             >Compétences</a
@@ -159,83 +157,93 @@
         class="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-transparent opacity-20"
       ></div>
       <div class="container mx-auto px-6 py-24 relative z-10 text-center">
-        <h1
-          class="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
-        >
-          Solutions Premium pour Développement Web
+        <!-- profile:hero -->
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent max-w-4xl mx-auto">
+          Ce que je peux construire pour vous
         </h1>
         <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12">
-          Expertise technique d'excellence pour vos projets web performants et
-          innovants
+          Trois offres concrètes, tirées de ce que je fais au quotidien. Sur devis, en freelance.
         </p>
+        <!-- /profile:hero -->
       </div>
     </section>
 
     <!-- Services Section avec Animation au Scroll -->
     <section class="py-20 px-6">
       <div class="container mx-auto max-w-6xl">
-        <div class="flex justify-center">
-          <!-- Service Personnalisé -->
-          <div class="service-card group max-w-3xl">
-            <div
-              class="p-8 bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:shadow-cyan-500/20 hover:translate-y-[-5px]"
-            >
+        <!-- profile:services -->
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div class="service-card group">
+            <div class="h-full p-8 bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:shadow-cyan-500/20 hover:translate-y-[-5px] flex flex-col">
               <div class="flex items-center mb-6">
-                <div
-                  class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-4"
-                >
-                  <i class="fas fa-star text-2xl text-cyan-400"></i>
+                <div class="w-12 h-12 shrink-0 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-laptop-code text-2xl text-cyan-400" aria-hidden="true"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-white">
-                  Services Personnalisés
-                </h3>
+                <h2 class="text-2xl font-bold text-white">Application web sur mesure</h2>
               </div>
-              <p class="text-gray-300 mb-6">
-                Chaque demande est unique et mérite une attention particulière.
-                Je vous propose des solutions sur mesure avec le meilleur
-                rapport qualité-prix pour répondre précisément à vos besoins
-                spécifiques.
-              </p>
+              <p class="text-gray-300 mb-6">Je conçois et développe votre application de A à Z : interface, API, base de données et mise en ligne.</p>
               <ul class="space-y-2 mb-6">
-                <li class="flex items-center">
-                  <i class="fas fa-check text-cyan-400 mr-2"></i>
-                  <span>Approche personnalisée pour chaque projet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-check text-cyan-400 mr-2"></i>
-                  <span>Solutions adaptées à votre budget</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-check text-cyan-400 mr-2"></i>
-                  <span>Expertise technique de qualité</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-check text-cyan-400 mr-2"></i>
-                  <span>Accompagnement tout au long du projet</span>
-                </li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Interface React + TypeScript, pensée aussi pour le mobile</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>API Node.js (Express ou NestJS) et base PostgreSQL</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Temps réel (Socket.IO), notifications push, rôles et droits</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Tests automatisés, Docker et CI/CD</span></li>
               </ul>
-              <div
-                class="flex flex-col md:flex-row justify-between items-center gap-4"
-              >
-                <span class="text-2xl font-bold text-cyan-400">Sur devis</span>
-                <div class="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href="mailto:mehdi.masmoudi.contact@gmail.com"
-                    class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center"
-                  >
-                    Demander par email
-                  </a>
-                  <a
-                    href="index.html#contact"
-                    class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center"
-                  >
-                    Me contacter
-                  </a>
+              <p class="text-sm text-gray-400 italic mb-6">Exemple : une application de gestion de restaurant-bar (réservations, plan de salle, commandes en temps réel).</p>
+              <div class="mt-auto flex flex-col gap-3">
+                <span class="text-xl font-bold text-cyan-400">Sur devis</span>
+                <a href="mailto:mehdi.masmoudi.contact@gmail.com?subject=Demande%20de%20devis" class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center">Demander par email</a>
+                <a href="index.html#contact" class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center">Me contacter</a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card group">
+            <div class="h-full p-8 bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:shadow-cyan-500/20 hover:translate-y-[-5px] flex flex-col">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 shrink-0 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-robot text-2xl text-cyan-400" aria-hidden="true"></i>
                 </div>
+                <h2 class="text-2xl font-bold text-white">Intégration IA</h2>
+              </div>
+              <p class="text-gray-300 mb-6">J'ajoute de l'IA utile à votre produit ou à vos process, avec des réponses contrôlées et un coût maîtrisé.</p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Classification et extraction de données par LLM, en sorties structurées</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Agents qui agissent sur des pages web (vision, clics)</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Azure AI Foundry ou API OpenAI, avec le modèle adapté au coût</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Garde-fous : validation des réponses, repli en cas d'erreur, suivi des coûts</span></li>
+              </ul>
+              <p class="text-sm text-gray-400 italic mb-6">Exemple : la migration des appels IA d'un pipeline en production d'OpenAI vers Azure AI Foundry.</p>
+              <div class="mt-auto flex flex-col gap-3">
+                <span class="text-xl font-bold text-cyan-400">Sur devis</span>
+                <a href="mailto:mehdi.masmoudi.contact@gmail.com?subject=Demande%20de%20devis" class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center">Demander par email</a>
+                <a href="index.html#contact" class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center">Me contacter</a>
+              </div>
+            </div>
+          </div>
+          <div class="service-card group">
+            <div class="h-full p-8 bg-gray-800 rounded-lg shadow-xl transition-all duration-300 hover:shadow-cyan-500/20 hover:translate-y-[-5px] flex flex-col">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 shrink-0 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-spider text-2xl text-cyan-400" aria-hidden="true"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">Automatisation et scraping</h2>
+              </div>
+              <p class="text-gray-300 mb-6">J'automatise la collecte et le traitement de données web, même sur des sites difficiles.</p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Crawlers Puppeteer / Playwright (iframes, publicités, protections anti-bot)</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Pipelines Python ou Node.js planifiés dans le cloud</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Import et enrichissement de fichiers CSV/XLSX (WHOIS, géolocalisation IP)</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cyan-400 mr-2 mt-1" aria-hidden="true"></i><span>Tableaux de bord pour suivre les résultats</span></li>
+              </ul>
+              <p class="text-sm text-gray-400 italic mb-6">Exemple : des crawlers qui détectent les diffusions pirates de matchs et capturent les preuves.</p>
+              <div class="mt-auto flex flex-col gap-3">
+                <span class="text-xl font-bold text-cyan-400">Sur devis</span>
+                <a href="mailto:mehdi.masmoudi.contact@gmail.com?subject=Demande%20de%20devis" class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center">Demander par email</a>
+                <a href="index.html#contact" class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center">Me contacter</a>
               </div>
             </div>
           </div>
         </div>
+        <!-- /profile:services -->
       </div>
     </section>
 
@@ -245,7 +253,7 @@
         <h2
           class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
         >
-          Notre Processus de Développement
+          Comment je travaille
         </h2>
         <div class="relative">
           <!-- Timeline Line -->
@@ -255,87 +263,44 @@
 
           <!-- Timeline Items -->
           <div class="space-y-20">
-            <!-- Step 1 -->
+            <!-- profile:process -->
             <div class="relative">
-              <div
-                class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center"
-              >
+              <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold">1</span>
               </div>
-              <div
-                class="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:text-right w-full md:w-[calc(50%-2rem)]"
-              >
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Consultation & Analyse
-                </h3>
-                <p class="text-gray-300">
-                  Nous commençons par comprendre vos besoins, objectifs et
-                  contraintes pour définir précisément le périmètre du projet.
-                </p>
+              <div class="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:text-right w-full md:w-[calc(50%-2rem)]">
+                <h3 class="text-2xl font-bold text-white mb-2">Échange et cadrage</h3>
+                <p class="text-gray-300">Je commence par comprendre votre besoin, vos contraintes et votre budget, puis je fixe un périmètre clair.</p>
               </div>
             </div>
-
-            <!-- Step 2 -->
             <div class="relative">
-              <div
-                class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center"
-              >
+              <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold">2</span>
               </div>
-              <div
-                class="ml-auto mr-auto md:mr-0 md:ml-[calc(50%+2rem)] md:pl-8 w-full md:w-[calc(50%-2rem)]"
-              >
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Conception & Prototypage
-                </h3>
-                <p class="text-gray-300">
-                  Nous élaborons l'architecture technique et créons des
-                  prototypes interactifs pour valider l'expérience utilisateur.
-                </p>
+              <div class="ml-auto mr-auto md:mr-0 md:ml-[calc(50%+2rem)] md:pl-8 w-full md:w-[calc(50%-2rem)]">
+                <h3 class="text-2xl font-bold text-white mb-2">Architecture et maquette</h3>
+                <p class="text-gray-300">Je propose une architecture simple et une première version cliquable pour valider le parcours.</p>
               </div>
             </div>
-
-            <!-- Step 3 -->
             <div class="relative">
-              <div
-                class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center"
-              >
+              <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold">3</span>
               </div>
-              <div
-                class="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:text-right w-full md:w-[calc(50%-2rem)]"
-              >
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Développement & Tests
-                </h3>
-                <p class="text-gray-300">
-                  Notre équipe développe votre application avec des cycles
-                  courts et des tests rigoureux pour garantir qualité et
-                  performance.
-                </p>
+              <div class="ml-auto mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 md:text-right w-full md:w-[calc(50%-2rem)]">
+                <h3 class="text-2xl font-bold text-white mb-2">Développement et tests</h3>
+                <p class="text-gray-300">Je développe par petites étapes, avec des tests automatisés, et je vous montre l'avancement régulièrement.</p>
               </div>
             </div>
-
-            <!-- Step 4 -->
             <div class="relative">
-              <div
-                class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center"
-              >
+              <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
                 <span class="text-white font-bold">4</span>
               </div>
-              <div
-                class="ml-auto mr-auto md:mr-0 md:ml-[calc(50%+2rem)] md:pl-8 w-full md:w-[calc(50%-2rem)]"
-              >
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  Livraison & Support
-                </h3>
-                <p class="text-gray-300">
-                  Après la mise en production, nous assurons un suivi et un
-                  support continu pour garantir le bon fonctionnement de votre
-                  application.
-                </p>
+              <div class="ml-auto mr-auto md:mr-0 md:ml-[calc(50%+2rem)] md:pl-8 w-full md:w-[calc(50%-2rem)]">
+                <h3 class="text-2xl font-bold text-white mb-2">Mise en ligne et suivi</h3>
+                <p class="text-gray-300">Je déploie l'application, je documente ce que j'ai fait et j'assure le suivi après la livraison.</p>
               </div>
             </div>
+            <!-- /profile:process -->
           </div>
         </div>
       </div>
@@ -376,6 +341,7 @@
               Réseaux Sociaux
             </h3>
             <div class="flex flex-wrap justify-center gap-4">
+              <!-- profile:social -->
               <a
                 href="https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/"
                 target="_blank" rel="noopener noreferrer"
@@ -385,30 +351,6 @@
                 <i class="fab fa-linkedin text-2xl"></i>
               </a>
               <a
-                href="https://www.facebook.com/mass.massmoudi/"
-                target="_blank" rel="noopener noreferrer"
-                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
-                aria-label="Facebook"
-              >
-                <i class="fab fa-facebook text-2xl"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/mehdimasmoudii/"
-                target="_blank" rel="noopener noreferrer"
-                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
-                aria-label="Instagram"
-              >
-                <i class="fab fa-instagram text-2xl"></i>
-              </a>
-              <a
-                href="https://www.youtube.com/@masmoudimehdi8727"
-                target="_blank" rel="noopener noreferrer"
-                class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
-                aria-label="YouTube"
-              >
-                <i class="fab fa-youtube text-2xl"></i>
-              </a>
-              <a
                 href="https://github.com/masmoudi-mehdi"
                 target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
@@ -416,6 +358,7 @@
               >
                 <i class="fab fa-github text-2xl"></i>
               </a>
+              <!-- /profile:social -->
             </div>
           </div>
 

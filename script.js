@@ -1,5 +1,9 @@
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Initialisation des particules avec des paramètres optimisés pour les performances
 function initParticles() {
+  if (reduceMotion || typeof particlesJS === "undefined") return;
+
   // Vérifier si l'appareil est mobile ou a un écran de petite taille
   const isMobile = window.innerWidth <= 768;
 
@@ -99,7 +103,7 @@ function activateKonamiCode() {
                 Voici votre code promo exclusif:
             </p>
             <h2 style="color: #06b6d4; font-size: 2rem; font-weight: bold; letter-spacing: 0.5rem;">
-                KONAMI2024
+                KONAMI2026
             </h2>
             <p style="color: #9ca3af; font-size: 0.9rem; margin-top: 1rem;">
                 -20% sur ma prochaine prestation
@@ -152,6 +156,9 @@ document.addEventListener("DOMContentLoaded", function () {
         mainMenu.style.zIndex = "9999";
         // S'assurer que le menu a un fond solide
         mainMenu.style.backgroundColor = "#111827";
+        const menuButton = document.getElementById("mobile-menu-button");
+        if (menuButton) menuButton.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "auto";
       } else {
         // En mode desktop, s'assurer que le menu est visible
         mainMenu.style.display = "flex";
@@ -269,68 +276,58 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mainMenu = document.getElementById("main-menu");
   const body = document.body;
+  const langDropdownBtn = document.getElementById("lang-dropdown-btn");
+  const langDropdownMenu = document.getElementById("lang-dropdown-menu");
+
+  const isMenuOpen = () =>
+    mainMenu.style.display === "flex" || mainMenu.style.display === "block";
+
+  function setMenuOpen(open) {
+    mainMenu.style.display = open ? "flex" : "none";
+    if (open) {
+      // S'assurer que le menu est au-dessus des autres éléments
+      mainMenu.style.zIndex = "9999";
+    }
+    // Change l'icône du menu
+    const menuIcon = mobileMenuButton.querySelector("i");
+    menuIcon.classList.toggle("fa-bars", !open);
+    menuIcon.classList.toggle("fa-times", open);
+    mobileMenuButton.setAttribute("aria-expanded", String(open));
+    // Empêche le défilement du body quand le menu est ouvert
+    body.style.overflow = open ? "hidden" : "auto";
+  }
+
+  function setLangOpen(open) {
+    if (!langDropdownBtn || !langDropdownMenu) return;
+    langDropdownMenu.style.display = open ? "block" : "none";
+    if (open) {
+      // S'assurer que le menu déroulant est au-dessus des autres éléments
+      langDropdownMenu.style.zIndex = "10000";
+    }
+    langDropdownBtn.setAttribute("aria-expanded", String(open));
+  }
 
   if (mobileMenuButton && mainMenu) {
     mobileMenuButton.addEventListener("click", () => {
-      // Vérifier si le menu est actuellement visible
-      const isOpen =
-        mainMenu.style.display === "flex" || mainMenu.style.display === "block";
-
-      if (isOpen) {
-        // Fermer le menu
-        mainMenu.style.display = "none";
-      } else {
-        // Ouvrir le menu
-        mainMenu.style.display = "flex";
-        // S'assurer que le menu est au-dessus des autres éléments
-        mainMenu.style.zIndex = "9999";
-      }
-
-      // Change l'icône du menu
-      const menuIcon = mobileMenuButton.querySelector("i");
-      menuIcon.classList.toggle("fa-bars");
-      menuIcon.classList.toggle("fa-times");
-
-      // Empêche le défilement du body quand le menu est ouvert
-      body.style.overflow = isOpen ? "auto" : "hidden";
-
-      // Empêcher le comportement par défaut
-      return false;
+      setMenuOpen(!isMenuOpen());
     });
 
     // Fermer le menu au clic sur un lien (sauf le bouton de langue)
     mainMenu.querySelectorAll("a:not(#lang-dropdown-btn)").forEach((link) => {
       link.addEventListener("click", () => {
         if (window.innerWidth <= 768) {
-          // Fermer le menu
-          mainMenu.style.display = "none";
-          body.style.overflow = "auto";
-          // Réinitialiser l'icône
-          const menuIcon = mobileMenuButton.querySelector("i");
-          menuIcon.classList.add("fa-bars");
-          menuIcon.classList.remove("fa-times");
+          setMenuOpen(false);
         }
       });
     });
 
     // Gestion spécifique du menu déroulant des langues en mobile
-    const langDropdownBtn = document.getElementById("lang-dropdown-btn");
-    const langDropdownMenu = document.getElementById("lang-dropdown-menu");
-
-    if (langDropdownBtn && langDropdownMenu) {
-      // S'assurer que le menu de langues reste dans le menu mobile
+    if (langDropdownMenu) {
       langDropdownMenu.querySelectorAll("a").forEach((langLink) => {
         langLink.addEventListener("click", () => {
           if (window.innerWidth <= 768) {
-            // Fermer le menu principal
-            mainMenu.style.display = "none";
-            body.style.overflow = "auto";
-            // Réinitialiser l'icône
-            const menuIcon = mobileMenuButton.querySelector("i");
-            menuIcon.classList.add("fa-bars");
-            menuIcon.classList.remove("fa-times");
-            // Fermer aussi le menu déroulant des langues
-            langDropdownMenu.style.display = "none";
+            setMenuOpen(false);
+            setLangOpen(false);
           }
         });
       });
@@ -349,6 +346,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Animate to target width
       const targetWidth = bar.getAttribute("data-width");
+      if (reduceMotion) {
+        bar.style.width = targetWidth;
+        return;
+      }
       gsap.to(bar, {
         width: targetWidth,
         duration: 1.5,
@@ -407,20 +408,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // GSAP Animations améliorées
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animation du hero avec un effet de parallaxe
-  gsap.to(".hero-content", {
-    scrollTrigger: {
-      trigger: "#hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-    y: 100,
-    opacity: 0.8,
-  });
-
   // Animation des cartes de compétences
-  gsap.utils.toArray(".skill-card").forEach((card, i) => {
+  gsap.utils.toArray(reduceMotion ? [] : ".skill-card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
         trigger: card,
@@ -439,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Effet de parallaxe sur les particules - optimisé pour les performances
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 1024 && !reduceMotion) {
     // Seulement sur les grands écrans
     let ticking = false;
 
@@ -466,6 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Animation de la timeline
   gsap.utils.toArray(".timeline-item").forEach((item) => {
+    if (reduceMotion) return;
     // Ajouter l'attribut data-year comme contenu avant l'élément sur mobile
     const year = item.getAttribute("data-year");
     if (year && window.innerWidth <= 768) {
@@ -503,8 +493,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Menu déroulant des langues
-  const dropdownBtn = document.getElementById("lang-dropdown-btn");
-  const dropdownMenu = document.getElementById("lang-dropdown-menu");
+  const dropdownBtn = langDropdownBtn;
+  const dropdownMenu = langDropdownMenu;
 
   if (dropdownBtn && dropdownMenu) {
     dropdownBtn.addEventListener("click", (e) => {
@@ -512,18 +502,12 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault(); // Empêcher le comportement par défaut
 
       // Basculer la visibilité du menu déroulant
-      if (dropdownMenu.style.display === "block") {
-        dropdownMenu.style.display = "none";
-      } else {
-        dropdownMenu.style.display = "block";
-        // S'assurer que le menu déroulant est au-dessus des autres éléments
-        dropdownMenu.style.zIndex = "10000";
-      }
+      setLangOpen(dropdownMenu.style.display !== "block");
     });
 
     document.addEventListener("click", (e) => {
       if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.style.display = "none";
+        setLangOpen(false);
       }
     });
 
@@ -560,31 +544,52 @@ document.addEventListener("DOMContentLoaded", function () {
   const downloadBtn = document.getElementById("download-cv-btn");
   const closeBtn = document.getElementById("close-modal-btn");
 
+  function setModalOpen(open) {
+    modal.classList.toggle("hidden", !open);
+    modal.style.display = open ? "block" : "none";
+    if (open) {
+      modal.querySelector("a").focus();
+    } else {
+      downloadBtn.focus();
+    }
+  }
+
   if (modal && downloadBtn && closeBtn) {
     downloadBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      modal.classList.remove("hidden");
-      modal.style.display = "block";
+      setModalOpen(true);
     });
 
-    closeBtn.addEventListener("click", () => {
-      modal.classList.add("hidden");
-      modal.style.display = "none";
-    });
+    closeBtn.addEventListener("click", () => setModalOpen(false));
 
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
-        modal.classList.add("hidden");
-        modal.style.display = "none";
+        setModalOpen(false);
       }
     });
   }
 
+  // Échap ferme la modale CV, le menu de langue puis le menu mobile
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (modal && modal.style.display === "block") {
+      setModalOpen(false);
+    } else if (langDropdownMenu && langDropdownMenu.style.display === "block") {
+      setLangOpen(false);
+      langDropdownBtn.focus();
+    } else if (mobileMenuButton && mainMenu && isMenuOpen() && window.innerWidth <= 768) {
+      setMenuOpen(false);
+      mobileMenuButton.focus();
+    }
+  });
+
   // Scroll fluide pour les liens d'ancrage
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute("href");
+      // href="#" (CV button, current-page link) has no target to scroll to
+      if (targetId === "#") return;
+      e.preventDefault();
       const targetElement = document.querySelector(targetId);
 
       if (targetElement) {
@@ -595,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth",
+          behavior: reduceMotion ? "auto" : "smooth",
         });
       }
     });

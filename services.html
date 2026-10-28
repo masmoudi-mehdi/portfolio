@@ -21,15 +21,13 @@
     />
     <meta
       property="og:image"
-      content="https://www.mehdimasmoudi.com/assets/images/mehdi.jpg"
+      content="https://www.mehdimasmoudi.com/assets/images/mehdi-960.webp"
     />
     <meta property="og:url" content="https://www.mehdimasmoudi.com/services" />
     <link rel="canonical" href="https://www.mehdimasmoudi.com/services" />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://www.mehdimasmoudi.com/services-en"
-    />
+    <link rel="alternate" hreflang="fr" href="https://www.mehdimasmoudi.com/services" />
+    <link rel="alternate" hreflang="en" href="https://www.mehdimasmoudi.com/services-en" />
+    <link rel="alternate" hreflang="x-default" href="https://www.mehdimasmoudi.com/services" />
     <!-- Favicons -->
     <link
       rel="apple-touch-icon"
@@ -50,33 +48,21 @@
     />
     <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
     <meta name="theme-color" content="#06b6d4" />
-    <title>Services Premium - Mehdi Masmoudi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <div id="particles-js"></div>
-
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mobile-menu.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://www.mehdimasmoudi.com/services-en"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://www.mehdimasmoudi.com/services"
-    />
+    <script defer src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   </head>
   <body class="bg-gray-900 text-gray-100 font-sans overflow-x-hidden">
+    <!-- Particles Container -->
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 backdrop-blur-lg border-b border-gray-800">
       <div
@@ -90,6 +76,9 @@
         <!-- Bouton menu mobile -->
         <button
           id="mobile-menu-button"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="main-menu"
           class="md:hidden text-gray-300 hover:text-cyan-400 p-2"
         >
           <i class="fas fa-bars text-2xl"></i>
@@ -129,6 +118,9 @@
           <div class="relative">
             <button
               id="lang-dropdown-btn"
+              aria-label="Langue"
+              aria-expanded="false"
+              aria-controls="lang-dropdown-menu"
               class="flex items-center space-x-2 hover:text-cyan-400 transition-colors"
             >
               <i class="fas fa-globe text-xl"></i>
@@ -229,13 +221,13 @@
                 <div class="flex flex-col sm:flex-row gap-3">
                   <a
                     href="mailto:mehdi.masmoudi.contact@gmail.com"
-                    class="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg transition-colors text-center"
+                    class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center"
                   >
                     Demander par email
                   </a>
                   <a
                     href="index.html#contact"
-                    class="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg transition-colors text-center"
+                    class="px-4 py-2 bg-cyan-700 hover:bg-cyan-800 text-white rounded-lg transition-colors text-center"
                   >
                     Me contacter
                   </a>
@@ -363,7 +355,7 @@
                   class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start"
                 >
                   <i class="fas fa-phone mr-2 w-6 text-center"></i>
-                  <span>+216 92 983 736</span>
+                  <span>+216 99 133 416</span>
                 </a>
               </li>
               <li>
@@ -386,7 +378,7 @@
             <div class="flex flex-wrap justify-center gap-4">
               <a
                 href="https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/"
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
                 aria-label="LinkedIn"
               >
@@ -394,7 +386,7 @@
               </a>
               <a
                 href="https://www.facebook.com/mass.massmoudi/"
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
                 aria-label="Facebook"
               >
@@ -402,7 +394,7 @@
               </a>
               <a
                 href="https://www.instagram.com/mehdimasmoudii/"
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
                 aria-label="Instagram"
               >
@@ -410,7 +402,7 @@
               </a>
               <a
                 href="https://www.youtube.com/@masmoudimehdi8727"
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
                 aria-label="YouTube"
               >
@@ -418,7 +410,7 @@
               </a>
               <a
                 href="https://github.com/masmoudi-mehdi"
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
                 class="text-gray-300 hover:text-cyan-400 transition-colors p-2"
                 aria-label="GitHub"
               >
@@ -433,7 +425,7 @@
               Droits d'auteur
             </h3>
             <p class="text-gray-300">
-              &copy; 2025 Mehdi Masmoudi.<br />
+              &copy; 2026 Mehdi Masmoudi.<br />
               Tous droits réservés.
             </p>
           </div>
@@ -459,11 +451,8 @@
     </div>
 
     <!-- Required Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
-    <!-- Script pour le menu mobile -->
-    <script src="mobile-menu.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="script.js"></script>
   </body>
 </html>

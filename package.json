@@ -1,0 +1,11 @@
+{
+  "name": "mehdimasmoudi-portfolio",
+  "private": true,
+  "description": "Static portfolio served by GitHub Pages. Run `npm run build:css` and commit assets/css/tailwind.css after changing classes.",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i src/tailwind.input.css -o assets/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -90,6 +90,7 @@ const ALLOWED_DIGITS = [
   /\b(?:19|20)\d\d\b/g,
   /\b(?:Node(?:\.js)?|React|Express|Angular|Vite|Prisma|Python|Zod)\s?\d+(?:\.\d+)*\b/g,
   /\b(?:HTML5|CSS3|CS50|Web3)\b/g,
+  /\b[ABC][12]\b/g, // CEFR language levels
 ];
 const NO_DIGIT_CHECK = new Set(["identity", "start", "end", "_sources", "certifications"]);
 

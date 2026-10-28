@@ -16,7 +16,6 @@
     "linkedin": "https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/",
     "github": "https://github.com/masmoudi-mehdi"
   },
-
   "seo": {
     "index": {
       "title": {
@@ -39,7 +38,6 @@
       }
     }
   },
-
   "headline": {
     "fr": "Applications web et agents IA, conçus pour la production.",
     "en": "Web apps and AI agents, built to run in production."
@@ -48,7 +46,6 @@
     "fr": "Développeur full stack & IA à Tunis. Ouvert à un poste à temps plein (en Tunisie ou à distance) et aux missions freelance.",
     "en": "Full-stack & AI developer in Tunis. Open to full-time roles (on-site in Tunisia or remote) and to freelance work."
   },
-
   "about": {
     "fr": [
       "Je développe des applications web complètes : interface React, API Node.js ou Python, base PostgreSQL, mise en ligne sur le cloud.",
@@ -63,7 +60,6 @@
       "I'm looking for a full-time role (in Tunisia or remote) and I take on freelance projects."
     ]
   },
-
   "experience": [
     {
       "id": "softstars",
@@ -212,7 +208,6 @@
       }
     }
   ],
-
   "projects": [
     {
       "slug": "stream-catcher",
@@ -232,7 +227,16 @@
         "fr": "Un pipeline qui trouve les pages, les classe avec un LLM, détecte le flux vidéo et garde une preuve (URL du flux + capture d'écran) pour la demande de retrait.",
         "en": "A pipeline that finds the pages, classifies them with an LLM, detects the video stream and keeps the evidence (stream URL + screenshot) for the takedown request."
       },
-      "stack": ["Python", "Node.js", "Puppeteer", "LLM", "Azure AI Foundry", "Azure Container Apps", "Service Bus", "PostgreSQL"],
+      "stack": [
+        "Python",
+        "Node.js",
+        "Puppeteer",
+        "LLM",
+        "Azure AI Foundry",
+        "Azure Container Apps",
+        "Service Bus",
+        "PostgreSQL"
+      ],
       "role": {
         "fr": "Développeur full stack & IA dans l'équipe : crawlers, intégration IA, déploiement Azure.",
         "en": "Full-stack & AI developer on the team: crawlers, AI integration, Azure deployment."
@@ -262,7 +266,13 @@
         "fr": "Import CSV/XLSX, détection automatique du modèle de fichier, enrichissement WHOIS et géolocalisation IP, tableau de bord des résultats.",
         "en": "CSV/XLSX upload, automatic file-template detection, WHOIS and IP-geolocation enrichment, and a results dashboard."
       },
-      "stack": ["React", "Node.js", "PostgreSQL", "Docker", "Azure"],
+      "stack": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "Azure"
+      ],
       "role": {
         "fr": "Développeur full stack : interface React, API Node.js, déploiement sur Azure.",
         "en": "Full-stack developer: React front end, Node.js API, Azure deployment."
@@ -285,8 +295,8 @@
         "en": "Bookings, floor plan and live orders for a restaurant-bar."
       },
       "context": {
-        "fr": "TODO",
-        "en": "TODO"
+        "fr": "Mission freelance pour un client.",
+        "en": "Freelance project for a client."
       },
       "problem": {
         "fr": "Un restaurant-bar doit gérer au même endroit les réservations, le placement des clients et les commandes entre la salle, le bar et la cuisine.",
@@ -296,7 +306,18 @@
         "fr": "Réservations (téléphone, en ligne, clients réguliers), plan de salle par zones, écran portier, commandes envoyées en temps réel aux postes de préparation, rôles par métier, notifications push (PWA), statistiques et export CSV.",
         "en": "Bookings (phone, online, regulars), a floor plan by zone, a door-staff screen, orders pushed live to prep stations, role-based access, push notifications (PWA), stats and CSV export."
       },
-      "stack": ["React", "Vite", "TypeScript", "Express", "Prisma", "PostgreSQL", "Socket.IO", "Jest", "Docker", "GitHub Actions"],
+      "stack": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Express",
+        "Prisma",
+        "PostgreSQL",
+        "Socket.IO",
+        "Jest",
+        "Docker",
+        "GitHub Actions"
+      ],
       "role": {
         "fr": "Conception, développement et déploiement de bout en bout.",
         "en": "Designed, built and deployed end to end."
@@ -309,56 +330,122 @@
       "images": []
     }
   ],
-
   "skills": [
     {
       "id": "frontend",
-      "group": { "fr": "Frontend", "en": "Frontend" },
-      "items": ["React", "TypeScript", "JavaScript", "Vite", "Tailwind CSS", "HTML & CSS"]
+      "group": {
+        "fr": "Frontend",
+        "en": "Frontend"
+      },
+      "items": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Vite",
+        "Tailwind CSS",
+        "HTML & CSS"
+      ]
     },
     {
       "id": "backend",
-      "group": { "fr": "Backend", "en": "Backend" },
-      "items": ["Node.js", "Express", "NestJS", "Python", "Prisma", "Socket.IO", "REST APIs"]
+      "group": {
+        "fr": "Backend",
+        "en": "Backend"
+      },
+      "items": [
+        "Node.js",
+        "Express",
+        "NestJS",
+        "Python",
+        "Prisma",
+        "Socket.IO",
+        "REST APIs"
+      ]
     },
     {
       "id": "ai",
-      "group": { "fr": "IA & LLM", "en": "AI & LLM" },
+      "group": {
+        "fr": "IA & LLM",
+        "en": "AI & LLM"
+      },
       "items": [
         "Azure AI Foundry",
         "OpenAI API",
-        { "fr": "Sorties structurées", "en": "Structured outputs" },
-        { "fr": "Agents de vision", "en": "Vision agents" },
+        {
+          "fr": "Sorties structurées",
+          "en": "Structured outputs"
+        },
+        {
+          "fr": "Agents de vision",
+          "en": "Vision agents"
+        },
         "Claude Code"
       ]
     },
     {
       "id": "automation",
-      "group": { "fr": "Automatisation & scraping", "en": "Automation & scraping" },
+      "group": {
+        "fr": "Automatisation & scraping",
+        "en": "Automation & scraping"
+      },
       "items": [
         "Puppeteer",
         "Playwright",
-        { "fr": "Contournement anti-bot", "en": "Anti-bot handling" },
-        { "fr": "Capture de flux HLS/DASH", "en": "HLS/DASH stream capture" }
+        {
+          "fr": "Contournement anti-bot",
+          "en": "Anti-bot handling"
+        },
+        {
+          "fr": "Capture de flux HLS/DASH",
+          "en": "HLS/DASH stream capture"
+        }
       ]
     },
     {
       "id": "data",
-      "group": { "fr": "Données", "en": "Data" },
-      "items": ["PostgreSQL", "SQL", "MongoDB", "BigQuery", "Power BI", "pandas"]
+      "group": {
+        "fr": "Données",
+        "en": "Data"
+      },
+      "items": [
+        "PostgreSQL",
+        "SQL",
+        "MongoDB",
+        "BigQuery",
+        "Power BI",
+        "pandas"
+      ]
     },
     {
       "id": "cloud",
-      "group": { "fr": "Cloud & DevOps", "en": "Cloud & DevOps" },
-      "items": ["Azure Container Apps", "Azure Functions", "Service Bus", "Key Vault", "Docker", "Azure DevOps", "GitHub Actions", "Git"]
+      "group": {
+        "fr": "Cloud & DevOps",
+        "en": "Cloud & DevOps"
+      },
+      "items": [
+        "Azure Container Apps",
+        "Azure Functions",
+        "Service Bus",
+        "Key Vault",
+        "Docker",
+        "Azure DevOps",
+        "GitHub Actions",
+        "Git"
+      ]
     },
     {
       "id": "testing",
-      "group": { "fr": "Tests", "en": "Testing" },
-      "items": ["Jest", "Cypress", "pytest"]
+      "group": {
+        "fr": "Tests",
+        "en": "Testing"
+      },
+      "items": [
+        "Jest",
+        "Cypress",
+        "pytest"
+      ]
     }
   ],
-
   "education": [
     {
       "school": {
@@ -373,7 +460,6 @@
       "end": "2018"
     }
   ],
-
   "certifications": [
     {
       "name": "CS50 (Computer Science 50)",
@@ -394,22 +480,38 @@
       "end": "2021-05"
     }
   ],
-
   "languages": [
     {
-      "name": { "fr": "Arabe", "en": "Arabic" },
-      "level": { "fr": "TODO", "en": "TODO" }
+      "name": {
+        "fr": "Arabe",
+        "en": "Arabic"
+      },
+      "level": {
+        "fr": "Langue maternelle",
+        "en": "Native"
+      }
     },
     {
-      "name": { "fr": "Français", "en": "French" },
-      "level": { "fr": "TODO", "en": "TODO" }
+      "name": {
+        "fr": "Français",
+        "en": "French"
+      },
+      "level": {
+        "fr": "Courant (C2)",
+        "en": "Fluent (C2)"
+      }
     },
     {
-      "name": { "fr": "Anglais", "en": "English" },
-      "level": { "fr": "TODO", "en": "TODO" }
+      "name": {
+        "fr": "Anglais",
+        "en": "English"
+      },
+      "level": {
+        "fr": "Avancé (C1)",
+        "en": "Advanced (C1)"
+      }
     }
   ],
-
   "services": [
     {
       "id": "web-app",
@@ -502,7 +604,6 @@
       }
     }
   ],
-
   "servicesPage": {
     "headline": {
       "fr": "Ce que je peux construire pour vous",
@@ -518,28 +619,40 @@
     },
     "process": [
       {
-        "title": { "fr": "Échange et cadrage", "en": "Talk and scope" },
+        "title": {
+          "fr": "Échange et cadrage",
+          "en": "Talk and scope"
+        },
         "text": {
           "fr": "Je commence par comprendre votre besoin, vos contraintes et votre budget, puis je fixe un périmètre clair.",
           "en": "I start by understanding what you need, your constraints and your budget, then agree on a clear scope."
         }
       },
       {
-        "title": { "fr": "Architecture et maquette", "en": "Architecture and prototype" },
+        "title": {
+          "fr": "Architecture et maquette",
+          "en": "Architecture and prototype"
+        },
         "text": {
           "fr": "Je propose une architecture simple et une première version cliquable pour valider le parcours.",
           "en": "I propose a simple architecture and a first clickable version so you can check the flow early."
         }
       },
       {
-        "title": { "fr": "Développement et tests", "en": "Build and test" },
+        "title": {
+          "fr": "Développement et tests",
+          "en": "Build and test"
+        },
         "text": {
           "fr": "Je développe par petites étapes, avec des tests automatisés, et je vous montre l'avancement régulièrement.",
           "en": "I build in small steps with automated tests, and show you progress regularly."
         }
       },
       {
-        "title": { "fr": "Mise en ligne et suivi", "en": "Launch and support" },
+        "title": {
+          "fr": "Mise en ligne et suivi",
+          "en": "Launch and support"
+        },
         "text": {
           "fr": "Je déploie l'application, je documente ce que j'ai fait et j'assure le suivi après la livraison.",
           "en": "I deploy the app, document what I built and stay around for support after launch."
@@ -547,7 +660,6 @@
       }
     ]
   },
-
   "_sources": {
     "_legend": {
       "facts": "Facts confirmed by Mehdi on 2026-10-28 (improvement plan, section 5 - local, not published)",
@@ -584,10 +696,11 @@
     "skills.data.pandas": "work-notes: local insights app (Flask + pandas)",
     "education": "old-cv",
     "certifications": "old-cv",
-    "languages": "old-cv (names only; levels still to confirm)",
+    "languages": "old-cv (names) + facts (levels, confirmed by Mehdi on 2026-10-28)",
     "services[web-app]": "app-notes (stack, real time, push, roles, tests, Docker, CI) + experience",
     "services[ai]": "work-notes: AI migration plan (structured outputs, model per cost, fail-open guardrails), universal catcher (vision agent, cost tracking)",
     "services[automation]": "work-notes (crawlers, scheduled cloud jobs) + validator-readme (CSV/XLSX enrichment, dashboard)",
-    "servicesPage.pricing": "old-site (services page: 'Sur devis')"
+    "servicesPage.pricing": "old-site (services page: 'Sur devis')",
+    "projects[restaurant-bar-app].context": "facts (client project, confirmed by Mehdi on 2026-10-28)"
   }
 }

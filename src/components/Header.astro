@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import { p, t, ui, ROUTES, otherLang, sectionHref, type Lang, type PageKey } from "../lib/profile";
+import { p, t, ui, ROUTES, LANGS, sectionHref, type Lang, type PageKey } from "../lib/profile";
 
 interface Props {
   lang: Lang;
@@ -8,36 +8,41 @@ interface Props {
 }
 
 const { lang, page } = Astro.props;
-const other = otherLang(lang);
-const switchHref = ROUTES[page ?? "home"][other];
 const from = page ?? "services"; // the 404 page links to home sections like services does
 
 const links = [
-  { href: sectionHref(from, lang, "experience"), label: t(ui.nav.experience, lang) },
+  { href: sectionHref(from, lang, "about"), label: t(ui.nav.about, lang) },
   { href: sectionHref(from, lang, "projects"), label: t(ui.nav.projects, lang) },
   { href: sectionHref(from, lang, "skills"), label: t(ui.nav.skills, lang) },
-  { href: sectionHref(from, lang, "about"), label: t(ui.nav.about, lang) },
   { href: ROUTES.services[lang], label: t(ui.nav.services, lang), current: page === "services" },
   // Both the home and the services page end with a #contact section.
   { href: page ? "#contact" : sectionHref(from, lang, "contact"), label: t(ui.nav.contact, lang) },
 ];
+
+const languages = LANGS.map((l) => ({
+  lang: l,
+  href: ROUTES[page ?? "home"][l],
+  label: t(ui.language.names, l),
+  current: l === lang,
+}));
 ---
 
-<header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-md">
-  <div class="container-page flex h-16 items-center gap-4">
-    <a href={ROUTES.home[lang]} class="mr-auto text-lg font-bold tracking-tight text-fg hover:text-accent">
-      {p.identity.name}
+<header class="sticky top-0 z-40 border-b border-line-soft bg-bg/90 backdrop-blur-lg">
+  <div class="container-page flex h-16 items-center gap-2">
+    <a href={ROUTES.home[lang]} class="mr-auto flex min-w-0 items-center gap-2">
+      <span class="size-3 shrink-0 rounded-full bg-accent motion-safe:animate-pulse" aria-hidden="true"></span>
+      <span class="truncate text-xl font-bold text-fg uppercase">{p.identity.name}</span>
     </a>
 
-    <nav aria-label={t(ui.nav.label, lang)} class="hidden lg:block">
-      <ul class="flex items-center gap-1">
+    <nav aria-label={t(ui.nav.label, lang)} class="hidden md:block">
+      <ul class="flex items-center gap-1 lg:gap-4">
         {
           links.map((l) => (
             <li>
               <a
                 href={l.href}
                 aria-current={l.current ? "page" : undefined}
-                class="rounded-md px-3 py-2 text-base font-medium text-muted transition-colors hover:text-fg aria-[current=page]:text-accent"
+                class="rounded-md px-2 py-2 text-fg transition-colors hover:text-accent aria-[current=page]:text-accent"
               >
                 {l.label}
               </a>
@@ -47,53 +52,70 @@ const links = [
       </ul>
     </nav>
 
-    <div class="flex items-center gap-1">
-      <a
-        href={switchHref}
-        hreflang={other}
-        lang={other}
+    <details class="lang-menu relative hidden md:block">
+      <summary
+        class="flex size-11 cursor-pointer list-none items-center justify-center gap-1 rounded-md text-fg hover:text-accent"
         aria-label={t(ui.language.label, lang)}
         title={t(ui.language.label, lang)}
-        class="inline-flex size-11 items-center justify-center rounded-md text-sm font-bold tracking-wide text-muted hover:text-fg"
       >
-        {t(ui.language.short, lang)}
-      </a>
-      <button
-        type="button"
-        data-theme-toggle
-        aria-label={t(ui.theme.label, lang)}
-        title={t(ui.theme.label, lang)}
-        class="inline-flex size-11 items-center justify-center rounded-md text-muted hover:text-fg"
-      >
-        <Icon name="moon" class="dark:hidden" />
-        <Icon name="sun" class="hidden dark:block" />
-      </button>
-      <button
-        type="button"
-        popovertarget="mobile-nav"
-        aria-label={t(ui.nav.menu, lang)}
-        class="menu-button inline-flex size-11 items-center justify-center rounded-md text-fg lg:hidden"
-      >
-        <Icon name="menu" class="icon-open" size={22} />
-        <Icon name="x" class="icon-close" size={22} />
-      </button>
-    </div>
+        <Icon name="globe" />
+        <Icon name="chevron-down" size={14} />
+      </summary>
+      <ul class="absolute right-0 mt-2 w-44 overflow-hidden rounded-lg border border-line bg-card-solid shadow-xl">
+        {
+          languages.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                hreflang={l.lang}
+                lang={l.lang}
+                aria-current={l.current ? "page" : undefined}
+                class="block px-4 py-3 text-fg-soft hover:bg-chip hover:text-accent aria-[current=page]:text-accent"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+
+    <button
+      type="button"
+      data-theme-toggle
+      aria-label={t(ui.theme.label, lang)}
+      title={t(ui.theme.label, lang)}
+      class="hidden size-11 items-center justify-center rounded-md text-fg hover:text-accent md:inline-flex"
+    >
+      <Icon name="sun" class="hidden dark:block" />
+      <Icon name="moon" class="dark:hidden" />
+    </button>
+
+    <button
+      type="button"
+      popovertarget="mobile-nav"
+      aria-label={t(ui.nav.menu, lang)}
+      class="menu-button inline-flex size-11 items-center justify-center rounded-md text-fg hover:bg-tag hover:text-accent md:hidden"
+    >
+      <Icon name="menu" class="icon-open" size={24} />
+      <Icon name="x" class="icon-close" size={24} />
+    </button>
   </div>
 
   <div
     id="mobile-nav"
     popover
-    class="top-18 right-4 bottom-auto left-4 m-0 h-auto w-auto rounded-xl border border-line bg-surface p-2 text-fg shadow-xl lg:hidden"
+    class="top-16 right-0 bottom-auto left-0 m-0 h-auto max-h-[80vh] w-full border-b border-line-soft bg-bg px-4 py-4 text-fg shadow-2xl md:hidden"
   >
     <nav aria-label={t(ui.nav.label, lang)}>
-      <ul class="flex flex-col">
+      <ul class="flex flex-col gap-2">
         {
           links.map((l) => (
             <li>
               <a
                 href={l.href}
                 aria-current={l.current ? "page" : undefined}
-                class="block rounded-lg px-4 py-3 text-lg font-medium hover:bg-surface-2 aria-[current=page]:text-accent"
+                class="block rounded-lg border border-transparent bg-bg-alt px-4 py-3.5 text-center text-lg transition hover:border-accent/50 hover:text-accent aria-[current=page]:text-accent"
               >
                 {l.label}
               </a>
@@ -102,10 +124,37 @@ const links = [
         }
       </ul>
     </nav>
+    <div class="mt-4 flex items-center justify-center gap-2 border-t border-line-soft pt-4">
+      {
+        languages.map((l) => (
+          <a
+            href={l.href}
+            hreflang={l.lang}
+            lang={l.lang}
+            aria-current={l.current ? "page" : undefined}
+            class="inline-flex min-h-11 items-center rounded-lg px-4 text-fg-soft hover:text-accent aria-[current=page]:font-semibold aria-[current=page]:text-accent"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label={t(ui.theme.label, lang)}
+        class="ml-2 inline-flex size-11 items-center justify-center rounded-lg bg-bg-alt text-fg hover:text-accent"
+      >
+        <Icon name="sun" class="hidden dark:block" />
+        <Icon name="moon" class="dark:hidden" />
+      </button>
+    </div>
   </div>
 </header>
 
 <style>
+  .lang-menu summary::-webkit-details-marker {
+    display: none;
+  }
   /* The icons are rendered by Icon.astro, so they need :global() here. */
   .menu-button :global(.icon-close) {
     display: none;
@@ -119,19 +168,25 @@ const links = [
 </style>
 
 <script>
-  // Theme toggle: switch between light and dark and remember the choice.
-  document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-    const root = document.documentElement;
-    const current =
-      root.dataset.theme ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const next = current === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem("theme", next);
-    } catch {}
-  });
+  // Theme toggle: dark by default, switch to light and remember the choice.
+  for (const button of document.querySelectorAll("[data-theme-toggle]")) {
+    button.addEventListener("click", () => {
+      const root = document.documentElement;
+      const next = root.dataset.theme === "light" ? "dark" : "light";
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {}
+    });
+  }
 
   // Mobile menu: close it once a link is chosen.
   const menu = document.getElementById("mobile-nav");
   menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => menu.hidePopover()));
+
+  // Language menu: close it when clicking elsewhere.
+  const langMenu = document.querySelector<HTMLDetailsElement>(".lang-menu");
+  document.addEventListener("click", (e) => {
+    if (langMenu?.open && !langMenu.contains(e.target as Node)) langMenu.open = false;
+  });
 </script>

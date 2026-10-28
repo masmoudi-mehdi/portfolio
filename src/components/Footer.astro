@@ -8,53 +8,75 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const f = ui.footer;
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-line bg-surface">
-  <div class="container-page flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between">
-    <div>
-      <p class="font-semibold text-fg">{p.identity.name}</p>
-      <p class="text-sm text-muted">{t(p.identity.title, lang)} · {t(p.identity.location, lang)}</p>
+<footer class="relative z-10 bg-bg-alt py-12">
+  <div class="container-page">
+    <div class="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:text-left">
+      <div>
+        <h2 class="mb-4 text-2xl font-bold text-accent">{t(f.contactTitle, lang)}</h2>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href={`tel:${p.identity.phoneE164}`}
+              class="inline-flex items-center gap-3 text-fg-soft transition-colors hover:text-accent"
+            >
+              <Icon name="phone" size={18} />
+              {p.identity.phone}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${p.identity.email}`}
+              class="inline-flex items-center gap-3 break-all text-fg-soft transition-colors hover:text-accent"
+            >
+              <Icon name="mail" size={18} />
+              {p.identity.email}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:text-center">
+        <h2 class="mb-4 text-2xl font-bold text-accent">{t(f.socialTitle, lang)}</h2>
+        <ul class="flex justify-center gap-2">
+          <li>
+            <a
+              href={p.identity.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="inline-flex size-11 items-center justify-center text-fg-soft transition-colors hover:text-accent"
+            >
+              <Icon name="linkedin" size={24} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={p.identity.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              class="inline-flex size-11 items-center justify-center text-fg-soft transition-colors hover:text-accent"
+            >
+              <Icon name="github" size={24} />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:text-right">
+        <h2 class="mb-4 text-2xl font-bold text-accent">{t(f.copyrightTitle, lang)}</h2>
+        <p class="text-fg-soft">© {year} {p.identity.name}.</p>
+        <p class="text-fg-soft">{t(f.rights, lang)}</p>
+      </div>
     </div>
-    <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-      <li>
-        <a href={`mailto:${p.identity.email}`} class="inline-flex items-center gap-2 text-muted hover:text-accent">
-          <Icon name="mail" size={18} />
-          {p.identity.email}
-        </a>
-      </li>
-      <li>
-        <a href={`tel:${p.identity.phoneE164}`} class="inline-flex items-center gap-2 text-muted hover:text-accent">
-          <Icon name="phone" size={18} />
-          {p.identity.phone}
-        </a>
-      </li>
-      <li>
-        <a
-          href={p.identity.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          class="inline-flex size-11 items-center justify-center text-muted hover:text-accent"
-        >
-          <Icon name="linkedin" />
-        </a>
-      </li>
-      <li>
-        <a
-          href={p.identity.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          class="inline-flex size-11 items-center justify-center text-muted hover:text-accent"
-        >
-          <Icon name="github" />
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="container-page border-t border-line py-5 text-sm text-muted">
-    © {year} {p.identity.name}. {t(ui.footer.rights, lang)}
+
+    <p class="mt-10 flex items-center justify-center gap-2 border-t border-line pt-8 text-center text-fg-soft">
+      <Icon name="gamepad" />
+      {t(ui.konami.hint, lang)}
+    </p>
   </div>
 </footer>

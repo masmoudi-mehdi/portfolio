@@ -8,16 +8,16 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<section id="skills" class="section border-t border-line" aria-labelledby="skills-title">
+<section id="skills" class="section" aria-labelledby="skills-title">
   <div class="container-page">
     <h2 id="skills-title" class="section-title">{t(ui.skills.title, lang)}</h2>
 
-    <div class="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         p.skills.map((group) => (
-          <div class="reveal rounded-2xl border border-line bg-surface p-6">
-            <h3 class="text-lg font-semibold text-fg">{t(group.group, lang)}</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
+          <div class="skill-card reveal card p-6 backdrop-blur-sm">
+            <h3 class="mb-4 text-lg font-semibold text-accent">{t(group.group, lang)}</h3>
+            <ul class="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <li class="tag">{t(item, lang)}</li>
               ))}
@@ -25,14 +25,14 @@ const { lang } = Astro.props;
           </div>
         ))
       }
-      <div class="reveal rounded-2xl border border-line bg-surface p-6">
-        <h3 class="text-lg font-semibold text-fg">{t(ui.skills.languages, lang)}</h3>
-        <ul class="mt-4 space-y-2">
+      <div class="skill-card reveal card p-6 backdrop-blur-sm">
+        <h3 class="mb-4 text-lg font-semibold text-accent">{t(ui.skills.languages, lang)}</h3>
+        <ul class="space-y-2">
           {
             p.languages.map((l) => (
               <li class="flex justify-between gap-4">
                 <span class="font-medium text-fg">{t(l.name, lang)}</span>
-                <span class="text-muted">{t(l.level, lang)}</span>
+                <span class="text-fg-soft">{t(l.level, lang)}</span>
               </li>
             ))
           }
@@ -41,3 +41,20 @@ const { lang } = Astro.props;
     </div>
   </div>
 </section>
+
+<style>
+  /* Lift and cyan glow on hover, like the old skill cards. */
+  @media (prefers-reduced-motion: no-preference) {
+    .skill-card {
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 15px 35px rgb(0 0 0 / 0.2),
+        0 0 30px rgb(6 182 212 / 0.15);
+    }
+  }
+</style>

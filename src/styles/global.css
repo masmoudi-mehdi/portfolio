@@ -1,90 +1,67 @@
 @import "tailwindcss";
 
-/* Latin subset only: it covers French and English. */
-@font-face {
-  font-family: "Source Sans 3";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 200 900;
-  src: url("../assets/fonts/source-sans-3-latin-wght-normal.woff2") format("woff2-variations");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
-    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 /*
- * Colours. The page follows the system theme (color-scheme: light dark) until
- * the visitor uses the toggle, which sets data-theme on <html>.
- * light-dark(<light>, <dark>) picks the value for the active scheme.
+ * Colours of the original site: dark navy background, cyan accent.
+ * Dark is the default look; the toggle switches to a light variant by setting
+ * data-theme="light" on <html>. light-dark(<light>, <dark>) picks the value
+ * for the active colour scheme.
  */
 :root {
-  color-scheme: light dark;
-  --bg: light-dark(#fbfbfc, #0d1117);
-  --surface: light-dark(#ffffff, #151b24);
-  --surface-2: light-dark(#f2f4f7, #1b2330);
-  --fg: light-dark(#141821, #e7eaf0);
-  --muted: light-dark(#4a5361, #a5aebb);
-  --line: light-dark(#e2e6ec, #2a3342);
-  --accent: light-dark(#1d4ed8, #7fabff);
-  --accent-hover: light-dark(#1e40af, #a3c3ff);
-  --on-accent: light-dark(#ffffff, #0b1220);
-  --accent-soft: light-dark(#eaf0ff, #17233a);
-  --accent-soft-fg: light-dark(#1e3a8a, #c4d6ff);
+  color-scheme: dark;
+  --bg: light-dark(#f8fafc, #111827);
+  --bg-alt: light-dark(#eef2f7, #1f2937);
+  --card: light-dark(#ffffff, rgb(31 41 55 / 0.6));
+  --card-solid: light-dark(#ffffff, #1f2937);
+  --glass: light-dark(rgb(255 255 255 / 0.85), rgb(255 255 255 / 0.05));
+  --fg: light-dark(#111827, #f3f4f6);
+  --fg-soft: light-dark(#374151, #d1d5db);
+  --muted: light-dark(#4b5563, #9ca3af);
+  --line: light-dark(#e2e8f0, #374151);
+  --line-soft: light-dark(#e2e8f0, rgb(255 255 255 / 0.1));
+  --accent: light-dark(#0e7490, #22d3ee);
+  --cta: #0e7490;
+  --cta-hover: #155e75;
+  --grad-from: light-dark(#0891b2, #22d3ee);
+  --grad-to: light-dark(#2563eb, #3b82f6);
+  --tag-bg: light-dark(#ecfeff, rgb(6 182 212 / 0.1));
+  --tag-fg: light-dark(#155e75, #a5f3fc);
+  --tag-line: light-dark(#a5f3fc, rgb(6 182 212 / 0.3));
+  --chip-bg: light-dark(#f1f5f9, #374151);
+  --chip-fg: light-dark(#334155, #e5e7eb);
 }
 :root[data-theme="light"] {
   color-scheme: light;
 }
-:root[data-theme="dark"] {
-  color-scheme: dark;
-}
 
-/* Tailwind's dark: variant follows the same rule as the colours above. */
-@custom-variant dark {
-  &:where([data-theme="dark"], [data-theme="dark"] *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
-      @slot;
-    }
-  }
-}
+/* Tailwind's dark: variant = everything except the light theme. */
+@custom-variant dark (&:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *));
 
 @theme inline {
-  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-bg-alt: var(--bg-alt);
+  --color-card: var(--card);
+  --color-card-solid: var(--card-solid);
+  --color-glass: var(--glass);
   --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
   --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-on-accent: var(--on-accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-accent-soft-fg: var(--accent-soft-fg);
-}
-
-/* Type scale (1.25 ratio, fluid on the two largest steps). */
-@theme {
-  --text-sm: 0.9375rem;
-  --text-sm--line-height: 1.5;
-  --text-base: 1.0625rem;
-  --text-base--line-height: 1.65;
-  --text-lg: 1.1875rem;
-  --text-lg--line-height: 1.6;
-  --text-xl: 1.375rem;
-  --text-xl--line-height: 1.35;
-  --text-2xl: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
-  --text-2xl--line-height: 1.2;
-  --text-3xl: clamp(2.125rem, 1.5rem + 2.6vw, 3.5rem);
-  --text-3xl--line-height: 1.08;
-  --container-page: 72rem;
+  --color-cta: var(--cta);
+  --color-cta-hover: var(--cta-hover);
+  --color-tag: var(--tag-bg);
+  --color-tag-fg: var(--tag-fg);
+  --color-tag-line: var(--tag-line);
+  --color-chip: var(--chip-bg);
+  --color-chip-fg: var(--chip-fg);
 }
 
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
   }
   @media (prefers-reduced-motion: no-preference) {
     html {
@@ -92,17 +69,11 @@
     }
   }
   body {
-    @apply bg-bg font-sans text-base text-fg antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  @media (min-width: 48rem) {
-    body {
-      font-size: 1.125rem;
-    }
+    @apply bg-bg font-sans text-fg antialiased;
+    line-height: 1.6;
   }
   ::selection {
-    background: var(--accent-soft);
-    color: var(--accent-soft-fg);
+    background: rgb(6 182 212 / 0.3);
   }
   :focus-visible {
     outline: 2px solid var(--accent);
@@ -115,50 +86,79 @@
     text-wrap: balance;
   }
   p,
-  li {
+  li,
+  dd {
     text-wrap: pretty;
   }
 }
 
-/* Shared building blocks (can be combined with other utilities). */
+/* Shared building blocks. */
 @utility container-page {
-  @apply mx-auto w-full max-w-(--container-page) px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
 }
 @utility section {
-  @apply py-16 sm:py-24;
+  @apply relative py-16 sm:py-20;
 }
 @utility section-title {
-  @apply text-2xl font-bold tracking-tight text-fg;
+  @apply mb-12 text-center text-3xl font-bold text-fg sm:mb-16 sm:text-4xl;
 }
-@utility btn {
-  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-semibold transition-colors;
+@utility gradient-text {
+  background-image: linear-gradient(90deg, var(--grad-from), var(--grad-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-@utility btn-primary {
-  @apply btn bg-accent text-on-accent hover:bg-accent-hover;
+@utility btn-cta {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-cta px-8 py-3.5 text-lg font-semibold text-white transition-colors hover:bg-cta-hover sm:min-w-[200px];
 }
-@utility btn-secondary {
-  @apply btn border border-line bg-surface text-fg hover:border-accent hover:text-accent;
-}
-@utility link {
-  @apply font-medium text-accent underline decoration-1 underline-offset-4 hover:text-accent-hover;
+@utility card {
+  @apply rounded-xl border border-line bg-card;
 }
 @utility tag {
-  @apply inline-flex items-center rounded-md bg-accent-soft px-2.5 py-1 text-sm font-medium text-accent-soft-fg;
+  @apply inline-flex items-center rounded-full border border-tag-line bg-tag px-3 py-1 text-sm text-tag-fg;
+}
+@utility chip {
+  @apply inline-flex items-center rounded-full bg-chip px-2.5 py-0.5 text-xs text-chip-fg;
+}
+@utility link {
+  @apply font-medium text-accent underline decoration-1 underline-offset-4 hover:opacity-80;
 }
 
-/* Gentle entrance for blocks as they scroll into view (CSS only). */
+/* Blocks that slide in as they scroll into view (CSS only, like the old GSAP effects). */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .reveal {
-      animation: reveal linear both;
+    .reveal,
+    .reveal-left,
+    .reveal-right {
+      animation: reveal-up linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 40%;
+      animation-range: entry 0% entry 45%;
+    }
+    @media (min-width: 768px) {
+      .reveal-left {
+        animation-name: reveal-left;
+      }
+      .reveal-right {
+        animation-name: reveal-right;
+      }
     }
   }
 }
-@keyframes reveal {
+@keyframes reveal-up {
   from {
     opacity: 0;
-    translate: 0 1.25rem;
+    translate: 0 2.5rem;
+  }
+}
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    translate: -4rem 0;
+  }
+}
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    translate: 4rem 0;
   }
 }

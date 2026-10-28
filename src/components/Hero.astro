@@ -2,89 +2,86 @@
 import { Picture } from "astro:assets";
 import Icon from "./Icon.astro";
 import photo from "../assets/mehdi.webp";
-import { p, t, ui, CV_URL, CV_DOWNLOAD_NAME, otherLang, type Lang } from "../lib/profile";
+import { p, t, ui, CV_URL, CV_DOWNLOAD_NAME, LANGS, type Lang } from "../lib/profile";
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const other = otherLang(lang);
+const cvLabel = { fr: ui.hero.cvFr, en: ui.hero.cvEn };
 ---
 
-<section class="container-page pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
-  <div class="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
-    <div class="lg:order-last">
+<section id="hero" class="relative flex min-h-[calc(100svh-4rem)] items-center justify-center py-16">
+  <div class="pointer-events-none absolute inset-0 bg-linear-to-b from-cyan-500/10 to-transparent opacity-50" aria-hidden="true">
+  </div>
+
+  <div class="container-page relative text-center">
+    <div class="mx-auto size-36 overflow-hidden rounded-full border-4 border-cyan-400 shadow-[0_0_40px_rgb(34_211_238/0.25)] sm:size-48">
       <Picture
         src={photo}
         alt={t(ui.hero.photoAlt, lang)}
-        widths={[224, 320, 640]}
-        sizes="(min-width: 1024px) 320px, (min-width: 640px) 160px, 112px"
+        widths={[192, 384]}
+        sizes="(min-width: 640px) 192px, 144px"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
-        width={640}
-        height={630}
+        width={384}
+        height={378}
         loading="eager"
         fetchpriority="high"
-        class="size-28 rounded-full object-cover shadow-sm ring-1 ring-line sm:size-40 lg:size-80 lg:rounded-3xl"
+        class="size-full object-cover"
       />
     </div>
 
-    <div>
-      <h1>
-        <span class="block text-lg font-semibold text-accent">{p.identity.name}</span>
-        <span class="mt-3 block text-3xl font-bold tracking-tight text-fg">{t(p.headline, lang)}</span>
-      </h1>
-      <p class="mt-5 max-w-2xl text-lg text-muted">{t(p.subline, lang)}</p>
+    <h1 class="gradient-text mx-auto mt-8 max-w-5xl pb-2 text-4xl leading-tight font-bold sm:text-5xl md:text-7xl">
+      <span class="sr-only">{p.identity.name} – </span>{t(p.headline, lang)}
+    </h1>
+    <p class="mx-auto mt-6 max-w-3xl text-xl text-muted md:text-2xl">{t(p.subline, lang)}</p>
 
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <a href="#contact" class="btn-primary">
-          <Icon name="mail" size={18} />
-          {t(ui.hero.contact, lang)}
-        </a>
-        <a href={CV_URL[lang]} download={CV_DOWNLOAD_NAME[lang]} class="btn-secondary">
-          <Icon name="download" size={18} />
-          {t(ui.hero.cv, lang)}
-        </a>
-        <a
-          href={CV_URL[other]}
-          download={CV_DOWNLOAD_NAME[other]}
-          hreflang={other}
-          lang={other}
-          class="link self-start text-sm sm:self-center sm:ml-2"
-        >
-          {t(ui.hero.cvOther, lang)}
-        </a>
-      </div>
-
-      <ul class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted">
-        <li class="inline-flex items-center gap-2">
-          <Icon name="map-pin" size={18} />
-          {t(p.identity.location, lang)}
-        </li>
-        <li>
-          <a
-            href={p.identity.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 hover:text-accent"
-          >
-            <Icon name="linkedin" size={18} />
-            LinkedIn
-          </a>
-        </li>
-        <li>
-          <a
-            href={p.identity.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 hover:text-accent"
-          >
-            <Icon name="github" size={18} />
-            GitHub
-          </a>
-        </li>
-      </ul>
+    <div class="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">
+      <a href="#contact" class="btn-cta">
+        <Icon name="send" size={20} />
+        {t(ui.hero.contact, lang)}
+      </a>
+      <button type="button" popovertarget="cv-dialog" class="btn-cta cursor-pointer">
+        <Icon name="file-down" size={20} />
+        {t(ui.hero.cv, lang)}
+      </button>
     </div>
   </div>
 </section>
+
+<!-- CV picker, like the old modal. Popover API: works without JavaScript. -->
+<div
+  id="cv-dialog"
+  popover
+  role="dialog"
+  aria-labelledby="cv-dialog-title"
+  class="m-auto w-[min(28rem,calc(100%-2rem))] rounded-xl border border-line bg-card-solid p-8 text-fg shadow-2xl backdrop:bg-black/70"
+>
+  <h2 id="cv-dialog-title" class="mb-6 text-2xl font-bold">{t(ui.hero.cvChoose, lang)}</h2>
+  <div class="space-y-4">
+    {
+      LANGS.map((l) => (
+        <a
+          href={CV_URL[l]}
+          download={CV_DOWNLOAD_NAME[l]}
+          hreflang={l}
+          class="flex w-full items-center justify-center gap-2 rounded-lg bg-gray-300 py-3 font-medium text-gray-900 hover:bg-gray-400"
+        >
+          <Icon name="file-down" size={20} />
+          {t(cvLabel[l], lang)}
+        </a>
+      ))
+    }
+  </div>
+  <button
+    type="button"
+    popovertarget="cv-dialog"
+    popovertargetaction="hide"
+    class="mt-6 flex w-full cursor-pointer items-center justify-center gap-2 py-2 text-muted hover:text-fg"
+  >
+    <Icon name="x" size={18} />
+    {t(ui.hero.close, lang)}
+  </button>
+</div>

@@ -1,0 +1,102 @@
+---
+// Animated network of dots in the background, like the old particles.js
+// effect but in ~60 lines with no library. It starts once the page is idle,
+// pauses when the tab is hidden and never runs with "reduce motion".
+---
+
+<canvas id="particles" class="pointer-events-none fixed inset-0 z-0 size-full" aria-hidden="true"></canvas>
+
+<script>
+  const canvas = document.getElementById("particles") as HTMLCanvasElement | null;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function start(canvas: HTMLCanvasElement) {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const LINK = 150; // max distance between two linked dots, in px
+    const LEVELS = 4; // opacity steps for the links
+    const mouse = { x: -1e4, y: -1e4 };
+    let w = 0;
+    let h = 0;
+    let dots: { x: number; y: number; vx: number; vy: number; r: number }[] = [];
+
+    const resize = () => {
+      // Mobile browsers resize the height while scrolling: keep the dots then.
+      const newWidth = innerWidth !== w;
+      w = canvas.width = innerWidth;
+      h = canvas.height = innerHeight;
+      if (!newWidth) return;
+      const count = Math.round(Math.min(70, (w * h) / 16000));
+      dots = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        r: 1 + Math.random() * 2,
+      }));
+    };
+
+    const frame = () => {
+      if (!document.hidden) {
+        // Cyan, a bit darker on the light theme.
+        const rgb = document.documentElement.dataset.theme === "light" ? "8 145 178" : "6 182 212";
+        ctx.clearRect(0, 0, w, h);
+        for (const d of dots) {
+          // Gentle push away from the pointer.
+          const mx = d.x - mouse.x;
+          const my = d.y - mouse.y;
+          const md = Math.hypot(mx, my);
+          if (md > 0 && md < 100) {
+            d.x += (mx / md) * 2;
+            d.y += (my / md) * 2;
+          }
+          d.x += d.vx;
+          d.y += d.vy;
+          if (d.x < 0 || d.x > w) d.vx *= -1;
+          if (d.y < 0 || d.y > h) d.vy *= -1;
+        }
+        // One path for all dots and one per opacity level for the links:
+        // a handful of draw calls per frame instead of one per line.
+        ctx.fillStyle = `rgb(${rgb} / 0.5)`;
+        ctx.beginPath();
+        for (const d of dots) {
+          ctx.moveTo(d.x + d.r, d.y);
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        }
+        ctx.fill();
+        const levels: Path2D[] = Array.from({ length: LEVELS }, () => new Path2D());
+        for (let i = 0; i < dots.length; i++) {
+          for (let j = i + 1; j < dots.length; j++) {
+            const dx = dots[i].x - dots[j].x;
+            const dy = dots[i].y - dots[j].y;
+            const dist2 = dx * dx + dy * dy;
+            if (dist2 < LINK * LINK) {
+              const level = Math.min(LEVELS - 1, Math.floor((Math.sqrt(dist2) / LINK) * LEVELS));
+              levels[level].moveTo(dots[i].x, dots[i].y);
+              levels[level].lineTo(dots[j].x, dots[j].y);
+            }
+          }
+        }
+        ctx.lineWidth = 1;
+        levels.forEach((path, level) => {
+          ctx.strokeStyle = `rgb(${rgb} / ${0.25 * (1 - level / LEVELS)})`;
+          ctx.stroke(path);
+        });
+      }
+      requestAnimationFrame(frame);
+    };
+
+    addEventListener("resize", resize);
+    addEventListener("pointermove", (e) => {
+      if (e.pointerType === "mouse") Object.assign(mouse, { x: e.clientX, y: e.clientY });
+    });
+    resize();
+    requestAnimationFrame(frame);
+  }
+
+  if (canvas && !reduce) {
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 300));
+    // Start a moment after load so it never competes with the first render.
+    addEventListener("load", () => setTimeout(() => idle(() => start(canvas)), 1500), { once: true });
+  }
+</script>

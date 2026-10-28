@@ -13,42 +13,55 @@ const page = p.servicesPage;
 const s = ui.services;
 
 const ICONS: Record<string, IconName> = { "web-app": "code", ai: "bot", automation: "workflow" };
+const mailto = `mailto:${p.identity.email}?subject=${encodeURIComponent(t(s.emailSubject, lang))}`;
 ---
 
 <Base lang={lang} page="services" title={t(p.seo.services.title, lang)} description={t(p.seo.services.description, lang)}>
-  <section class="container-page pt-12 pb-16 sm:pt-20 sm:pb-20 lg:pt-24">
-    <h1 class="max-w-3xl text-3xl font-bold tracking-tight text-fg">{t(page.headline, lang)}</h1>
-    <p class="mt-5 max-w-2xl text-lg text-muted">{t(page.subline, lang)}</p>
-    <a href="#contact" class="btn-primary mt-8">
-      <Icon name="mail" size={18} />
-      {t(ui.hero.contact, lang)}
-    </a>
+  <section class="relative py-20 text-center sm:py-28">
+    <div class="pointer-events-none absolute inset-0 bg-linear-to-b from-cyan-500/10 to-transparent opacity-50" aria-hidden="true">
+    </div>
+    <div class="container-page relative">
+      <h1 class="gradient-text mx-auto max-w-4xl pb-2 text-4xl leading-tight font-bold sm:text-5xl md:text-6xl">
+        {t(page.headline, lang)}
+      </h1>
+      <p class="mx-auto mt-6 max-w-3xl text-xl text-fg-soft">{t(page.subline, lang)}</p>
+    </div>
   </section>
 
-  <section class="section border-t border-line bg-surface" aria-labelledby="offers-title">
+  <section class="section pt-0!" aria-labelledby="offers-title">
     <div class="container-page">
-      <h2 id="offers-title" class="section-title">{t(s.offersTitle, lang)}</h2>
-      <ul class="mt-10 grid gap-6 sm:mt-14 lg:grid-cols-3">
+      <h2 id="offers-title" class="sr-only">{t(s.offersTitle, lang)}</h2>
+      <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           p.services.map((offer) => (
-            <li class="reveal flex flex-col rounded-2xl border border-line bg-bg p-6 sm:p-8">
-              <span class="inline-flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-soft-fg">
-                <Icon name={ICONS[offer.id] ?? "code"} size={24} />
-              </span>
-              <h3 class="mt-5 text-xl font-semibold text-fg">{t(offer.title, lang)}</h3>
-              <p class="mt-2 text-muted">{t(offer.description, lang)}</p>
-              <ul class="mt-5 space-y-2.5">
+            <li class="reveal flex flex-col rounded-xl bg-card-solid p-6 shadow-xl sm:p-8">
+              <div class="flex items-start gap-4">
+                <span class="inline-flex size-12 shrink-0 items-center justify-center rounded-lg bg-tag text-accent">
+                  <Icon name={ICONS[offer.id] ?? "code"} size={26} />
+                </span>
+                <h3 class="text-xl font-bold text-fg">{t(offer.title, lang)}</h3>
+              </div>
+              <p class="mt-6 text-fg-soft">{t(offer.description, lang)}</p>
+              <ul class="mt-5 space-y-2.5 text-sm text-fg-soft">
                 {t(offer.points, lang).map((point) => (
-                  <li class="flex gap-3">
-                    <Icon name="check" size={20} class="mt-1 text-accent" />
+                  <li class="flex gap-2.5">
+                    <Icon name="check" size={18} class="mt-0.5 text-accent" />
                     <span>{point}</span>
                   </li>
                 ))}
               </ul>
-              <p class="mt-5 border-t border-line pt-5 text-sm text-muted italic">{t(offer.example, lang)}</p>
-              <p class="mt-auto pt-5">
-                <span class="tag">{t(page.pricing, lang)}</span>
-              </p>
+              <p class="mt-5 text-sm text-muted italic">{t(offer.example, lang)}</p>
+              <div class="mt-auto pt-6">
+                <p class="text-xl font-bold text-accent">{t(page.pricing, lang)}</p>
+                <div class="mt-4 flex flex-col gap-3">
+                  <a href={mailto} class="rounded-lg bg-cta px-4 py-2.5 text-center text-white transition-colors hover:bg-cta-hover">
+                    {t(s.askByEmail, lang)}
+                  </a>
+                  <a href="#contact" class="rounded-lg bg-cta px-4 py-2.5 text-center text-white transition-colors hover:bg-cta-hover">
+                    {t(ui.hero.contact, lang)}
+                  </a>
+                </div>
+              </div>
             </li>
           ))
         }
@@ -56,25 +69,34 @@ const ICONS: Record<string, IconName> = { "web-app": "code", ai: "bot", automati
     </div>
   </section>
 
-  <section class="section border-t border-line" aria-labelledby="process-title">
+  <section class="section bg-bg-alt/60" aria-labelledby="process-title">
     <div class="container-page">
-      <h2 id="process-title" class="section-title">{t(s.processTitle, lang)}</h2>
-      <ol class="mt-10 grid gap-8 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
-        {
-          page.process.map((step, i) => (
-            <li class="reveal">
-              <span
-                class="inline-flex size-10 items-center justify-center rounded-full border-2 border-accent font-bold text-accent"
-                aria-hidden="true"
-              >
-                {i + 1}
-              </span>
-              <h3 class="mt-4 text-lg font-semibold text-fg">{t(step.title, lang)}</h3>
-              <p class="mt-2 text-muted">{t(step.text, lang)}</p>
-            </li>
-          ))
-        }
-      </ol>
+      <h2 id="process-title" class="section-title text-accent!">{t(s.processTitle, lang)}</h2>
+      <div class="relative mx-auto max-w-4xl">
+        <div class="absolute inset-y-0 left-5 w-0.5 bg-cyan-700 md:left-1/2 md:-translate-x-1/2" aria-hidden="true"></div>
+        <ol class="space-y-12">
+          {
+            page.process.map((step, i) => {
+              const left = i % 2 === 0;
+              return (
+                <li class:list={["relative pl-16 md:w-1/2 md:pl-0", left ? "reveal-left md:pr-14 md:text-right" : "reveal-right md:ml-auto md:pl-14"]}>
+                  <span
+                    class:list={[
+                      "absolute top-0 left-5 z-10 inline-flex size-8 -translate-x-1/2 items-center justify-center rounded-full bg-cyan-700 text-sm font-bold text-white ring-4 ring-bg",
+                      left ? "md:left-full" : "md:left-0",
+                    ]}
+                    aria-hidden="true"
+                  >
+                    {i + 1}
+                  </span>
+                  <h3 class="text-xl font-bold text-fg">{t(step.title, lang)}</h3>
+                  <p class="mt-2 text-fg-soft">{t(step.text, lang)}</p>
+                </li>
+              );
+            })
+          }
+        </ol>
+      </div>
     </div>
   </section>
 

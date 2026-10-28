@@ -9,17 +9,17 @@ const nf = ui.notFound;
 ---
 
 <Base lang="fr" title={`${t(nf.title, "fr")} · ${t(nf.title, "en")}`} description={t(nf.text, "fr")}>
-  <section class="container-page grid gap-12 py-20 sm:grid-cols-2 sm:py-32">
+  <section class="container-page grid gap-12 py-20 text-center sm:grid-cols-2 sm:py-32">
     {
       LANGS.map((lang) => (
         <div lang={lang}>
           {lang === "fr" ? (
-            <h1 class="text-2xl font-bold tracking-tight text-fg">{t(nf.title, lang)}</h1>
+            <h1 class="gradient-text pb-1 text-4xl font-bold">{t(nf.title, lang)}</h1>
           ) : (
-            <h2 class="text-2xl font-bold tracking-tight text-fg">{t(nf.title, lang)}</h2>
+            <h2 class="gradient-text pb-1 text-4xl font-bold">{t(nf.title, lang)}</h2>
           )}
-          <p class="mt-4 text-lg text-muted">{t(nf.text, lang)}</p>
-          <a href={ROUTES.home[lang]} class="btn-primary mt-8">
+          <p class="mt-4 text-lg text-fg-soft">{t(nf.text, lang)}</p>
+          <a href={ROUTES.home[lang]} class="btn-cta mt-8">
             <Icon name="arrow-right" size={18} />
             {t(nf.back, lang)}
           </a>

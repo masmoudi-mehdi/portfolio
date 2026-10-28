@@ -161,8 +161,10 @@ const pages = existsSync(DIST) ? htmlFiles(DIST) : [];
 if (!pages.length) warnings.push("dist/ not found: run `npm run build` to check the pages too");
 for (const file of pages) {
   const page = relative(DIST, file).replace(/\\/g, "/");
-  // Inline styles hold hex colours like #111827, not ticket numbers.
-  const html = readFileSync(file, "utf8").replace(/\sstyle="[^"]*"/g, "");
+  // Styles hold hex colours like #111827 or #0003, not ticket numbers.
+  const html = readFileSync(file, "utf8")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/\sstyle="[^"]*"/g, "");
   checkText(page, html);
   const lang = SERVICES_PAGES[page];
   if (lang) {

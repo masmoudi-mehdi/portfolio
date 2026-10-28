@@ -1,9 +1,9 @@
 ---
 import "../styles/global.css";
-import fontUrl from "../assets/fonts/source-sans-3-latin-wght-normal.woff2?url";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Konami from "../components/Konami.astro";
+import Particles from "../components/Particles.astro";
 import { p, t, ui, ROUTES, LANGS, type Lang, type PageKey } from "../lib/profile";
 
 interface Props {
@@ -81,10 +81,8 @@ const person = {
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/favicon_io/site.webmanifest" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfbfc" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117" />
+    <meta name="theme-color" content="#111827" />
 
-    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Apply the saved theme before the first paint (no flash). -->
@@ -98,14 +96,15 @@ const person = {
     {page === "home" && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
   </head>
   <body class="flex min-h-dvh flex-col">
+    <Particles />
     <a
       href="#main"
-      class="sr-only z-50 rounded-md bg-accent px-4 py-2 font-semibold text-on-accent focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      class="sr-only z-50 rounded-md bg-cta px-4 py-2 font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
     >
       {t(ui.skipLink, lang)}
     </a>
     <Header lang={lang} page={page} />
-    <main id="main" class="flex-1">
+    <main id="main" class="relative z-10 flex-1">
       <slot />
     </main>
     <Footer lang={lang} page={page} />

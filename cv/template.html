@@ -1,0 +1,57 @@
+<!doctype html>
+<!--
+  CV template. Filled by scripts/build-cv.mjs from content/profile.json
+  ({{key}} placeholders, values are already HTML-escaped), then printed to PDF.
+  One column, real text, standard section titles: readable by recruiters' ATS.
+-->
+<html lang="{{lang}}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{docTitle}}</title>
+    <meta name="author" content="{{name}}" />
+    <meta name="description" content="{{title}}" />
+    <link rel="stylesheet" href="cv.css" />
+  </head>
+  <body>
+    <main class="cv">
+      <header class="cv-header">
+        <h1>{{name}}</h1>
+        <p class="cv-title">{{title}}</p>
+        <p class="cv-contact">{{contactLine1}}</p>
+        <p class="cv-contact">{{contactLine2}}</p>
+      </header>
+
+      <section class="cv-section">
+        <h2>{{h.profile}}</h2>
+        <p class="cv-profile">{{profile}}</p>
+      </section>
+
+      <section class="cv-section">
+        <h2>{{h.experience}}</h2>
+        {{experience}}
+      </section>
+
+      <section class="cv-section">
+        <h2>{{h.projects}}</h2>
+        {{projects}}
+      </section>
+
+      <section class="cv-section">
+        <h2>{{h.skills}}</h2>
+        <ul class="cv-skills">
+          {{skills}}
+        </ul>
+      </section>
+
+      <section class="cv-section">
+        <h2>{{h.education}}</h2>
+        {{education}}
+      </section>
+
+      <section class="cv-section">
+        <h2>{{h.languages}}</h2>
+        <p class="cv-languages">{{languages}}</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,13 +1,16 @@
 {
   "name": "mehdimasmoudi-portfolio",
   "private": true,
-  "description": "Static portfolio served by GitHub Pages. Content lives in content/profile.json: edit it, then run `npm run content:apply`, `npm run content:check` and `npm run build:css`.",
+  "description": "Static portfolio served by GitHub Pages. Content lives in content/profile.json: edit it, then run `npm run content:apply`, `npm run content:check` and `npm run build:css`. `npm run cv` rebuilds the PDF CVs from the same file.",
   "scripts": {
     "build:css": "tailwindcss -c tailwind.config.js -i src/tailwind.input.css -o assets/css/tailwind.css --minify",
     "content:apply": "node scripts/apply-profile.mjs",
-    "content:check": "node scripts/check-profile.mjs"
+    "content:check": "node scripts/check-profile.mjs",
+    "cv": "node scripts/build-cv.mjs"
   },
   "devDependencies": {
+    "@fontsource/source-sans-3": "^5.3.1",
+    "playwright": "^1.64.1",
     "tailwindcss": "^3.4.17"
   }
 }

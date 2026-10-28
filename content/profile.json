@@ -114,7 +114,7 @@
       "bullets": {
         "fr": [
           "Développé la gestion des stocks et la communication avec les fournisseurs, de l'interface React aux API Node.js / NestJS.",
-          "Automatisé l'arrivée des documents : chaque nouveau PDF est détecté automatiquement et ses données sont rangées directement en base.",
+          "Automatisé l'arrivée des documents : chaque nouveau PDF est détecté et ses données sont rangées directement en base.",
           "Conçu l'architecture back-end en Node.js / NestJS : services et API qui gèrent les données de l'application.",
           "Écrit des tests automatisés Cypress pour fiabiliser les livraisons et limiter les régressions."
         ],
@@ -666,6 +666,21 @@
       }
     ]
   },
+  "cv": {
+    "yearsFrom": "fivepoints",
+    "profile": {
+      "fr": "Développeur full stack & IA avec {years} ans d'expérience : React, Node.js, Python, PostgreSQL, Azure. Chez SoftStars, je construis des crawlers et des fonctions IA (LLM, agents de vision, Azure AI Foundry) en production pour un grand diffuseur sportif international. Ouvert à un poste à temps plein (en Tunisie ou à distance) et aux missions freelance.",
+      "en": "Full-stack & AI developer with {years} years of experience: React, Node.js, Python, PostgreSQL, Azure. At SoftStars, I build crawlers and AI features (LLMs, vision agents, Azure AI Foundry) that run in production for a major international sports broadcaster. Open to full-time roles (on-site in Tunisia or remote) and freelance projects."
+    },
+    "bullets": {
+      "softstars": [0, 1, 2, 3, 5],
+      "hotlas": [0, 1, 3],
+      "sqoin": [1],
+      "fivepoints": [0],
+      "sentinel": [1]
+    },
+    "projects": ["stream-catcher", "restaurant-bar-app"]
+  },
   "_sources": {
     "_legend": {
       "facts": "Facts confirmed by Mehdi on 2026-10-28 (improvement plan, section 5 - local, not published)",
@@ -707,6 +722,8 @@
     "services[automation]": "work-notes (crawlers, scheduled cloud jobs) + validator-readme (CSV/XLSX enrichment, dashboard) + facts (Hotlas PDF import)",
     "servicesPage.pricing": "old-site (services page: 'Sur devis')",
     "projects[restaurant-bar-app].context": "facts (client project, confirmed by Mehdi on 2026-10-28)",
+    "cv.profile": "facts (target, employer, anonymised client) + experience and skills above; {years} is computed by scripts/build-cv.mjs from the start of the experience named in cv.yearsFrom",
+    "cv.bullets": "which experience bullets (by index) the CV keeps; the site shows them all",
     "projects[anti-piracy-portal]": "validator-readme (auth, CSV/XLSX + IPTV playlist import, WHOIS/IP enrichment, dashboard, weekly reports, React + Node.js + PostgreSQL, Docker, Azure) + list of the app's pages (job scheduling, execution results, live/VOD links, Telegram crawler, data cleaning, users and invites) + git history (main contributor) + facts (Mehdi, 2026-10-28: 'the portal', more than CSV)"
   }
 }

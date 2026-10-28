@@ -270,10 +270,10 @@
               <p class="text-sm text-gray-300 mb-2">Client : un grand diffuseur sportif international</p>
               <ul class="list-disc pl-5 space-y-1 text-sm text-gray-300">
                 <li>Développé des crawlers live et VOD (Python, Node.js, Puppeteer) qui repèrent les diffusions pirates et collectent les preuves pour les demandes de retrait.</li>
+                <li>Développé le portail web de l'équipe (React, Node.js, PostgreSQL) : planification des crawls, suivi et validation des résultats, imports de listes, rapports, gestion des utilisateurs.</li>
                 <li>Mis l'IA au cœur du pipeline : classification des pages par LLM, agent de vision qui clique sur les lecteurs vidéo, réponses structurées et validées.</li>
                 <li>Migré les appels IA d'OpenAI vers Azure AI Foundry (passerelle Python et Node.js, identité managée, modèle choisi selon la tâche) pour réduire le coût de l'IA.</li>
-                <li>Rendu le crawler fiable sur des sites hostiles : fermeture automatique des publicités, filtre de contenu adulte, iframes imbriquées, protections anti-bot.</li>
-                <li>Multiplié le nombre de flux détectés par match sur les sites agrégateurs (mesuré en environnement de test).</li>
+                <li>Rendu le crawler fiable sur des sites hostiles (publicités, contenu adulte, iframes imbriquées, anti-bot) et multiplié les flux détectés par match (mesuré en test).</li>
                 <li>Fait tourner les services sur Azure (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL) avec CI/CD Azure DevOps ; passage à Node 24 et analyse des incidents de production en SQL.</li>
               </ul>
             </div>
@@ -284,7 +284,8 @@
               <p class="text-cyan-400 font-medium">Développeur Full Stack</p>
               <p class="text-sm text-gray-400 mb-3">juin 2022 – mars 2025 · Atlanta, USA (à distance)</p>
               <ul class="list-disc pl-5 space-y-1 text-sm text-gray-300">
-                <li>Livré des fonctionnalités front-end en React.</li>
+                <li>Développé la gestion des stocks et la communication avec les fournisseurs, de l'interface React aux API Node.js / NestJS.</li>
+                <li>Automatisé l'arrivée des documents : chaque nouveau PDF est détecté automatiquement et ses données sont rangées directement en base.</li>
                 <li>Conçu l'architecture back-end en Node.js / NestJS : services et API qui gèrent les données de l'application.</li>
                 <li>Écrit des tests automatisés Cypress pour fiabiliser les livraisons et limiter les régressions.</li>
               </ul>
@@ -371,30 +372,34 @@
             </ul>
           </article>
           <article class="bg-gray-800/60 border border-gray-700 rounded-xl p-6 flex flex-col">
-            <h3 class="text-xl font-bold text-white mb-1">Crawler Validator</h3>
-            <p class="text-cyan-400 text-sm mb-4">Application web qui valide et enrichit des fichiers CSV/XLSX de sites de streaming.</p>
+            <h3 class="text-xl font-bold text-white mb-1">Portail anti-piratage</h3>
+            <p class="text-cyan-400 text-sm mb-4">Le portail web où l'équipe pilote la détection : crawls, résultats, validation et rapports.</p>
             <dl class="space-y-3 text-sm text-gray-300 mb-4">
               <div>
                 <dt class="font-semibold text-gray-100">Problème</dt>
-                <dd>Des listes de sites arrivent en CSV ou XLSX, dans plusieurs formats, et doivent être vérifiées puis complétées.</dd>
+                <dd>L'équipe avait besoin d'un seul outil pour lancer les détections, suivre ce qui a été trouvé, valider les résultats et rendre compte au client.</dd>
               </div>
               <div>
                 <dt class="font-semibold text-gray-100">Ce que j'ai construit</dt>
-                <dd>Import CSV/XLSX, détection automatique du modèle de fichier, enrichissement WHOIS et géolocalisation IP, tableau de bord des résultats.</dd>
+                <dd>Planification des crawls (live, VOD, Telegram), suivi des exécutions et des liens détectés, validation des résultats, import et enrichissement de listes (CSV/XLSX, playlists IPTV, WHOIS, géolocalisation IP), tableaux de bord et rapports hebdomadaires, comptes sur invitation avec rôles.</dd>
               </div>
               <div>
                 <dt class="font-semibold text-gray-100">Mon rôle</dt>
-                <dd>Développeur full stack : interface React, API Node.js, déploiement sur Azure.</dd>
+                <dd>Développeur full stack, parmi les principaux contributeurs : interface React, API Node.js, déploiement sur Azure.</dd>
               </div>
               <div>
                 <dt class="font-semibold text-gray-100">Résultat</dt>
-                <dd>Déployée sur Azure dans un conteneur Docker.</dd>
+                <dd>Déployé sur Azure ; c'est l'outil de travail de l'équipe pour piloter la détection.</dd>
               </div>
             </dl>
             <ul class="mt-auto flex flex-wrap gap-2">
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">React</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">TypeScript</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Tailwind CSS</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Node.js</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Express</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">PostgreSQL</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Jest</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Docker</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Azure</li>
             </ul>

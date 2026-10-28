@@ -267,10 +267,10 @@
               <p class="text-sm text-gray-300 mb-2">Client: a major international sports broadcaster</p>
               <ul class="list-disc pl-5 space-y-1 text-sm text-gray-300">
                 <li>Built live and VOD crawlers (Python, Node.js, Puppeteer) that spot pirate streams and collect the evidence behind takedown requests.</li>
+                <li>Built the team's web portal (React, Node.js, PostgreSQL): crawl scheduling, result tracking and validation, list imports, reports and user management.</li>
                 <li>Put AI at the core of the pipeline: LLM page classification, a vision agent that clicks on video players, and validated structured outputs.</li>
                 <li>Moved the AI calls from OpenAI to Azure AI Foundry (Python and Node.js gateway, managed identity, model picked per task) to cut AI spend.</li>
-                <li>Made the crawler reliable on hostile sites: automatic ad dismissal, an adult-content filter, nested iframes and anti-bot protection.</li>
-                <li>Multiplied the number of streams found per match on aggregator sites (measured in a test environment).</li>
+                <li>Made the crawler reliable on hostile sites (ads, adult content, nested iframes, anti-bot) and multiplied the streams found per match (measured in testing).</li>
                 <li>Run the services on Azure (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL) with Azure DevOps CI/CD; upgraded them to Node 24 and traced production incidents through SQL and logs.</li>
               </ul>
             </div>
@@ -281,7 +281,8 @@
               <p class="text-cyan-400 font-medium">Full-Stack Developer</p>
               <p class="text-sm text-gray-400 mb-3">Jun 2022 – Mar 2025 · Atlanta, USA (remote)</p>
               <ul class="list-disc pl-5 space-y-1 text-sm text-gray-300">
-                <li>Shipped front-end features in React.</li>
+                <li>Built stock management and supplier communication, from the React UI to the Node.js / NestJS APIs.</li>
+                <li>Automated document intake: every new PDF is detected automatically and its data mapped straight into the database.</li>
                 <li>Designed the back-end architecture in Node.js / NestJS: the services and APIs behind the app's data.</li>
                 <li>Wrote automated Cypress tests to make releases safer and catch regressions early.</li>
               </ul>
@@ -368,30 +369,34 @@
             </ul>
           </article>
           <article class="bg-gray-800/60 border border-gray-700 rounded-xl p-6 flex flex-col">
-            <h3 class="text-xl font-bold text-white mb-1">Crawler Validator</h3>
-            <p class="text-cyan-400 text-sm mb-4">A web app that validates and enriches CSV/XLSX files of streaming sites.</p>
+            <h3 class="text-xl font-bold text-white mb-1">Anti-piracy portal</h3>
+            <p class="text-cyan-400 text-sm mb-4">The web portal where the team runs detection: crawls, results, validation and reports.</p>
             <dl class="space-y-3 text-sm text-gray-300 mb-4">
               <div>
                 <dt class="font-semibold text-gray-100">Problem</dt>
-                <dd>Lists of sites arrive as CSV or XLSX files, in several formats, and need to be checked and completed.</dd>
+                <dd>The team needed one tool to launch detections, follow what was found, validate the results and report to the client.</dd>
               </div>
               <div>
                 <dt class="font-semibold text-gray-100">What I built</dt>
-                <dd>CSV/XLSX upload, automatic file-template detection, WHOIS and IP-geolocation enrichment, and a results dashboard.</dd>
+                <dd>Crawl scheduling (live, VOD, Telegram), tracking of runs and detected links, result validation, list import and enrichment (CSV/XLSX, IPTV playlists, WHOIS, IP geolocation), dashboards and weekly reports, invite-only accounts with roles.</dd>
               </div>
               <div>
                 <dt class="font-semibold text-gray-100">My role</dt>
-                <dd>Full-stack developer: React front end, Node.js API, Azure deployment.</dd>
+                <dd>Full-stack developer and one of the main contributors: React front end, Node.js API, Azure deployment.</dd>
               </div>
               <div>
                 <dt class="font-semibold text-gray-100">Result</dt>
-                <dd>Deployed on Azure in a Docker container.</dd>
+                <dd>Deployed on Azure; it is the team's day-to-day tool for running detection.</dd>
               </div>
             </dl>
             <ul class="mt-auto flex flex-wrap gap-2">
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">React</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">TypeScript</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Tailwind CSS</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Node.js</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Express</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">PostgreSQL</li>
+              <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Jest</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Docker</li>
               <li class="px-2 py-0.5 rounded-full text-xs bg-gray-700 text-gray-200">Azure</li>
             </ul>

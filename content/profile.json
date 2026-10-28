@@ -81,18 +81,18 @@
       "bullets": {
         "fr": [
           "Développé des crawlers live et VOD (Python, Node.js, Puppeteer) qui repèrent les diffusions pirates et collectent les preuves pour les demandes de retrait.",
+          "Développé le portail web de l'équipe (React, Node.js, PostgreSQL) : planification des crawls, suivi et validation des résultats, imports de listes, rapports, gestion des utilisateurs.",
           "Mis l'IA au cœur du pipeline : classification des pages par LLM, agent de vision qui clique sur les lecteurs vidéo, réponses structurées et validées.",
           "Migré les appels IA d'OpenAI vers Azure AI Foundry (passerelle Python et Node.js, identité managée, modèle choisi selon la tâche) pour réduire le coût de l'IA.",
-          "Rendu le crawler fiable sur des sites hostiles : fermeture automatique des publicités, filtre de contenu adulte, iframes imbriquées, protections anti-bot.",
-          "Multiplié le nombre de flux détectés par match sur les sites agrégateurs (mesuré en environnement de test).",
+          "Rendu le crawler fiable sur des sites hostiles (publicités, contenu adulte, iframes imbriquées, anti-bot) et multiplié les flux détectés par match (mesuré en test).",
           "Fait tourner les services sur Azure (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL) avec CI/CD Azure DevOps ; passage à Node 24 et analyse des incidents de production en SQL."
         ],
         "en": [
           "Built live and VOD crawlers (Python, Node.js, Puppeteer) that spot pirate streams and collect the evidence behind takedown requests.",
+          "Built the team's web portal (React, Node.js, PostgreSQL): crawl scheduling, result tracking and validation, list imports, reports and user management.",
           "Put AI at the core of the pipeline: LLM page classification, a vision agent that clicks on video players, and validated structured outputs.",
           "Moved the AI calls from OpenAI to Azure AI Foundry (Python and Node.js gateway, managed identity, model picked per task) to cut AI spend.",
-          "Made the crawler reliable on hostile sites: automatic ad dismissal, an adult-content filter, nested iframes and anti-bot protection.",
-          "Multiplied the number of streams found per match on aggregator sites (measured in a test environment).",
+          "Made the crawler reliable on hostile sites (ads, adult content, nested iframes, anti-bot) and multiplied the streams found per match (measured in testing).",
           "Run the services on Azure (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL) with Azure DevOps CI/CD; upgraded them to Node 24 and traced production incidents through SQL and logs."
         ]
       }
@@ -113,12 +113,14 @@
       "end": "2025-03",
       "bullets": {
         "fr": [
-          "Livré des fonctionnalités front-end en React.",
+          "Développé la gestion des stocks et la communication avec les fournisseurs, de l'interface React aux API Node.js / NestJS.",
+          "Automatisé l'arrivée des documents : chaque nouveau PDF est détecté automatiquement et ses données sont rangées directement en base.",
           "Conçu l'architecture back-end en Node.js / NestJS : services et API qui gèrent les données de l'application.",
           "Écrit des tests automatisés Cypress pour fiabiliser les livraisons et limiter les régressions."
         ],
         "en": [
-          "Shipped front-end features in React.",
+          "Built stock management and supplier communication, from the React UI to the Node.js / NestJS APIs.",
+          "Automated document intake: every new PDF is detected automatically and its data mapped straight into the database.",
           "Designed the back-end architecture in Node.js / NestJS: the services and APIs behind the app's data.",
           "Wrote automated Cypress tests to make releases safer and catch regressions early."
         ]
@@ -249,37 +251,41 @@
       "images": []
     },
     {
-      "slug": "crawler-validator",
+      "slug": "anti-piracy-portal",
       "name": {
-        "fr": "Crawler Validator",
-        "en": "Crawler Validator"
+        "fr": "Portail anti-piratage",
+        "en": "Anti-piracy portal"
       },
       "oneLiner": {
-        "fr": "Application web qui valide et enrichit des fichiers CSV/XLSX de sites de streaming.",
-        "en": "A web app that validates and enriches CSV/XLSX files of streaming sites."
+        "fr": "Le portail web où l'équipe pilote la détection : crawls, résultats, validation et rapports.",
+        "en": "The web portal where the team runs detection: crawls, results, validation and reports."
       },
       "problem": {
-        "fr": "Des listes de sites arrivent en CSV ou XLSX, dans plusieurs formats, et doivent être vérifiées puis complétées.",
-        "en": "Lists of sites arrive as CSV or XLSX files, in several formats, and need to be checked and completed."
+        "fr": "L'équipe avait besoin d'un seul outil pour lancer les détections, suivre ce qui a été trouvé, valider les résultats et rendre compte au client.",
+        "en": "The team needed one tool to launch detections, follow what was found, validate the results and report to the client."
       },
       "built": {
-        "fr": "Import CSV/XLSX, détection automatique du modèle de fichier, enrichissement WHOIS et géolocalisation IP, tableau de bord des résultats.",
-        "en": "CSV/XLSX upload, automatic file-template detection, WHOIS and IP-geolocation enrichment, and a results dashboard."
+        "fr": "Planification des crawls (live, VOD, Telegram), suivi des exécutions et des liens détectés, validation des résultats, import et enrichissement de listes (CSV/XLSX, playlists IPTV, WHOIS, géolocalisation IP), tableaux de bord et rapports hebdomadaires, comptes sur invitation avec rôles.",
+        "en": "Crawl scheduling (live, VOD, Telegram), tracking of runs and detected links, result validation, list import and enrichment (CSV/XLSX, IPTV playlists, WHOIS, IP geolocation), dashboards and weekly reports, invite-only accounts with roles."
       },
       "stack": [
         "React",
+        "TypeScript",
+        "Tailwind CSS",
         "Node.js",
+        "Express",
         "PostgreSQL",
+        "Jest",
         "Docker",
         "Azure"
       ],
       "role": {
-        "fr": "Développeur full stack : interface React, API Node.js, déploiement sur Azure.",
-        "en": "Full-stack developer: React front end, Node.js API, Azure deployment."
+        "fr": "Développeur full stack, parmi les principaux contributeurs : interface React, API Node.js, déploiement sur Azure.",
+        "en": "Full-stack developer and one of the main contributors: React front end, Node.js API, Azure deployment."
       },
       "result": {
-        "fr": "Déployée sur Azure dans un conteneur Docker.",
-        "en": "Deployed on Azure in a Docker container."
+        "fr": "Déployé sur Azure ; c'est l'outil de travail de l'équipe pour piloter la détection.",
+        "en": "Deployed on Azure; it is the team's day-to-day tool for running detection."
       },
       "link": null,
       "images": []
@@ -588,13 +594,13 @@
         "fr": [
           "Crawlers Puppeteer / Playwright (iframes, publicités, protections anti-bot)",
           "Pipelines Python ou Node.js planifiés dans le cloud",
-          "Import et enrichissement de fichiers CSV/XLSX (WHOIS, géolocalisation IP)",
+          "Import automatique de documents (PDF, CSV/XLSX) vers votre base de données, avec enrichissement",
           "Tableaux de bord pour suivre les résultats"
         ],
         "en": [
           "Puppeteer / Playwright crawlers (iframes, ads, anti-bot protection)",
           "Scheduled Python or Node.js pipelines in the cloud",
-          "CSV/XLSX import and enrichment (WHOIS, IP geolocation)",
+          "Automatic document import (PDF, CSV/XLSX) into your database, with enrichment",
           "Dashboards to follow the results"
         ]
       },
@@ -680,17 +686,16 @@
     "about[3]": "facts (target)",
     "experience[softstars].company/role/start/client": "facts",
     "experience[softstars].bullets[0]": "work-notes: Live Stream catcher overview, VOD pipeline notes, universal catcher architecture",
-    "experience[softstars].bullets[1]": "work-notes: Live Stream catcher overview (LLM classification, Pydantic validation), universal catcher architecture (vision click loop), AI migration plan (structured outputs)",
-    "experience[softstars].bullets[2]": "work-notes: AI migration plan + gateway threads (Python and Node gateways, managed identity, per-tier models, cost goal)",
-    "experience[softstars].bullets[3]": "work-notes: ad-overlay dismissal, adult-content filter, universal catcher architecture (nested frames, anti-bot escalation)",
-    "experience[softstars].bullets[4]": "work-notes: aggregator fan-out (streams per match, measured on the test environment)",
+    "experience[softstars].bullets[1]": "validator-readme (auth, CSV/XLSX + IPTV playlist import, WHOIS/IP enrichment, dashboard, weekly reports, React + Node.js + PostgreSQL, Docker, Azure) + list of the app's pages (job scheduling, execution results, live/VOD links, Telegram crawler, data cleaning, users and invites) + git history (main contributor) + facts (Mehdi, 2026-10-28: 'the portal', more than CSV)",
+    "experience[softstars].bullets[2]": "work-notes: Live Stream catcher overview (LLM classification, Pydantic validation), universal catcher architecture (vision click loop), AI migration plan (structured outputs)",
+    "experience[softstars].bullets[3]": "work-notes: AI migration plan + gateway threads (Python and Node gateways, managed identity, per-tier models, cost goal)",
+    "experience[softstars].bullets[4]": "work-notes: ad-overlay dismissal, adult-content filter, universal catcher architecture + aggregator fan-out (streams per match, measured on the test environment)",
     "experience[softstars].bullets[5]": "work-notes: memory index (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL, Azure DevOps pipelines), Node 24 runtime migration, production investigations",
-    "experience[hotlas]": "facts (dates, location, role) + old-cv (React, Node.js/NestJS, Cypress). The old '40% performance' claim was dropped (no source).",
+    "experience[hotlas]": "facts (dates, location, role; Mehdi 2026-10-28: stock management, supplier communication, automatic detection of new PDFs mapped into the database) + old-cv (React, Node.js/NestJS, Cypress). The old '40% performance' claim was dropped (no source).",
     "experience[sqoin]": "old-cv",
     "experience[fivepoints]": "old-cv + plan-draft (role: full stack and trainer) + old-site (Puppeteer automation)",
     "experience[sentinel]": "old-cv",
     "projects[stream-catcher]": "work-notes: Live Stream catcher overview, universal catcher architecture, AI migration plan; plan-draft (product-level only)",
-    "projects[crawler-validator]": "validator-readme (features, React + Node.js, Docker, Azure) + plan-draft",
     "projects[restaurant-bar-app]": "app-notes: working rules (stack), bookings and recurrences, floor zones, door staff, orders and stations, push notifications, stats and CSV, tests/Docker/CI, deployment; facts (anonymised, no venue name)",
     "skills": "plan-draft (grouped skills) + old-cv + work-notes + app-notes",
     "skills.data.pandas": "work-notes: local insights app (Flask + pandas)",
@@ -699,8 +704,9 @@
     "languages": "old-cv (names) + facts (levels, confirmed by Mehdi on 2026-10-28)",
     "services[web-app]": "app-notes (stack, real time, push, roles, tests, Docker, CI) + experience",
     "services[ai]": "work-notes: AI migration plan (structured outputs, model per cost, fail-open guardrails), universal catcher (vision agent, cost tracking)",
-    "services[automation]": "work-notes (crawlers, scheduled cloud jobs) + validator-readme (CSV/XLSX enrichment, dashboard)",
+    "services[automation]": "work-notes (crawlers, scheduled cloud jobs) + validator-readme (CSV/XLSX enrichment, dashboard) + facts (Hotlas PDF import)",
     "servicesPage.pricing": "old-site (services page: 'Sur devis')",
-    "projects[restaurant-bar-app].context": "facts (client project, confirmed by Mehdi on 2026-10-28)"
+    "projects[restaurant-bar-app].context": "facts (client project, confirmed by Mehdi on 2026-10-28)",
+    "projects[anti-piracy-portal]": "validator-readme (auth, CSV/XLSX + IPTV playlist import, WHOIS/IP enrichment, dashboard, weekly reports, React + Node.js + PostgreSQL, Docker, Azure) + list of the app's pages (job scheduling, execution results, live/VOD links, Telegram crawler, data cleaning, users and invites) + git history (main contributor) + facts (Mehdi, 2026-10-28: 'the portal', more than CSV)"
   }
 }

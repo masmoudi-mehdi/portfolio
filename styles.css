@@ -485,7 +485,13 @@ section {
     margin: 1.5rem 0; /* Reduced vertical margin */
   }
 
+  /* Keep the date label above the vertical line drawn by script.js */
+  .timeline-item .year-label {
+    z-index: 2;
+  }
+
   .timeline-item::before {
+    z-index: 2;
     content: attr(data-year); /* Show the year */
     position: absolute;
     left: 0;

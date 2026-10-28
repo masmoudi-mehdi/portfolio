@@ -1,0 +1,593 @@
+{
+  "identity": {
+    "name": "Mehdi Masmoudi",
+    "title": {
+      "fr": "Développeur Full Stack & IA",
+      "en": "Full-Stack & AI Developer"
+    },
+    "location": {
+      "fr": "Tunis, Tunisie",
+      "en": "Tunis, Tunisia"
+    },
+    "email": "mehdi.masmoudi.contact@gmail.com",
+    "phone": "+216 99 133 416",
+    "phoneE164": "+21699133416",
+    "website": "https://www.mehdimasmoudi.com",
+    "linkedin": "https://www.linkedin.com/in/mehdi-masmoudi-a6b46a194/",
+    "github": "https://github.com/masmoudi-mehdi"
+  },
+
+  "seo": {
+    "index": {
+      "title": {
+        "fr": "Mehdi Masmoudi – Développeur Full Stack & IA à Tunis",
+        "en": "Mehdi Masmoudi – Full-Stack & AI Developer in Tunis"
+      },
+      "description": {
+        "fr": "Développeur full stack & IA à Tunis : applications web React et Node.js, intégration d'IA (LLM, Azure AI Foundry), automatisation et scraping. Temps plein ou freelance.",
+        "en": "Full-stack & AI developer in Tunis: React and Node.js web apps, AI integration (LLMs, Azure AI Foundry), automation and scraping. Open to full-time and freelance work."
+      }
+    },
+    "services": {
+      "title": {
+        "fr": "Services freelance – Mehdi Masmoudi",
+        "en": "Freelance services – Mehdi Masmoudi"
+      },
+      "description": {
+        "fr": "Application web sur mesure, intégration IA, automatisation et scraping : trois offres concrètes, sur devis.",
+        "en": "Custom web apps, AI features and web automation: three concrete offers, quoted per project."
+      }
+    }
+  },
+
+  "headline": {
+    "fr": "Applications web et agents IA, conçus pour la production.",
+    "en": "Web apps and AI agents, built to run in production."
+  },
+  "subline": {
+    "fr": "Développeur full stack & IA à Tunis. Ouvert à un poste à temps plein (en Tunisie ou à distance) et aux missions freelance.",
+    "en": "Full-stack & AI developer in Tunis. Open to full-time roles (on-site in Tunisia or remote) and to freelance work."
+  },
+
+  "about": {
+    "fr": [
+      "Je développe des applications web complètes : interface React, API Node.js ou Python, base PostgreSQL, mise en ligne sur le cloud.",
+      "Chez SoftStars depuis 2025, je construis des crawlers et des fonctions IA qui détectent le piratage de matchs en direct pour un grand diffuseur sportif international.",
+      "Avant cela : près de trois ans à distance pour Hotlas (Atlanta, USA), de la formation de développeurs chez Five Points et de l'analyse de données chez Sentinel Data.",
+      "Je cherche un poste à temps plein (en Tunisie ou à distance) et je prends des missions freelance."
+    ],
+    "en": [
+      "I build complete web applications: React front ends, Node.js or Python APIs, PostgreSQL, cloud deployment.",
+      "At SoftStars since 2025, I build crawlers and AI features that detect pirated live sports for a major international sports broadcaster.",
+      "Before that, I spent almost three years working remotely for Hotlas (Atlanta, USA), trained developers at Five Points and analyzed data at Sentinel Data.",
+      "I'm looking for a full-time role (in Tunisia or remote) and I take on freelance projects."
+    ]
+  },
+
+  "experience": [
+    {
+      "id": "softstars",
+      "company": "SoftStars",
+      "client": {
+        "fr": "un grand diffuseur sportif international",
+        "en": "a major international sports broadcaster"
+      },
+      "role": {
+        "fr": "Développeur Full Stack & IA",
+        "en": "Full-Stack & AI Developer"
+      },
+      "location": {
+        "fr": "Tunis, Tunisie",
+        "en": "Tunis, Tunisia"
+      },
+      "start": "2025-03",
+      "end": null,
+      "bullets": {
+        "fr": [
+          "Développé des crawlers live et VOD (Python, Node.js, Puppeteer) qui repèrent les diffusions pirates et collectent les preuves pour les demandes de retrait.",
+          "Mis l'IA au cœur du pipeline : classification des pages par LLM, agent de vision qui clique sur les lecteurs vidéo, réponses structurées et validées.",
+          "Migré les appels IA d'OpenAI vers Azure AI Foundry (passerelle Python et Node.js, identité managée, modèle choisi selon la tâche) pour réduire le coût de l'IA.",
+          "Rendu le crawler fiable sur des sites hostiles : fermeture automatique des publicités, filtre de contenu adulte, iframes imbriquées, protections anti-bot.",
+          "Multiplié le nombre de flux détectés par match sur les sites agrégateurs (mesuré en environnement de test).",
+          "Fait tourner les services sur Azure (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL) avec CI/CD Azure DevOps ; passage à Node 24 et analyse des incidents de production en SQL."
+        ],
+        "en": [
+          "Built live and VOD crawlers (Python, Node.js, Puppeteer) that spot pirate streams and collect the evidence behind takedown requests.",
+          "Put AI at the core of the pipeline: LLM page classification, a vision agent that clicks on video players, and validated structured outputs.",
+          "Moved the AI calls from OpenAI to Azure AI Foundry (Python and Node.js gateway, managed identity, model picked per task) to cut AI spend.",
+          "Made the crawler reliable on hostile sites: automatic ad dismissal, an adult-content filter, nested iframes and anti-bot protection.",
+          "Multiplied the number of streams found per match on aggregator sites (measured in a test environment).",
+          "Run the services on Azure (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL) with Azure DevOps CI/CD; upgraded them to Node 24 and traced production incidents through SQL and logs."
+        ]
+      }
+    },
+    {
+      "id": "hotlas",
+      "company": "Hotlas",
+      "client": null,
+      "role": {
+        "fr": "Développeur Full Stack",
+        "en": "Full-Stack Developer"
+      },
+      "location": {
+        "fr": "Atlanta, USA (à distance)",
+        "en": "Atlanta, USA (remote)"
+      },
+      "start": "2022-06",
+      "end": "2025-03",
+      "bullets": {
+        "fr": [
+          "Livré des fonctionnalités front-end en React.",
+          "Conçu l'architecture back-end en Node.js / NestJS : services et API qui gèrent les données de l'application.",
+          "Écrit des tests automatisés Cypress pour fiabiliser les livraisons et limiter les régressions."
+        ],
+        "en": [
+          "Shipped front-end features in React.",
+          "Designed the back-end architecture in Node.js / NestJS: the services and APIs behind the app's data.",
+          "Wrote automated Cypress tests to make releases safer and catch regressions early."
+        ]
+      }
+    },
+    {
+      "id": "sqoin",
+      "company": "SQOIN",
+      "client": null,
+      "role": {
+        "fr": "Développeur Full Stack & Product Owner",
+        "en": "Full-Stack Developer & Product Owner"
+      },
+      "location": {
+        "fr": "Tunis, Tunisie",
+        "en": "Tunis, Tunisia"
+      },
+      "start": "2022-03",
+      "end": "2022-06",
+      "bullets": {
+        "fr": [
+          "Développé et maintenu les API demandées par les clients.",
+          "Intégré et maintenu les modules de paiement de la plateforme coinsence.org.",
+          "Traduit les demandes des clients en tâches claires pour l'équipe de développement."
+        ],
+        "en": [
+          "Built and maintained the APIs our clients asked for.",
+          "Integrated and maintained the payment modules of the coinsence.org platform.",
+          "Turned client requests into clear tasks for the development team."
+        ]
+      }
+    },
+    {
+      "id": "fivepoints",
+      "company": "Five Points",
+      "client": null,
+      "role": {
+        "fr": "Développeur Full Stack & formateur",
+        "en": "Full-Stack Developer & Trainer"
+      },
+      "location": {
+        "fr": "Tunis, Tunisie",
+        "en": "Tunis, Tunisia"
+      },
+      "start": "2020-10",
+      "end": "2022-02",
+      "bullets": {
+        "fr": [
+          "Créé une application de mapping des fichiers clients pour Expensya.",
+          "Maintenu la plateforme de formation Five Points Academy et le site fivepoints.fr.",
+          "Formé des apprenants en algorithmique, HTML/CSS, JavaScript, Angular et bases de Node.js.",
+          "Produit des tutoriels de programmation et automatisé des tâches web avec Puppeteer."
+        ],
+        "en": [
+          "Built a mapping tool for Expensya's client files.",
+          "Maintained the Five Points Academy learning platform and the fivepoints.fr website.",
+          "Coached learners in algorithms, HTML/CSS, JavaScript, Angular and Node.js basics.",
+          "Produced programming tutorials and automated web tasks with Puppeteer."
+        ]
+      }
+    },
+    {
+      "id": "sentinel",
+      "company": "Sentinel Data",
+      "client": null,
+      "role": {
+        "fr": "Analyste de données",
+        "en": "Data Analyst"
+      },
+      "location": {
+        "fr": "Tunis, Tunisie",
+        "en": "Tunis, Tunisia"
+      },
+      "start": "2019-04",
+      "end": "2020-08",
+      "bullets": {
+        "fr": [
+          "Nettoyé et préparé les données (Excel, Python, logique floue).",
+          "Chargé les données dans Google BigQuery et vérifié leur intégrité en SQL.",
+          "Analysé les données dans Power BI et rédigé des plans d'amélioration."
+        ],
+        "en": [
+          "Cleaned and prepared data (Excel, Python, fuzzy logic).",
+          "Loaded data into Google BigQuery and checked its integrity with SQL.",
+          "Analyzed the data in Power BI and wrote improvement plans."
+        ]
+      }
+    }
+  ],
+
+  "projects": [
+    {
+      "slug": "stream-catcher",
+      "name": {
+        "fr": "Stream-Catcher",
+        "en": "Stream-Catcher"
+      },
+      "oneLiner": {
+        "fr": "Détection automatique des diffusions pirates de matchs en direct et de contenus VOD.",
+        "en": "Automatic detection of pirated live matches and VOD content."
+      },
+      "problem": {
+        "fr": "Des matchs sont rediffusés illégalement sur des sites qui changent sans cesse, cachent leurs flux dans des iframes et bloquent les robots.",
+        "en": "Matches are re-streamed illegally on sites that change all the time, hide their streams in nested iframes and block bots."
+      },
+      "built": {
+        "fr": "Un pipeline qui trouve les pages, les classe avec un LLM, détecte le flux vidéo et garde une preuve (URL du flux + capture d'écran) pour la demande de retrait.",
+        "en": "A pipeline that finds the pages, classifies them with an LLM, detects the video stream and keeps the evidence (stream URL + screenshot) for the takedown request."
+      },
+      "stack": ["Python", "Node.js", "Puppeteer", "LLM", "Azure AI Foundry", "Azure Container Apps", "Service Bus", "PostgreSQL"],
+      "role": {
+        "fr": "Développeur full stack & IA dans l'équipe : crawlers, intégration IA, déploiement Azure.",
+        "en": "Full-stack & AI developer on the team: crawlers, AI integration, Azure deployment."
+      },
+      "result": {
+        "fr": "En production pour un grand diffuseur sportif international. Détails confidentiels : schéma au niveau produit uniquement.",
+        "en": "In production for a major international sports broadcaster. Confidential: product-level overview only."
+      },
+      "link": null,
+      "images": []
+    },
+    {
+      "slug": "crawler-validator",
+      "name": {
+        "fr": "Crawler Validator",
+        "en": "Crawler Validator"
+      },
+      "oneLiner": {
+        "fr": "Application web qui valide et enrichit des fichiers CSV/XLSX de sites de streaming.",
+        "en": "A web app that validates and enriches CSV/XLSX files of streaming sites."
+      },
+      "problem": {
+        "fr": "Des listes de sites arrivent en CSV ou XLSX, dans plusieurs formats, et doivent être vérifiées puis complétées.",
+        "en": "Lists of sites arrive as CSV or XLSX files, in several formats, and need to be checked and completed."
+      },
+      "built": {
+        "fr": "Import CSV/XLSX, détection automatique du modèle de fichier, enrichissement WHOIS et géolocalisation IP, tableau de bord des résultats.",
+        "en": "CSV/XLSX upload, automatic file-template detection, WHOIS and IP-geolocation enrichment, and a results dashboard."
+      },
+      "stack": ["React", "Node.js", "PostgreSQL", "Docker", "Azure"],
+      "role": {
+        "fr": "Développeur full stack : interface React, API Node.js, déploiement sur Azure.",
+        "en": "Full-stack developer: React front end, Node.js API, Azure deployment."
+      },
+      "result": {
+        "fr": "Déployée sur Azure dans un conteneur Docker.",
+        "en": "Deployed on Azure in a Docker container."
+      },
+      "link": null,
+      "images": []
+    },
+    {
+      "slug": "restaurant-bar-app",
+      "name": {
+        "fr": "Application de gestion de restaurant-bar",
+        "en": "Restaurant-bar management app"
+      },
+      "oneLiner": {
+        "fr": "Réservations, plan de salle et commandes en temps réel pour un restaurant-bar.",
+        "en": "Bookings, floor plan and live orders for a restaurant-bar."
+      },
+      "context": {
+        "fr": "TODO",
+        "en": "TODO"
+      },
+      "problem": {
+        "fr": "Un restaurant-bar doit gérer au même endroit les réservations, le placement des clients et les commandes entre la salle, le bar et la cuisine.",
+        "en": "A restaurant-bar needs one place to handle bookings, seating and orders flowing between the floor, the bar and the kitchen."
+      },
+      "built": {
+        "fr": "Réservations (téléphone, en ligne, clients réguliers), plan de salle par zones, écran portier, commandes envoyées en temps réel aux postes de préparation, rôles par métier, notifications push (PWA), statistiques et export CSV.",
+        "en": "Bookings (phone, online, regulars), a floor plan by zone, a door-staff screen, orders pushed live to prep stations, role-based access, push notifications (PWA), stats and CSV export."
+      },
+      "stack": ["React", "Vite", "TypeScript", "Express", "Prisma", "PostgreSQL", "Socket.IO", "Jest", "Docker", "GitHub Actions"],
+      "role": {
+        "fr": "Conception, développement et déploiement de bout en bout.",
+        "en": "Designed, built and deployed end to end."
+      },
+      "result": {
+        "fr": "Application déployée, avec tests automatisés et intégration continue.",
+        "en": "Deployed, with automated tests and continuous integration."
+      },
+      "link": null,
+      "images": []
+    }
+  ],
+
+  "skills": [
+    {
+      "id": "frontend",
+      "group": { "fr": "Frontend", "en": "Frontend" },
+      "items": ["React", "TypeScript", "JavaScript", "Vite", "Tailwind CSS", "HTML & CSS"]
+    },
+    {
+      "id": "backend",
+      "group": { "fr": "Backend", "en": "Backend" },
+      "items": ["Node.js", "Express", "NestJS", "Python", "Prisma", "Socket.IO", "REST APIs"]
+    },
+    {
+      "id": "ai",
+      "group": { "fr": "IA & LLM", "en": "AI & LLM" },
+      "items": [
+        "Azure AI Foundry",
+        "OpenAI API",
+        { "fr": "Sorties structurées", "en": "Structured outputs" },
+        { "fr": "Agents de vision", "en": "Vision agents" },
+        "Claude Code"
+      ]
+    },
+    {
+      "id": "automation",
+      "group": { "fr": "Automatisation & scraping", "en": "Automation & scraping" },
+      "items": [
+        "Puppeteer",
+        "Playwright",
+        { "fr": "Contournement anti-bot", "en": "Anti-bot handling" },
+        { "fr": "Capture de flux HLS/DASH", "en": "HLS/DASH stream capture" }
+      ]
+    },
+    {
+      "id": "data",
+      "group": { "fr": "Données", "en": "Data" },
+      "items": ["PostgreSQL", "SQL", "MongoDB", "BigQuery", "Power BI", "pandas"]
+    },
+    {
+      "id": "cloud",
+      "group": { "fr": "Cloud & DevOps", "en": "Cloud & DevOps" },
+      "items": ["Azure Container Apps", "Azure Functions", "Service Bus", "Key Vault", "Docker", "Azure DevOps", "GitHub Actions", "Git"]
+    },
+    {
+      "id": "testing",
+      "group": { "fr": "Tests", "en": "Testing" },
+      "items": ["Jest", "Cypress", "pytest"]
+    }
+  ],
+
+  "education": [
+    {
+      "school": {
+        "fr": "Université de Tunis Carthage",
+        "en": "Tunis Carthage University"
+      },
+      "degree": {
+        "fr": "Licence en gestion, spécialité finance",
+        "en": "Bachelor's degree in Management, Finance major"
+      },
+      "start": "2014",
+      "end": "2018"
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "CS50 (Computer Science 50)",
+      "issuer": "Harvard University",
+      "start": "2023-03",
+      "end": "2023-10"
+    },
+    {
+      "name": "React - The Complete Guide",
+      "issuer": "Udemy",
+      "start": "2022-06",
+      "end": "2022-07"
+    },
+    {
+      "name": "Full-Stack JS Certificate",
+      "issuer": "Five Points",
+      "start": "2020-09",
+      "end": "2021-05"
+    }
+  ],
+
+  "languages": [
+    {
+      "name": { "fr": "Arabe", "en": "Arabic" },
+      "level": { "fr": "TODO", "en": "TODO" }
+    },
+    {
+      "name": { "fr": "Français", "en": "French" },
+      "level": { "fr": "TODO", "en": "TODO" }
+    },
+    {
+      "name": { "fr": "Anglais", "en": "English" },
+      "level": { "fr": "TODO", "en": "TODO" }
+    }
+  ],
+
+  "services": [
+    {
+      "id": "web-app",
+      "icon": "fa-laptop-code",
+      "title": {
+        "fr": "Application web sur mesure",
+        "en": "Custom web application"
+      },
+      "description": {
+        "fr": "Je conçois et développe votre application de A à Z : interface, API, base de données et mise en ligne.",
+        "en": "I design and build your app end to end: interface, API, database and deployment."
+      },
+      "points": {
+        "fr": [
+          "Interface React + TypeScript, pensée aussi pour le mobile",
+          "API Node.js (Express ou NestJS) et base PostgreSQL",
+          "Temps réel (Socket.IO), notifications push, rôles et droits",
+          "Tests automatisés, Docker et CI/CD"
+        ],
+        "en": [
+          "React + TypeScript front end that works well on mobile",
+          "Node.js API (Express or NestJS) with PostgreSQL",
+          "Live updates (Socket.IO), push notifications, roles and permissions",
+          "Automated tests, Docker and CI/CD"
+        ]
+      },
+      "example": {
+        "fr": "Exemple : une application de gestion de restaurant-bar (réservations, plan de salle, commandes en temps réel).",
+        "en": "Example: a restaurant-bar management app (bookings, floor plan, live orders)."
+      }
+    },
+    {
+      "id": "ai",
+      "icon": "fa-robot",
+      "title": {
+        "fr": "Intégration IA",
+        "en": "AI features for your product"
+      },
+      "description": {
+        "fr": "J'ajoute de l'IA utile à votre produit ou à vos process, avec des réponses contrôlées et un coût maîtrisé.",
+        "en": "I add AI that does real work in your product or workflow, with checked outputs and a bill you can predict."
+      },
+      "points": {
+        "fr": [
+          "Classification et extraction de données par LLM, en sorties structurées",
+          "Agents qui agissent sur des pages web (vision, clics)",
+          "Azure AI Foundry ou API OpenAI, avec le modèle adapté au coût",
+          "Garde-fous : validation des réponses, repli en cas d'erreur, suivi des coûts"
+        ],
+        "en": [
+          "LLM classification and data extraction with structured outputs",
+          "Agents that act on web pages (vision, clicks)",
+          "Azure AI Foundry or the OpenAI API, with the right model for the budget",
+          "Guardrails: output validation, safe fallbacks, cost tracking"
+        ]
+      },
+      "example": {
+        "fr": "Exemple : la migration des appels IA d'un pipeline en production d'OpenAI vers Azure AI Foundry.",
+        "en": "Example: moving a production pipeline's AI calls from OpenAI to Azure AI Foundry."
+      }
+    },
+    {
+      "id": "automation",
+      "icon": "fa-spider",
+      "title": {
+        "fr": "Automatisation et scraping",
+        "en": "Automation & web scraping"
+      },
+      "description": {
+        "fr": "J'automatise la collecte et le traitement de données web, même sur des sites difficiles.",
+        "en": "I automate collecting and processing web data, even on hard-to-crawl sites."
+      },
+      "points": {
+        "fr": [
+          "Crawlers Puppeteer / Playwright (iframes, publicités, protections anti-bot)",
+          "Pipelines Python ou Node.js planifiés dans le cloud",
+          "Import et enrichissement de fichiers CSV/XLSX (WHOIS, géolocalisation IP)",
+          "Tableaux de bord pour suivre les résultats"
+        ],
+        "en": [
+          "Puppeteer / Playwright crawlers (iframes, ads, anti-bot protection)",
+          "Scheduled Python or Node.js pipelines in the cloud",
+          "CSV/XLSX import and enrichment (WHOIS, IP geolocation)",
+          "Dashboards to follow the results"
+        ]
+      },
+      "example": {
+        "fr": "Exemple : des crawlers qui détectent les diffusions pirates de matchs et capturent les preuves.",
+        "en": "Example: crawlers that detect pirated match streams and capture the evidence."
+      }
+    }
+  ],
+
+  "servicesPage": {
+    "headline": {
+      "fr": "Ce que je peux construire pour vous",
+      "en": "What I can build for you"
+    },
+    "subline": {
+      "fr": "Trois offres concrètes, tirées de ce que je fais au quotidien. Sur devis, en freelance.",
+      "en": "Three concrete offers, based on what I do every day. Freelance, quoted per project."
+    },
+    "pricing": {
+      "fr": "Sur devis",
+      "en": "Quote on request"
+    },
+    "process": [
+      {
+        "title": { "fr": "Échange et cadrage", "en": "Talk and scope" },
+        "text": {
+          "fr": "Je commence par comprendre votre besoin, vos contraintes et votre budget, puis je fixe un périmètre clair.",
+          "en": "I start by understanding what you need, your constraints and your budget, then agree on a clear scope."
+        }
+      },
+      {
+        "title": { "fr": "Architecture et maquette", "en": "Architecture and prototype" },
+        "text": {
+          "fr": "Je propose une architecture simple et une première version cliquable pour valider le parcours.",
+          "en": "I propose a simple architecture and a first clickable version so you can check the flow early."
+        }
+      },
+      {
+        "title": { "fr": "Développement et tests", "en": "Build and test" },
+        "text": {
+          "fr": "Je développe par petites étapes, avec des tests automatisés, et je vous montre l'avancement régulièrement.",
+          "en": "I build in small steps with automated tests, and show you progress regularly."
+        }
+      },
+      {
+        "title": { "fr": "Mise en ligne et suivi", "en": "Launch and support" },
+        "text": {
+          "fr": "Je déploie l'application, je documente ce que j'ai fait et j'assure le suivi après la livraison.",
+          "en": "I deploy the app, document what I built and stay around for support after launch."
+        }
+      }
+    ]
+  },
+
+  "_sources": {
+    "_legend": {
+      "facts": "Facts confirmed by Mehdi on 2026-10-28 (improvement plan, section 5 - local, not published)",
+      "plan-draft": "Improvement plan, section 4 draft (local, not published)",
+      "old-cv": "Previous CVs: assets/cv/cv-francais.pdf and assets/cv/cv-anglais.pdf",
+      "old-site": "Previous site text (index.html before this change)",
+      "work-notes": "Private SoftStars work notes (not published); the topic is given after the colon",
+      "validator-readme": "Private Crawler Validator README (not published)",
+      "app-notes": "Private restaurant-bar app work notes (not published); the topic is given after the colon",
+      "numbers": "No internal number is published (facts). Years, durations and software versions are the only digits in the text."
+    },
+    "identity.*": "facts",
+    "headline": "plan-draft (proposed title) + facts (target: full-time and freelance)",
+    "subline": "facts (location, target)",
+    "about[0]": "old-cv + work-notes: architecture, Azure + app-notes: stack",
+    "about[1]": "facts (employer, start date, anonymised client) + work-notes: Live Stream catcher overview",
+    "about[2]": "facts (Hotlas June 2022 - March 2025, remote) + old-cv (Five Points coaching, Sentinel Data)",
+    "about[3]": "facts (target)",
+    "experience[softstars].company/role/start/client": "facts",
+    "experience[softstars].bullets[0]": "work-notes: Live Stream catcher overview, VOD pipeline notes, universal catcher architecture",
+    "experience[softstars].bullets[1]": "work-notes: Live Stream catcher overview (LLM classification, Pydantic validation), universal catcher architecture (vision click loop), AI migration plan (structured outputs)",
+    "experience[softstars].bullets[2]": "work-notes: AI migration plan + gateway threads (Python and Node gateways, managed identity, per-tier models, cost goal)",
+    "experience[softstars].bullets[3]": "work-notes: ad-overlay dismissal, adult-content filter, universal catcher architecture (nested frames, anti-bot escalation)",
+    "experience[softstars].bullets[4]": "work-notes: aggregator fan-out (streams per match, measured on the test environment)",
+    "experience[softstars].bullets[5]": "work-notes: memory index (Container Apps Jobs, Service Bus, Functions, Key Vault, PostgreSQL, Azure DevOps pipelines), Node 24 runtime migration, production investigations",
+    "experience[hotlas]": "facts (dates, location, role) + old-cv (React, Node.js/NestJS, Cypress). The old '40% performance' claim was dropped (no source).",
+    "experience[sqoin]": "old-cv",
+    "experience[fivepoints]": "old-cv + plan-draft (role: full stack and trainer) + old-site (Puppeteer automation)",
+    "experience[sentinel]": "old-cv",
+    "projects[stream-catcher]": "work-notes: Live Stream catcher overview, universal catcher architecture, AI migration plan; plan-draft (product-level only)",
+    "projects[crawler-validator]": "validator-readme (features, React + Node.js, Docker, Azure) + plan-draft",
+    "projects[restaurant-bar-app]": "app-notes: working rules (stack), bookings and recurrences, floor zones, door staff, orders and stations, push notifications, stats and CSV, tests/Docker/CI, deployment; facts (anonymised, no venue name)",
+    "skills": "plan-draft (grouped skills) + old-cv + work-notes + app-notes",
+    "skills.data.pandas": "work-notes: local insights app (Flask + pandas)",
+    "education": "old-cv",
+    "certifications": "old-cv",
+    "languages": "old-cv (names only; levels still to confirm)",
+    "services[web-app]": "app-notes (stack, real time, push, roles, tests, Docker, CI) + experience",
+    "services[ai]": "work-notes: AI migration plan (structured outputs, model per cost, fail-open guardrails), universal catcher (vision agent, cost tracking)",
+    "services[automation]": "work-notes (crawlers, scheduled cloud jobs) + validator-readme (CSV/XLSX enrichment, dashboard)",
+    "servicesPage.pricing": "old-site (services page: 'Sur devis')"
+  }
+}

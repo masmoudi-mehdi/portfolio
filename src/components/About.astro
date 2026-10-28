@@ -1,0 +1,61 @@
+---
+import Icon from "./Icon.astro";
+import { p, t, ui, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const year = (ym: string) => ym.slice(0, 4);
+---
+
+<section id="about" class="section border-t border-line bg-surface" aria-labelledby="about-title">
+  <div class="container-page grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
+    <div>
+      <h2 id="about-title" class="section-title">{t(ui.about.title, lang)}</h2>
+      <div class="mt-8 max-w-2xl space-y-4 text-lg">
+        {t(p.about, lang).map((para) => <p>{para}</p>)}
+      </div>
+    </div>
+
+    <div class="space-y-8 lg:pt-14">
+      <div>
+        <h3 class="flex items-center gap-2 text-lg font-semibold text-fg">
+          <Icon name="graduation-cap" class="text-accent" />
+          {t(ui.about.education, lang)}
+        </h3>
+        <ul class="mt-3 space-y-3">
+          {
+            p.education.map((e) => (
+              <li>
+                <p class="font-medium text-fg">{t(e.degree, lang)}</p>
+                <p class="text-sm text-muted">
+                  {t(e.school, lang)} · {e.start} – {e.end}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h3 class="flex items-center gap-2 text-lg font-semibold text-fg">
+          <Icon name="award" class="text-accent" />
+          {t(ui.about.certifications, lang)}
+        </h3>
+        <ul class="mt-3 space-y-3">
+          {
+            p.certifications.map((c) => (
+              <li>
+                <p class="font-medium text-fg">{c.name}</p>
+                <p class="text-sm text-muted">
+                  {c.issuer} · {year(c.end)}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

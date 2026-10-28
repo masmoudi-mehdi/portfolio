@@ -1,0 +1,82 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon, { type IconName } from "./Icon.astro";
+import Contact from "./Contact.astro";
+import { p, t, ui, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = p.servicesPage;
+const s = ui.services;
+
+const ICONS: Record<string, IconName> = { "web-app": "code", ai: "bot", automation: "workflow" };
+---
+
+<Base lang={lang} page="services" title={t(p.seo.services.title, lang)} description={t(p.seo.services.description, lang)}>
+  <section class="container-page pt-12 pb-16 sm:pt-20 sm:pb-20 lg:pt-24">
+    <h1 class="max-w-3xl text-3xl font-bold tracking-tight text-fg">{t(page.headline, lang)}</h1>
+    <p class="mt-5 max-w-2xl text-lg text-muted">{t(page.subline, lang)}</p>
+    <a href="#contact" class="btn-primary mt-8">
+      <Icon name="mail" size={18} />
+      {t(ui.hero.contact, lang)}
+    </a>
+  </section>
+
+  <section class="section border-t border-line bg-surface" aria-labelledby="offers-title">
+    <div class="container-page">
+      <h2 id="offers-title" class="section-title">{t(s.offersTitle, lang)}</h2>
+      <ul class="mt-10 grid gap-6 sm:mt-14 lg:grid-cols-3">
+        {
+          p.services.map((offer) => (
+            <li class="reveal flex flex-col rounded-2xl border border-line bg-bg p-6 sm:p-8">
+              <span class="inline-flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent-soft-fg">
+                <Icon name={ICONS[offer.id] ?? "code"} size={24} />
+              </span>
+              <h3 class="mt-5 text-xl font-semibold text-fg">{t(offer.title, lang)}</h3>
+              <p class="mt-2 text-muted">{t(offer.description, lang)}</p>
+              <ul class="mt-5 space-y-2.5">
+                {t(offer.points, lang).map((point) => (
+                  <li class="flex gap-3">
+                    <Icon name="check" size={20} class="mt-1 text-accent" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-5 border-t border-line pt-5 text-sm text-muted italic">{t(offer.example, lang)}</p>
+              <p class="mt-auto pt-5">
+                <span class="tag">{t(page.pricing, lang)}</span>
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section border-t border-line" aria-labelledby="process-title">
+    <div class="container-page">
+      <h2 id="process-title" class="section-title">{t(s.processTitle, lang)}</h2>
+      <ol class="mt-10 grid gap-8 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          page.process.map((step, i) => (
+            <li class="reveal">
+              <span
+                class="inline-flex size-10 items-center justify-center rounded-full border-2 border-accent font-bold text-accent"
+                aria-hidden="true"
+              >
+                {i + 1}
+              </span>
+              <h3 class="mt-4 text-lg font-semibold text-fg">{t(step.title, lang)}</h3>
+              <p class="mt-2 text-muted">{t(step.text, lang)}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <Contact lang={lang} title={t(s.ctaTitle, lang)} intro={t(s.ctaText, lang)} />
+</Base>

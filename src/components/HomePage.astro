@@ -2,6 +2,10 @@
 import Base from "../layouts/Base.astro";
 import Hero from "./Hero.astro";
 import Experience from "./Experience.astro";
+import Projects from "./Projects.astro";
+import Skills from "./Skills.astro";
+import About from "./About.astro";
+import Contact from "./Contact.astro";
 import { p, t, type Lang } from "../lib/profile";
 
 interface Props {
@@ -14,4 +18,8 @@ const { lang } = Astro.props;
 <Base lang={lang} page="home" title={t(p.seo.index.title, lang)} description={t(p.seo.index.description, lang)}>
   <Hero lang={lang} />
   <Experience lang={lang} />
+  <Projects lang={lang} />
+  <Skills lang={lang} />
+  <About lang={lang} />
+  <Contact lang={lang} />
 </Base>

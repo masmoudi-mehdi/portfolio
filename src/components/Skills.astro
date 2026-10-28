@@ -1,0 +1,43 @@
+---
+import { p, t, ui, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section id="skills" class="section border-t border-line" aria-labelledby="skills-title">
+  <div class="container-page">
+    <h2 id="skills-title" class="section-title">{t(ui.skills.title, lang)}</h2>
+
+    <div class="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        p.skills.map((group) => (
+          <div class="reveal rounded-2xl border border-line bg-surface p-6">
+            <h3 class="text-lg font-semibold text-fg">{t(group.group, lang)}</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <li class="tag">{t(item, lang)}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <div class="reveal rounded-2xl border border-line bg-surface p-6">
+        <h3 class="text-lg font-semibold text-fg">{t(ui.skills.languages, lang)}</h3>
+        <ul class="mt-4 space-y-2">
+          {
+            p.languages.map((l) => (
+              <li class="flex justify-between gap-4">
+                <span class="font-medium text-fg">{t(l.name, lang)}</span>
+                <span class="text-muted">{t(l.level, lang)}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+// GitHub Pages serves dist/404.html for every unknown URL, in both languages,
+// so the page shows the French and the English text.
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { t, ui, ROUTES, LANGS } from "../lib/profile";
+
+const nf = ui.notFound;
+---
+
+<Base lang="fr" title={`${t(nf.title, "fr")} · ${t(nf.title, "en")}`} description={t(nf.text, "fr")}>
+  <section class="container-page grid gap-12 py-20 sm:grid-cols-2 sm:py-32">
+    {
+      LANGS.map((lang) => (
+        <div lang={lang}>
+          {lang === "fr" ? (
+            <h1 class="text-2xl font-bold tracking-tight text-fg">{t(nf.title, lang)}</h1>
+          ) : (
+            <h2 class="text-2xl font-bold tracking-tight text-fg">{t(nf.title, lang)}</h2>
+          )}
+          <p class="mt-4 text-lg text-muted">{t(nf.text, lang)}</p>
+          <a href={ROUTES.home[lang]} class="btn-primary mt-8">
+            <Icon name="arrow-right" size={18} />
+            {t(nf.back, lang)}
+          </a>
+        </div>
+      ))
+    }
+  </section>
+</Base>

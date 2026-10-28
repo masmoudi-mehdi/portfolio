@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.mehdimasmoudi.com/sitemap-index.xml

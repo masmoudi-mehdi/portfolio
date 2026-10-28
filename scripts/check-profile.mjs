@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Checks content/profile.json and the 4 site pages before publishing.
-//   node scripts/check-profile.mjs
+// Checks content/profile.json and the built pages (dist/) before publishing.
+//   npm run build && node scripts/check-profile.mjs
+// Without a dist/ folder only the JSON is checked.
 // Errors exit with code 1. TODOs are listed as warnings.
 //
 // Confidential words (client name, internal resource names...) are stored as
@@ -9,13 +10,14 @@
 // line; that file is git-ignored.
 
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PROFILE = join(root, "content", "profile.json");
-const PAGES = ["index.html", "index-en.html", "services.html", "services-en.html"];
+const DIST = join(root, "dist");
+const SERVICES_PAGES = { "services.html": "fr", "en/services.html": "en" };
 const MY_EMAIL = "mehdi.masmoudi.contact@gmail.com";
 
 const FORBIDDEN_TOKEN_HASHES = new Set([
@@ -150,18 +152,22 @@ const visibleText = (html) =>
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;|&amp;|&#39;|&quot;/g, " ");
 
-for (const page of PAGES) {
-  const file = join(root, page);
-  if (!existsSync(file)) {
-    err(page, "page not found");
-    continue;
-  }
+const htmlFiles = (dir) =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? htmlFiles(join(dir, e.name)) : e.name.endsWith(".html") ? [join(dir, e.name)] : [],
+  );
+
+const pages = existsSync(DIST) ? htmlFiles(DIST) : [];
+if (!pages.length) warnings.push("dist/ not found: run `npm run build` to check the pages too");
+for (const file of pages) {
+  const page = relative(DIST, file).replace(/\\/g, "/");
   // Inline styles hold hex colours like #111827, not ticket numbers.
   const html = readFileSync(file, "utf8").replace(/\sstyle="[^"]*"/g, "");
   checkText(page, html);
-  if (page.startsWith("services")) {
+  const lang = SERVICES_PAGES[page];
+  if (lang) {
     const text = visibleText(html);
-    const we = page.endsWith("-en.html") ? /\b(we|our|ours|us)\b/i : /\b(nous|notre|nos)\b/i;
+    const we = lang === "en" ? /\b(we|our|ours|us)\b/i : /\b(nous|notre|nos)\b/i;
     const m = text.match(we);
     if (m) err(page, `services page must speak in the first person singular, found "${m[0]}"`);
   }
@@ -177,4 +183,4 @@ if (errors.length) {
   for (const e of errors) console.log(`  - ${e}`);
   process.exit(1);
 }
-console.log("✔ profile.json parses, FR/EN match, no forbidden item in the JSON or the 4 pages.");
+console.log(`✔ profile.json parses, FR/EN match, no forbidden item in the JSON or the ${pages.length} built pages.`);

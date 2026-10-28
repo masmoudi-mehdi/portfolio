@@ -28,7 +28,7 @@ export default defineConfig({
       // The EN home lives at /en/ (a folder): list it with its final slash,
       // like the canonical link, so Google does not see a redirect.
       serialize(item) {
-        const fix = (url) => url.replace(/\/en$/, "/en/");
+        const fix = (/** @type {string} */ url) => url.replace(/\/en$/, "/en/");
         item.url = fix(item.url);
         item.links = item.links?.map((l) => ({ ...l, url: fix(l.url) }));
         return item;

@@ -1,0 +1,61 @@
+---
+import Icon from "./Icon.astro";
+import { p, t, ui, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const labels = ui.projects;
+---
+
+<section id="projects" class="section border-t border-line bg-surface" aria-labelledby="projects-title">
+  <div class="container-page">
+    <h2 id="projects-title" class="section-title">{t(labels.title, lang)}</h2>
+
+    <ul class="mt-10 grid gap-6 sm:mt-14 sm:gap-8">
+      {
+        p.projects.map((project) => {
+          const details = [
+            [labels.problem, project.problem],
+            [labels.built, project.built],
+            [labels.role, project.role],
+            [labels.result, project.result],
+          ] as const;
+          return (
+            <li class="reveal rounded-2xl border border-line bg-bg p-6 sm:p-8 lg:grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-12">
+              <div>
+                <h3 class="text-xl font-semibold text-fg">{t(project.name, lang)}</h3>
+                {"context" in project && project.context && (
+                  <p class="mt-1 text-sm font-medium text-accent">{t(project.context, lang)}</p>
+                )}
+                <p class="mt-3 text-lg text-muted">{t(project.oneLiner, lang)}</p>
+                <p class="mt-6 text-sm font-semibold text-fg">{t(labels.stack, lang)}</p>
+                <ul class="mt-2 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <li class="tag">{tech}</li>
+                  ))}
+                </ul>
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="link mt-6 inline-flex items-center gap-1.5">
+                    {t(project.name, lang)}
+                    <Icon name="arrow-up-right" size={16} />
+                  </a>
+                )}
+              </div>
+              <dl class="mt-6 space-y-4 lg:mt-0">
+                {details.map(([label, text]) => (
+                  <div>
+                    <dt class="text-sm font-semibold tracking-wide text-fg uppercase">{t(label, lang)}</dt>
+                    <dd class="mt-1 text-muted">{t(text, lang)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

@@ -13,7 +13,8 @@ const { lang, title = t(c.title, lang), intro = t(c.intro, lang) } = Astro.props
 
 // Underlined fields, like the old form. Labels stay for screen readers.
 const field =
-  "w-full border-b-2 border-cyan-500 bg-transparent py-4 text-xl text-fg placeholder:text-muted focus:border-cyan-300 focus:outline-none";
+  "w-full border-b-2 border-cyan-500 bg-transparent py-4 text-xl text-fg placeholder:text-muted focus:border-cyan-300";
+const errorClass = "mt-2 text-red-700 dark:text-red-400";
 ---
 
 <section
@@ -25,18 +26,21 @@ const field =
     <h2 id="contact-title" class="section-title mb-4! sm:mb-6!">{title}</h2>
     <p class="mx-auto mb-12 max-w-2xl text-center text-lg text-muted">{intro}</p>
 
-    <form action={FORMSPREE_URL} method="POST" data-contact-form class="relative space-y-2">
+    <form action={FORMSPREE_URL} method="POST" data-contact-form data-required={t(c.required, lang)} data-invalid-email={t(c.invalidEmail, lang)} class="relative space-y-2">
       <div>
         <label for={`contact-name-${lang}`} class="sr-only">{t(c.name, lang)}</label>
         <input id={`contact-name-${lang}`} type="text" name="name" autocomplete="name" placeholder={t(c.name, lang)} required class={field} />
+        <p id={`contact-name-${lang}-error`} data-error-for="name" hidden class={errorClass}></p>
       </div>
       <div>
         <label for={`contact-email-${lang}`} class="sr-only">{t(c.email, lang)}</label>
         <input id={`contact-email-${lang}`} type="email" name="email" autocomplete="email" placeholder={t(c.email, lang)} required class={field} />
+        <p id={`contact-email-${lang}-error`} data-error-for="email" hidden class={errorClass}></p>
       </div>
       <div>
         <label for={`contact-message-${lang}`} class="sr-only">{t(c.message, lang)}</label>
         <textarea id={`contact-message-${lang}`} name="message" rows="4" placeholder={t(c.message, lang)} required class={field}></textarea>
+        <p id={`contact-message-${lang}-error`} data-error-for="message" hidden class={errorClass}></p>
       </div>
 
       <!-- Honeypot: hidden from people, filled by bots; Formspree drops those messages. -->
@@ -71,7 +75,7 @@ const field =
 
 <script>
   // Sends the form to Formspree without leaving the page and shows the result.
-  // Without JavaScript the form still posts normally.
+  // Without JavaScript the form still posts normally, with the browser's own checks.
   for (const form of document.querySelectorAll<HTMLFormElement>("[data-contact-form]")) {
     const button = form.querySelector<HTMLButtonElement>("button[type=submit]")!;
     const label = button.querySelector("span")!;
@@ -82,9 +86,44 @@ const field =
       form.querySelector("[data-live]")!.textContent = msg ?? "";
     };
 
+    // Own checks instead of the browser bubbles: the messages are in the page
+    // language, sit next to the field and are announced by screen readers.
+    form.noValidate = true;
+    type Field = HTMLInputElement | HTMLTextAreaElement;
+    const fields = [...form.querySelectorAll<Field>("input[name=name], input[name=email], textarea")];
+    const errorOf = (field: Field) => form.querySelector<HTMLElement>(`[data-error-for=${field.name}]`)!;
+    const setError = (field: Field, message: string | null) => {
+      const error = errorOf(field);
+      error.hidden = !message;
+      error.textContent = message;
+      field.toggleAttribute("aria-invalid", !!message);
+      if (message) field.setAttribute("aria-describedby", error.id);
+      else field.removeAttribute("aria-describedby");
+    };
+    const problem = (field: Field) => {
+      const value = field.value.trim();
+      if (!value) return form.dataset.required!;
+      if (field.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return form.dataset.invalidEmail!;
+      return null;
+    };
+    // Once a field shows an error, re-check it while typing so the message goes away.
+    for (const field of fields) {
+      field.addEventListener("input", () => field.hasAttribute("aria-invalid") && setError(field, problem(field)));
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       show(null);
+      const invalid = fields.filter((field) => {
+        const message = problem(field);
+        setError(field, message);
+        return message;
+      });
+      if (invalid.length) {
+        invalid[0].focus();
+        form.querySelector("[data-live]")!.textContent = errorOf(invalid[0]).textContent;
+        return;
+      }
       button.disabled = true;
       label.textContent = button.dataset.sending ?? idle;
       try {

@@ -17,6 +17,8 @@ const diagram = "diagram" in project ? project.diagram : undefined;
 const note = "note" in project ? project.note : undefined;
 const alternates = Object.fromEntries(LANGS.map((l) => [l, projectHref(slug, l)])) as Record<Lang, string>;
 
+// Screenshots get alt="" because their figcaption is the description:
+// an alt text as well would be read twice by screen readers.
 const sections = [
   [labels.problem, project.problem],
   [labels.built, project.built],
@@ -25,7 +27,7 @@ const sections = [
 ] as const;
 ---
 
-<Base lang={lang} alternates={alternates} title={`${t(project.name, lang)} – ${p.identity.name}`} description={t(project.oneLiner, lang)}>
+<Base lang={lang} alternates={alternates} title={`${t(project.name, lang)} – ${t(labels.seoSuffix, lang)} | ${p.identity.name}`} description={t(project.oneLiner, lang)}>
   <article class="section">
     <div class="container-page max-w-4xl">
       <a href={`${lang === "fr" ? "/" : "/en/"}#projects`} class="link mb-8 inline-block text-sm">← {t(labels.back, lang)}</a>
@@ -78,7 +80,7 @@ const sections = [
                     <figure>
                       <ProjectImage
                         file={img.file}
-                        alt={t(img.alt, lang)}
+                        alt=""
                         widths={mobile ? [260, 390] : [400, 700, 1000]}
                         sizes={mobile ? "260px" : "(min-width: 896px) 440px, 92vw"}
                         eager={i === 0}

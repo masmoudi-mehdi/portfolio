@@ -66,6 +66,7 @@ const cvLabel = { fr: ui.hero.cvFr, en: ui.hero.cvEn };
         <a
           href={CV_URL[l]}
           download={CV_DOWNLOAD_NAME[l]}
+          data-cv={l}
           hreflang={l}
           class="flex w-full items-center justify-center gap-2 rounded-lg bg-gray-300 py-3 font-medium text-gray-900 hover:bg-gray-400"
         >
@@ -85,3 +86,13 @@ const cvLabel = { fr: ui.hero.cvFr, en: ui.hero.cvEn };
     {t(ui.hero.close, lang)}
   </button>
 </div>
+
+<script>
+  // Counts CV downloads as GoatCounter events (no-op when the counter is off or blocked).
+  for (const link of document.querySelectorAll<HTMLAnchorElement>("a[data-cv]")) {
+    link.addEventListener("click", () => {
+      const count = (window as any).goatcounter?.count;
+      count?.({ path: `cv-${link.dataset.cv}`, title: `CV ${link.dataset.cv}`, event: true });
+    });
+  }
+</script>

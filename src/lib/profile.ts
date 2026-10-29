@@ -38,6 +38,12 @@ export const CV_DOWNLOAD_NAME: Record<Lang, string> = {
 export const projectHref = (slug: string, lang: Lang): string =>
   lang === "fr" ? `/projets/${slug}` : `/en/projects/${slug}`;
 
+/**
+ * Site code of the GoatCounter account (the part before .goatcounter.com).
+ * Leave empty to switch the visit counter off.
+ */
+export const GOATCOUNTER_CODE = "mehdimasmoudi";
+
 export const FORMSPREE_URL = "https://formspree.io/f/mnnjqokj";
 
 export const otherLang = (lang: Lang): Lang => (lang === "fr" ? "en" : "fr");

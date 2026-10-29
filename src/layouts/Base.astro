@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Konami from "../components/Konami.astro";
 import Particles from "../components/Particles.astro";
-import { p, t, ui, ROUTES, LANGS, type Lang, type PageKey } from "../lib/profile";
+import { p, t, ui, ROUTES, LANGS, GOATCOUNTER_CODE, type Lang, type PageKey } from "../lib/profile";
 
 interface Props {
   lang: Lang;
@@ -22,7 +22,9 @@ const site = Astro.site!;
 const abs = (path: string) => new URL(path, site).href;
 
 const canonical = urls ? abs(urls[lang]) : undefined;
-const ogImage = abs("/assets/images/mehdi-960.webp");
+// 1200x630 share card per language, made by `npm run og`.
+const ogImage = abs(`/assets/images/og-${lang}.png`);
+const ogAlt = `${p.identity.name} – ${t(p.identity.title, lang)}`;
 const ogLocale = lang === "fr" ? "fr_FR" : "en_US";
 
 const skills = p.skills.flatMap((group) => group.items.map((item) => t(item, lang)));
@@ -33,7 +35,7 @@ const person = {
   jobTitle: t(p.identity.title, lang),
   description: t(p.subline, lang),
   url: abs(ROUTES.home[lang]),
-  image: ogImage,
+  image: abs("/assets/images/mehdi-960.webp"),
   email: `mailto:${p.identity.email}`,
   telephone: p.identity.phoneE164,
   address: {
@@ -69,15 +71,16 @@ const person = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="960" />
-    <meta property="og:image:height" content="945" />
-    <meta property="og:image:alt" content={t(ui.hero.photoAlt, lang)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
     <meta property="og:locale" content={ogLocale} />
     {canonical && <meta property="og:url" content={canonical} />}
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogAlt} />
 
     <link rel="icon" href="/assets/favicon_io/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png" />
@@ -112,5 +115,16 @@ const person = {
     </main>
     <Footer lang={lang} page={page} />
     <Konami lang={lang} />
+    {
+      GOATCOUNTER_CODE && (
+        // Cookie-free visit counter. count.js is loaded after the page, so it never blocks rendering.
+        <script
+          is:inline
+          async
+          data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`}
+          src="https://gc.zgo.at/count.js"
+        />
+      )
+    }
   </body>
 </html>

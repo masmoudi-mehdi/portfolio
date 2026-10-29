@@ -995,6 +995,10 @@
         "fr": "Étape",
         "en": "Step"
       },
+      "seoSuffix": {
+        "fr": "étude de cas",
+        "en": "case study"
+      },
       "ctaTitle": {
         "fr": "Un projet comparable ?",
         "en": "A similar project?"
@@ -1064,6 +1068,14 @@
       "success": {
         "fr": "Merci, votre message est bien parti. Je vous réponds dès que possible.",
         "en": "Thanks, your message is on its way. I'll get back to you soon."
+      },
+      "required": {
+        "fr": "Ce champ est obligatoire.",
+        "en": "This field is required."
+      },
+      "invalidEmail": {
+        "fr": "Saisissez une adresse e-mail valide.",
+        "en": "Enter a valid email address."
       },
       "error": {
         "fr": "L'envoi a échoué. Réessayez, ou écrivez-moi directement par e-mail.",

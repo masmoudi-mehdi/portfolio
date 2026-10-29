@@ -9,6 +9,9 @@
     "check": "node scripts/check-profile.mjs && astro check",
     "content:check": "node scripts/check-profile.mjs",
     "cv": "node scripts/build-cv.mjs",
+    "og": "node scripts/build-og.mjs",
+    "check:dist": "node scripts/check-dist.mjs",
+    "test:form": "node scripts/test-contact-form.mjs",
     "screenshots": "node scripts/screenshots.mjs"
   },
   "devDependencies": {

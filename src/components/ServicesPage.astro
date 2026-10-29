@@ -55,10 +55,10 @@ const mailto = `mailto:${p.identity.email}?subject=${encodeURIComponent(t(s.emai
                 <p class="text-xl font-bold text-accent">{t(page.pricing, lang)}</p>
                 <div class="mt-4 flex flex-col gap-3">
                   <a href={mailto} class="rounded-lg bg-cta px-4 py-2.5 text-center text-white transition-colors hover:bg-cta-hover">
-                    {t(s.askByEmail, lang)}
+                    {t(s.askByEmail, lang)}<span class="sr-only"> – {t(offer.title, lang)}</span>
                   </a>
                   <a href="#contact" class="rounded-lg bg-cta px-4 py-2.5 text-center text-white transition-colors hover:bg-cta-hover">
-                    {t(ui.hero.contact, lang)}
+                    {t(ui.hero.contact, lang)}<span class="sr-only"> – {t(offer.title, lang)}</span>
                   </a>
                 </div>
               </div>

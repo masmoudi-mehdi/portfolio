@@ -1,6 +1,5 @@
 ---
 import Icon from "./Icon.astro";
-import ProjectImage from "./ProjectImage.astro";
 import { p, t, ui, projectHref, type Lang } from "../lib/profile";
 
 interface Props {
@@ -18,18 +17,8 @@ const labels = ui.projects;
     <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         p.projects.map((project) => {
-          const cover = project.images[0];
           return (
             <li class="reveal card flex flex-col overflow-hidden backdrop-blur-sm">
-              {cover && (
-                <ProjectImage
-                  file={cover.file}
-                  alt={t(cover.alt, lang)}
-                  widths={[400, 640]}
-                  sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
-                  class="aspect-video w-full border-b border-line object-cover object-top"
-                />
-              )}
               <div class="flex flex-1 flex-col p-6">
                 <h3 class="mb-1 text-xl font-bold text-fg">{t(project.name, lang)}</h3>
                 <p class="mb-2 text-sm text-accent">{t(project.oneLiner, lang)}</p>

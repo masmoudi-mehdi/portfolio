@@ -5,9 +5,10 @@ import { p, t, ui, ROUTES, LANGS, sectionHref, type Lang, type PageKey } from ".
 interface Props {
   lang: Lang;
   page?: PageKey;
+  alternates?: Record<Lang, string>;
 }
 
-const { lang, page } = Astro.props;
+const { lang, page, alternates } = Astro.props;
 const from = page ?? "services"; // the 404 page links to home sections like services does
 
 const links = [
@@ -21,7 +22,7 @@ const links = [
 
 const languages = LANGS.map((l) => ({
   lang: l,
-  href: ROUTES[page ?? "home"][l],
+  href: (alternates ?? ROUTES[page ?? "home"])[l],
   label: t(ui.language.names, l),
   current: l === lang,
 }));

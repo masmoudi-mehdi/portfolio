@@ -248,7 +248,69 @@
         "en": "In production for a major international sports broadcaster. Confidential: product-level overview only."
       },
       "link": null,
-      "images": []
+      "images": [],
+      "diagram": {
+        "alt": {
+          "fr": "Schéma : trouver les pages, classification par IA, détection du flux HLS ou DASH, capture d'écran comme preuve, demande de retrait.",
+          "en": "Diagram: find pages, AI classification, HLS or DASH stream detection, evidence screenshot, takedown request."
+        },
+        "steps": [
+          {
+            "label": {
+              "fr": "Trouver les pages",
+              "en": "Find pages"
+            },
+            "detail": {
+              "fr": "Recherche des pages qui diffusent",
+              "en": "Search for pages that stream"
+            }
+          },
+          {
+            "label": {
+              "fr": "Classification par IA",
+              "en": "AI classifies them"
+            },
+            "detail": {
+              "fr": "Écarte les pages sans diffusion",
+              "en": "Filters out non-streaming pages"
+            }
+          },
+          {
+            "label": {
+              "fr": "Détecter le flux",
+              "en": "Detect the stream"
+            },
+            "detail": {
+              "fr": "Flux HLS ou DASH derrière le lecteur",
+              "en": "HLS or DASH behind the player"
+            }
+          },
+          {
+            "label": {
+              "fr": "Preuve en capture",
+              "en": "Evidence screenshot"
+            },
+            "detail": {
+              "fr": "Lecteur et URL du flux conservés",
+              "en": "Player and stream URL kept"
+            }
+          },
+          {
+            "label": {
+              "fr": "Demande de retrait",
+              "en": "Takedown request"
+            },
+            "detail": {
+              "fr": "Dossier prêt pour le diffuseur",
+              "en": "Evidence pack for the broadcaster"
+            }
+          }
+        ]
+      },
+      "note": {
+        "fr": "Pas de capture (confidentiel) : schéma au niveau produit.",
+        "en": "No screenshot (confidential): product-level diagram."
+      }
     },
     {
       "slug": "anti-piracy-portal",
@@ -288,7 +350,59 @@
         "en": "Deployed on Azure; it is the team's day-to-day tool for running detection."
       },
       "link": null,
-      "images": []
+      "images": [],
+      "diagram": {
+        "alt": {
+          "fr": "Schéma : import CSV ou XLSX, détection du modèle, enrichissement WHOIS et géolocalisation IP, tableau de bord.",
+          "en": "Diagram: CSV or XLSX upload, template detection, WHOIS and IP geolocation enrichment, dashboard."
+        },
+        "steps": [
+          {
+            "label": {
+              "fr": "Import CSV / XLSX",
+              "en": "CSV / XLSX upload"
+            },
+            "detail": {
+              "fr": "Listes de liens envoyées par l'équipe",
+              "en": "Link lists uploaded by the team"
+            }
+          },
+          {
+            "label": {
+              "fr": "Détection du modèle",
+              "en": "Template detection"
+            },
+            "detail": {
+              "fr": "Reconnaît la structure de chaque fichier",
+              "en": "Recognises each file's layout"
+            }
+          },
+          {
+            "label": {
+              "fr": "Enrichissement",
+              "en": "Enrichment"
+            },
+            "detail": {
+              "fr": "WHOIS + géolocalisation IP",
+              "en": "WHOIS + IP geolocation"
+            }
+          },
+          {
+            "label": {
+              "fr": "Tableau de bord",
+              "en": "Dashboard"
+            },
+            "detail": {
+              "fr": "Résultats, validation, rapports",
+              "en": "Results, validation, reports"
+            }
+          }
+        ]
+      },
+      "note": {
+        "fr": "Pas de capture : outil interne, schéma uniquement.",
+        "en": "No screenshot: internal tool, diagram only."
+      }
     },
     {
       "slug": "restaurant-bar-app",
@@ -333,7 +447,40 @@
         "en": "Deployed, with automated tests and continuous integration."
       },
       "link": null,
-      "images": []
+      "images": [
+        {
+          "file": "bar-app-reservations",
+          "alt": {
+            "fr": "Liste des réservations du jour avec filtres par zone et statut (données de démonstration)",
+            "en": "Daily bookings list with zone filters and status (demo data)"
+          }
+        },
+        {
+          "file": "bar-app-floor-plan",
+          "alt": {
+            "fr": "Gestion des espaces : zones du restaurant-bar et tables (données de démonstration)",
+            "en": "Space management: the venue's zones and tables (demo data)"
+          }
+        },
+        {
+          "file": "bar-app-prep-queue",
+          "alt": {
+            "fr": "File de préparation du poste bar, alimentée en temps réel (données de démonstration)",
+            "en": "Bar station preparation queue fed in real time (demo data)"
+          }
+        },
+        {
+          "file": "bar-app-mobile",
+          "alt": {
+            "fr": "Réservations sur un écran de téléphone (données de démonstration)",
+            "en": "Bookings on a phone screen (demo data)"
+          }
+        }
+      ],
+      "note": {
+        "fr": "Captures réalisées avec des données de démonstration.",
+        "en": "Screenshots taken with demo data only."
+      }
     }
   ],
   "skills": [
@@ -673,78 +820,247 @@
       "en": "Full-stack & AI developer with {years} years of experience: React, Node.js, Python, PostgreSQL, Azure. At SoftStars, I build crawlers and AI features (LLMs, vision agents, Azure AI Foundry) that run in production for a major international sports broadcaster. Open to full-time roles (on-site in Tunisia or remote) and freelance projects."
     },
     "bullets": {
-      "softstars": [0, 1, 2, 3, 5],
-      "hotlas": [0, 1, 3],
-      "sqoin": [1],
-      "fivepoints": [0],
-      "sentinel": [1]
+      "softstars": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "hotlas": [
+        0,
+        1,
+        3
+      ],
+      "sqoin": [
+        1
+      ],
+      "fivepoints": [
+        0
+      ],
+      "sentinel": [
+        1
+      ]
     },
-    "projects": ["stream-catcher", "restaurant-bar-app"]
+    "projects": [
+      "stream-catcher",
+      "restaurant-bar-app"
+    ]
   },
   "site": {
-    "skipLink": { "fr": "Aller au contenu", "en": "Skip to content" },
+    "skipLink": {
+      "fr": "Aller au contenu",
+      "en": "Skip to content"
+    },
     "nav": {
-      "label": { "fr": "Navigation principale", "en": "Main navigation" },
-      "menu": { "fr": "Menu", "en": "Menu" },
-      "experience": { "fr": "Parcours", "en": "Experience" },
-      "projects": { "fr": "Projets", "en": "Projects" },
-      "skills": { "fr": "Compétences", "en": "Skills" },
-      "about": { "fr": "À propos", "en": "About" },
-      "services": { "fr": "Services", "en": "Services" },
-      "contact": { "fr": "Contact", "en": "Contact" },
-      "home": { "fr": "Accueil", "en": "Home" }
+      "label": {
+        "fr": "Navigation principale",
+        "en": "Main navigation"
+      },
+      "menu": {
+        "fr": "Menu",
+        "en": "Menu"
+      },
+      "experience": {
+        "fr": "Parcours",
+        "en": "Experience"
+      },
+      "projects": {
+        "fr": "Projets",
+        "en": "Projects"
+      },
+      "skills": {
+        "fr": "Compétences",
+        "en": "Skills"
+      },
+      "about": {
+        "fr": "À propos",
+        "en": "About"
+      },
+      "services": {
+        "fr": "Services",
+        "en": "Services"
+      },
+      "contact": {
+        "fr": "Contact",
+        "en": "Contact"
+      },
+      "home": {
+        "fr": "Accueil",
+        "en": "Home"
+      }
     },
     "theme": {
-      "label": { "fr": "Changer de thème (clair ou sombre)", "en": "Switch theme (light or dark)" }
+      "label": {
+        "fr": "Changer de thème (clair ou sombre)",
+        "en": "Switch theme (light or dark)"
+      }
     },
     "language": {
-      "label": { "fr": "Langue", "en": "Language" },
-      "names": { "fr": "Français", "en": "English" }
+      "label": {
+        "fr": "Langue",
+        "en": "Language"
+      },
+      "names": {
+        "fr": "Français",
+        "en": "English"
+      }
     },
     "hero": {
-      "contact": { "fr": "Me contacter", "en": "Contact me" },
-      "cv": { "fr": "Télécharger le CV", "en": "Download CV" },
-      "cvChoose": { "fr": "Choisir une version du CV", "en": "Choose a CV version" },
-      "cvFr": { "fr": "CV en français", "en": "French CV" },
-      "cvEn": { "fr": "CV en anglais", "en": "English CV" },
-      "close": { "fr": "Fermer", "en": "Close" },
-      "photoAlt": { "fr": "Portrait de Mehdi Masmoudi", "en": "Portrait of Mehdi Masmoudi" }
+      "contact": {
+        "fr": "Me contacter",
+        "en": "Contact me"
+      },
+      "cv": {
+        "fr": "Télécharger le CV",
+        "en": "Download CV"
+      },
+      "cvChoose": {
+        "fr": "Choisir une version du CV",
+        "en": "Choose a CV version"
+      },
+      "cvFr": {
+        "fr": "CV en français",
+        "en": "French CV"
+      },
+      "cvEn": {
+        "fr": "CV en anglais",
+        "en": "English CV"
+      },
+      "close": {
+        "fr": "Fermer",
+        "en": "Close"
+      },
+      "photoAlt": {
+        "fr": "Portrait de Mehdi Masmoudi",
+        "en": "Portrait of Mehdi Masmoudi"
+      }
     },
     "experience": {
-      "title": { "fr": "Parcours", "en": "Experience" },
-      "present": { "fr": "aujourd'hui", "en": "present" },
-      "client": { "fr": "Client", "en": "Client" }
+      "title": {
+        "fr": "Parcours",
+        "en": "Experience"
+      },
+      "present": {
+        "fr": "aujourd'hui",
+        "en": "present"
+      },
+      "client": {
+        "fr": "Client",
+        "en": "Client"
+      }
     },
     "projects": {
-      "title": { "fr": "Projets", "en": "Projects" },
-      "problem": { "fr": "Le besoin", "en": "The problem" },
-      "built": { "fr": "Ce que j'ai construit", "en": "What I built" },
-      "role": { "fr": "Mon rôle", "en": "My role" },
-      "result": { "fr": "Résultat", "en": "Outcome" },
-      "stack": { "fr": "Technologies", "en": "Tech stack" }
+      "title": {
+        "fr": "Projets",
+        "en": "Projects"
+      },
+      "problem": {
+        "fr": "Le besoin",
+        "en": "The problem"
+      },
+      "built": {
+        "fr": "Ce que j'ai construit",
+        "en": "What I built"
+      },
+      "role": {
+        "fr": "Mon rôle",
+        "en": "My role"
+      },
+      "result": {
+        "fr": "Résultat",
+        "en": "Outcome"
+      },
+      "stack": {
+        "fr": "Technologies",
+        "en": "Tech stack"
+      },
+      "details": {
+        "fr": "Voir l'étude de cas",
+        "en": "Read the case study"
+      },
+      "back": {
+        "fr": "Tous les projets",
+        "en": "All projects"
+      },
+      "screens": {
+        "fr": "Captures d'écran",
+        "en": "Screenshots"
+      },
+      "flow": {
+        "fr": "Comment ça marche",
+        "en": "How it works"
+      },
+      "stepLabel": {
+        "fr": "Étape",
+        "en": "Step"
+      },
+      "ctaTitle": {
+        "fr": "Un projet comparable ?",
+        "en": "A similar project?"
+      }
     },
     "skills": {
-      "title": { "fr": "Compétences techniques", "en": "Technical skills" },
-      "languages": { "fr": "Langues", "en": "Languages" }
+      "title": {
+        "fr": "Compétences techniques",
+        "en": "Technical skills"
+      },
+      "languages": {
+        "fr": "Langues",
+        "en": "Languages"
+      }
     },
     "about": {
-      "title": { "fr": "À propos de moi", "en": "About me" },
-      "education": { "fr": "Formation", "en": "Education" },
-      "certifications": { "fr": "Certifications", "en": "Certifications" }
+      "title": {
+        "fr": "À propos de moi",
+        "en": "About me"
+      },
+      "education": {
+        "fr": "Formation",
+        "en": "Education"
+      },
+      "certifications": {
+        "fr": "Certifications",
+        "en": "Certifications"
+      }
     },
     "contact": {
-      "title": { "fr": "Contactez-moi", "en": "Contact me" },
+      "title": {
+        "fr": "Contactez-moi",
+        "en": "Contact me"
+      },
       "intro": {
         "fr": "Un poste à pourvoir, une mission freelance ou une simple question : écrivez-moi.",
         "en": "A role to fill, a freelance project or just a question: send me a message."
       },
-      "direct": { "fr": "Ou directement :", "en": "Or reach me directly:" },
-      "name": { "fr": "Nom", "en": "Name" },
-      "email": { "fr": "E-mail", "en": "Email" },
-      "message": { "fr": "Message", "en": "Message" },
-      "honeypot": { "fr": "Ne remplissez pas ce champ", "en": "Leave this field empty" },
-      "send": { "fr": "Envoyer", "en": "Send" },
-      "sending": { "fr": "Envoi en cours…", "en": "Sending…" },
+      "direct": {
+        "fr": "Ou directement :",
+        "en": "Or reach me directly:"
+      },
+      "name": {
+        "fr": "Nom",
+        "en": "Name"
+      },
+      "email": {
+        "fr": "E-mail",
+        "en": "Email"
+      },
+      "message": {
+        "fr": "Message",
+        "en": "Message"
+      },
+      "honeypot": {
+        "fr": "Ne remplissez pas ce champ",
+        "en": "Leave this field empty"
+      },
+      "send": {
+        "fr": "Envoyer",
+        "en": "Send"
+      },
+      "sending": {
+        "fr": "Envoi en cours…",
+        "en": "Sending…"
+      },
       "success": {
         "fr": "Merci, votre message est bien parti. Je vous réponds dès que possible.",
         "en": "Thanks, your message is on its way. I'll get back to you soon."
@@ -755,33 +1071,81 @@
       }
     },
     "services": {
-      "offersTitle": { "fr": "Les offres", "en": "Offers" },
-      "askByEmail": { "fr": "Demander par e-mail", "en": "Ask by email" },
-      "emailSubject": { "fr": "Demande de devis", "en": "Project request" },
-      "processTitle": { "fr": "Comment je travaille", "en": "How I work" },
-      "ctaTitle": { "fr": "Un projet en tête ?", "en": "Have a project in mind?" },
+      "offersTitle": {
+        "fr": "Les offres",
+        "en": "Offers"
+      },
+      "askByEmail": {
+        "fr": "Demander par e-mail",
+        "en": "Ask by email"
+      },
+      "emailSubject": {
+        "fr": "Demande de devis",
+        "en": "Project request"
+      },
+      "processTitle": {
+        "fr": "Comment je travaille",
+        "en": "How I work"
+      },
+      "ctaTitle": {
+        "fr": "Un projet en tête ?",
+        "en": "Have a project in mind?"
+      },
       "ctaText": {
         "fr": "Décrivez votre besoin en quelques lignes, je vous réponds avec un devis.",
         "en": "Describe what you need in a few lines and I'll reply with a quote."
       }
     },
     "footer": {
-      "contactTitle": { "fr": "Contact", "en": "Contact" },
-      "socialTitle": { "fr": "Réseaux sociaux", "en": "Social media" },
-      "copyrightTitle": { "fr": "Droits d'auteur", "en": "Copyright" },
-      "rights": { "fr": "Tous droits réservés.", "en": "All rights reserved." }
+      "contactTitle": {
+        "fr": "Contact",
+        "en": "Contact"
+      },
+      "socialTitle": {
+        "fr": "Réseaux sociaux",
+        "en": "Social media"
+      },
+      "copyrightTitle": {
+        "fr": "Droits d'auteur",
+        "en": "Copyright"
+      },
+      "rights": {
+        "fr": "Tous droits réservés.",
+        "en": "All rights reserved."
+      }
     },
     "notFound": {
-      "title": { "fr": "Page introuvable", "en": "Page not found" },
-      "text": { "fr": "Cette page n'existe pas ou a été déplacée.", "en": "This page doesn't exist or has moved." },
-      "back": { "fr": "Retour à l'accueil", "en": "Back to the home page" }
+      "title": {
+        "fr": "Page introuvable",
+        "en": "Page not found"
+      },
+      "text": {
+        "fr": "Cette page n'existe pas ou a été déplacée.",
+        "en": "This page doesn't exist or has moved."
+      },
+      "back": {
+        "fr": "Retour à l'accueil",
+        "en": "Back to the home page"
+      }
     },
     "konami": {
-      "title": { "fr": "Code secret trouvé !", "en": "Secret code found!" },
-      "text": { "fr": "Voici votre code promo :", "en": "Here is your promo code:" },
+      "title": {
+        "fr": "Code secret trouvé !",
+        "en": "Secret code found!"
+      },
+      "text": {
+        "fr": "Voici votre code promo :",
+        "en": "Here is your promo code:"
+      },
       "code": "KONAMI2026",
-      "offer": { "fr": "-20 % sur ma prochaine mission freelance", "en": "20% off my next freelance project" },
-      "close": { "fr": "Fermer", "en": "Close" },
+      "offer": {
+        "fr": "-20 % sur ma prochaine mission freelance",
+        "en": "20% off my next freelance project"
+      },
+      "close": {
+        "fr": "Fermer",
+        "en": "Close"
+      },
       "hint": {
         "fr": "Un code secret pourrait vous donner accès à une offre spéciale…",
         "en": "A secret code might give you access to a special offer…"

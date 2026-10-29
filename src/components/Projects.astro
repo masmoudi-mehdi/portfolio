@@ -1,6 +1,7 @@
 ---
 import Icon from "./Icon.astro";
-import { p, t, ui, type Lang } from "../lib/profile";
+import ProjectImage from "./ProjectImage.astro";
+import { p, t, ui, projectHref, type Lang } from "../lib/profile";
 
 interface Props {
   lang: Lang;
@@ -17,38 +18,36 @@ const labels = ui.projects;
     <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         p.projects.map((project) => {
-          const details = [
-            [labels.problem, project.problem],
-            [labels.built, project.built],
-            [labels.role, project.role],
-            [labels.result, project.result],
-          ] as const;
+          const cover = project.images[0];
           return (
-            <li class="reveal card flex flex-col p-6 backdrop-blur-sm">
-              <h3 class="mb-1 text-xl font-bold text-fg">{t(project.name, lang)}</h3>
-              <p class="mb-4 text-sm text-accent">{t(project.oneLiner, lang)}</p>
-              {"context" in project && project.context && (
-                <p class="mb-3 text-sm font-semibold text-fg">{t(project.context, lang)}</p>
+            <li class="reveal card flex flex-col overflow-hidden backdrop-blur-sm">
+              {cover && (
+                <ProjectImage
+                  file={cover.file}
+                  alt={t(cover.alt, lang)}
+                  widths={[400, 640]}
+                  sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
+                  class="aspect-video w-full border-b border-line object-cover object-top"
+                />
               )}
-              <dl class="mb-5 space-y-3 text-sm text-fg-soft">
-                {details.map(([label, text]) => (
-                  <div>
-                    <dt class="font-semibold text-fg">{t(label, lang)}</dt>
-                    <dd>{t(text, lang)}</dd>
-                  </div>
-                ))}
-              </dl>
-              <ul class="mt-auto flex flex-wrap gap-2" aria-label={t(labels.stack, lang)}>
-                {project.stack.map((tech) => (
-                  <li class="chip">{tech}</li>
-                ))}
-              </ul>
-              {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" class="link mt-4 inline-flex items-center gap-1.5">
-                  {t(project.name, lang)}
+              <div class="flex flex-1 flex-col p-6">
+                <h3 class="mb-1 text-xl font-bold text-fg">{t(project.name, lang)}</h3>
+                <p class="mb-2 text-sm text-accent">{t(project.oneLiner, lang)}</p>
+                {"context" in project && project.context && (
+                  <p class="mb-3 text-sm font-semibold text-fg">{t(project.context, lang)}</p>
+                )}
+                <p class="mb-5 text-sm text-fg-soft">{t(project.problem, lang)}</p>
+                <ul class="mb-5 flex flex-wrap gap-2" aria-label={t(labels.stack, lang)}>
+                  {project.stack.slice(0, 6).map((tech) => (
+                    <li class="chip">{tech}</li>
+                  ))}
+                </ul>
+                <a href={projectHref(project.slug, lang)} class="link mt-auto inline-flex items-center gap-1.5">
+                  {t(labels.details, lang)}
+                  <span class="sr-only"> : {t(project.name, lang)}</span>
                   <Icon name="arrow-up-right" size={16} />
                 </a>
-              )}
+              </div>
             </li>
           );
         })

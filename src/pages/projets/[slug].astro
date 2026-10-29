@@ -1,0 +1,9 @@
+---
+import ProjectPage from "../../components/ProjectPage.astro";
+import { p } from "../../lib/profile";
+
+export const getStaticPaths = () => p.projects.map((project) => ({ params: { slug: project.slug } }));
+const { slug } = Astro.params;
+---
+
+<ProjectPage lang="fr" slug={slug} />

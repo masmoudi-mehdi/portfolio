@@ -1,0 +1,32 @@
+---
+// Screenshots live in src/assets/projects/ and are named in profile.json
+// (projects[].images[].file, without extension). astro:assets turns them into
+// sized, lazy-loaded webp files.
+import { Image } from "astro:assets";
+
+interface Props {
+  file: string;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  eager?: boolean;
+  class?: string;
+}
+
+const { file, alt, widths, sizes, eager = false, class: className } = Astro.props;
+const all = import.meta.glob<{ default: ImageMetadata }>("../assets/projects/*.webp", { eager: true });
+const entry = all[`../assets/projects/${file}.webp`];
+if (!entry) throw new Error(`Missing screenshot src/assets/projects/${file}.webp`);
+const image = entry.default;
+---
+
+<Image
+  src={image}
+  alt={alt}
+  widths={widths}
+  sizes={sizes}
+  format="webp"
+  loading={eager ? "eager" : "lazy"}
+  decoding={eager ? "auto" : "async"}
+  class={className}
+/>

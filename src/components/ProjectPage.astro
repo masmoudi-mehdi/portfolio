@@ -1,0 +1,101 @@
+---
+import Base from "../layouts/Base.astro";
+import Contact from "./Contact.astro";
+import FlowDiagram from "./FlowDiagram.astro";
+import ProjectImage from "./ProjectImage.astro";
+import { p, t, ui, projectHref, LANGS, type Lang } from "../lib/profile";
+
+interface Props {
+  lang: Lang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const project = p.projects.find((x) => x.slug === slug)!;
+const labels = ui.projects;
+const diagram = "diagram" in project ? project.diagram : undefined;
+const note = "note" in project ? project.note : undefined;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, projectHref(slug, l)])) as Record<Lang, string>;
+
+const sections = [
+  [labels.problem, project.problem],
+  [labels.built, project.built],
+  [labels.role, project.role],
+  [labels.result, project.result],
+] as const;
+---
+
+<Base lang={lang} alternates={alternates} title={`${t(project.name, lang)} – ${p.identity.name}`} description={t(project.oneLiner, lang)}>
+  <article class="section">
+    <div class="container-page max-w-4xl">
+      <a href={`${lang === "fr" ? "/" : "/en/"}#projects`} class="link mb-8 inline-block text-sm">← {t(labels.back, lang)}</a>
+      <h1 class="gradient-text pb-2 text-4xl leading-tight font-bold sm:text-5xl">{t(project.name, lang)}</h1>
+      <p class="mt-3 text-xl text-fg-soft">{t(project.oneLiner, lang)}</p>
+      {"context" in project && project.context && <p class="mt-2 font-semibold text-fg">{t(project.context, lang)}</p>}
+
+      <div class="mt-10 space-y-8">
+        {
+          sections.map(([label, text], i) => (
+            <section>
+              <h2 class="mb-2 text-2xl font-bold text-accent">{t(label, lang)}</h2>
+              <p class="text-lg text-fg-soft">{t(text, lang)}</p>
+              {i === 1 && (
+                <>
+                  <h2 class="mt-8 mb-3 text-2xl font-bold text-accent">{t(labels.stack, lang)}</h2>
+                  <ul class="flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <li class="tag">{tech}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </section>
+          ))
+        }
+      </div>
+
+      {
+        diagram && (
+          <section class="mt-14" aria-labelledby="flow-title">
+            <h2 id="flow-title" class="mb-6 text-2xl font-bold text-accent">{t(labels.flow, lang)}</h2>
+            <FlowDiagram
+              alt={t(diagram.alt, lang)}
+              steps={diagram.steps.map((s) => ({ label: t(s.label, lang), detail: t(s.detail, lang) }))}
+            />
+          </section>
+        )
+      }
+
+      {
+        project.images.length > 0 && (
+          <section class="mt-14" aria-labelledby="shots-title">
+            <h2 id="shots-title" class="mb-6 text-2xl font-bold text-accent">{t(labels.screens, lang)}</h2>
+            <ul class="grid gap-6 md:grid-cols-2">
+              {project.images.map((img, i) => {
+                const mobile = img.file.endsWith("mobile");
+                return (
+                  <li class:list={[mobile && "mx-auto max-w-[260px] md:col-span-2"]}>
+                    <figure>
+                      <ProjectImage
+                        file={img.file}
+                        alt={t(img.alt, lang)}
+                        widths={mobile ? [260, 390] : [400, 700, 1000]}
+                        sizes={mobile ? "260px" : "(min-width: 896px) 440px, 92vw"}
+                        eager={i === 0}
+                        class="h-auto w-full rounded-lg border border-line shadow-lg"
+                      />
+                      <figcaption class="mt-2 text-sm text-muted">{t(img.alt, lang)}</figcaption>
+                    </figure>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )
+      }
+      {note && <p class="mt-8 text-sm text-muted italic">{t(note, lang)}</p>}
+    </div>
+  </article>
+
+  <Contact lang={lang} title={t(labels.ctaTitle, lang)} />
+</Base>

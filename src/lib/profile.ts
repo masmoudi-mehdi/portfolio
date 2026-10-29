@@ -35,6 +35,9 @@ export const CV_DOWNLOAD_NAME: Record<Lang, string> = {
   en: "CV-Mehdi-Masmoudi-EN.pdf",
 };
 
+export const projectHref = (slug: string, lang: Lang): string =>
+  lang === "fr" ? `/projets/${slug}` : `/en/projects/${slug}`;
+
 export const FORMSPREE_URL = "https://formspree.io/f/mnnjqokj";
 
 export const otherLang = (lang: Lang): Lang => (lang === "fr" ? "en" : "fr");

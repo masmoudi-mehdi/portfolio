@@ -10,15 +10,18 @@ interface Props {
   lang: Lang;
   /** Page with a FR/EN pair; leave empty for the 404 page. */
   page?: PageKey;
+  /** FR/EN URLs of a page that is not in ROUTES (project pages). */
+  alternates?: Record<Lang, string>;
   title: string;
   description: string;
 }
 
-const { lang, page, title, description } = Astro.props;
+const { lang, page, title, description, alternates } = Astro.props;
+const urls = alternates ?? (page ? ROUTES[page] : undefined);
 const site = Astro.site!;
 const abs = (path: string) => new URL(path, site).href;
 
-const canonical = page ? abs(ROUTES[page][lang]) : undefined;
+const canonical = urls ? abs(urls[lang]) : undefined;
 const ogImage = abs("/assets/images/mehdi-960.webp");
 const ogLocale = lang === "fr" ? "fr_FR" : "en_US";
 
@@ -53,13 +56,13 @@ const person = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={p.identity.name} />
-    {page ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="noindex" />}
+    {urls ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="noindex" />}
     {canonical && <link rel="canonical" href={canonical} />}
     {
-      page &&
-        LANGS.map((l) => <link rel="alternate" hreflang={l} href={abs(ROUTES[page][l])} />)
+      urls &&
+        LANGS.map((l) => <link rel="alternate" hreflang={l} href={abs(urls[l])} />)
     }
-    {page && <link rel="alternate" hreflang="x-default" href={abs(ROUTES[page].fr)} />}
+    {urls && <link rel="alternate" hreflang="x-default" href={abs(urls.fr)} />}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={p.identity.name} />
@@ -103,7 +106,7 @@ const person = {
     >
       {t(ui.skipLink, lang)}
     </a>
-    <Header lang={lang} page={page} />
+    <Header lang={lang} page={page} alternates={alternates} />
     <main id="main" class="relative z-10 flex-1">
       <slot />
     </main>
